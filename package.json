@@ -1,0 +1,11 @@
+{
+  "name": "framer-form",
+  "version": "0.0.1",
+  "description": "3D Library for Framer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emil Widlund",
+  "license": "ISC"
+}
