@@ -4,8 +4,16 @@
   "description": "3D Library for Framer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --content-base example/ --mode development  --host 0.0.0.0",
+    "build": "webpack-cli"
   },
   "author": "Emil Widlund",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "coffee-loader": "^0.9.0",
+    "coffeescript": "^2.2.2",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.1.0"
+  }
 }

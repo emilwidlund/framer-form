@@ -1,11 +1,11 @@
 window.THREE = require './lib/three.min.js'
 window.Form = window.THREE
 
-{SceneCanvas} = require './src/SceneCanvas.coffee'
+{Scene} = require './src/Scene.coffee'
+{Mesh} = require './src/Mesh.coffee'
 {importModel} = require './src/importModel.coffee'
 
-form =
-    SceneCanvas: SceneCanvas
+module.exports =
+    Scene: Scene
+    Mesh: Mesh
     importModel: importModel
-
-module.exports = form
