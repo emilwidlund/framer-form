@@ -37,12 +37,21 @@ class exports.Scene extends Layer
         @raycaster = new THREE.Raycaster
         @mouse = new THREE.Vector2
         @intersected = null
+        @intersectedEventEmitted = false
 
         onMouseMove = (e) =>
             @mouse.x = (e.clientX / @width) * 2 - 1
             @mouse.y = -(e.clientY / @height) * 2 + 1
         
         @on 'mousemove', onMouseMove, false
+
+        @on 'mousedown', ->
+            if @intersected
+                @intersected.object.dispatchEvent {type: 'mousedown'}
+        
+        @on 'mouseup', ->
+            if @intersected
+                @intersected.object.dispatchEvent {type: 'mouseup'}
 
 
         # ANIMATION LOOP
@@ -65,7 +74,18 @@ class exports.Scene extends Layer
         @raycaster.setFromCamera @mouse, @camera
         intersects = @raycaster.intersectObjects @scene.children
 
-        if intersects.length
+        if intersects.length && @intersected != intersects[0]
             @intersected = intersects[0]
+        
+        if @intersected && !intersects.length
+            @intersected.object.dispatchEvent {type: 'mouseout'}
+            @intersected.object.dispatchEvent {type: 'onmouseout'}
+        
+        if !intersects.length
+            @intersected = null
+            @intersectedEventEmitted = false
+        
+        if !@intersectedEventEmitted && @intersected
             @intersected.object.dispatchEvent {type: 'mouseover'}
-            @intersected.object.dispatchEvent {type: 'mouseenter'}
+            @intersected.object.dispatchEvent {type: 'onmouseover'}
+            @intersectedEventEmitted = true

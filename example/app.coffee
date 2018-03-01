@@ -10,7 +10,16 @@ m = new Mesh
 	material: new Form.MeshNormalMaterial
 
 m.on 'mouseover', ->
-	console.log 's'
+	console.log 'Mouse Over'
+
+m.on 'mouseout', ->
+	console.log 'Mouse Out'
+
+m.on 'mousedown', ->
+	console.log 'Mouse Down'
+
+m.on 'mouseup', ->
+	console.log 'Mouse Up'
 
 scene.animationLoop = () ->
 	for m, i in scene.scene.children
