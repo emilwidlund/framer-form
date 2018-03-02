@@ -1,27 +1,29 @@
-{Scene, Mesh, importModel} = require '../form.coffee'
+{Scene, Mesh, Import} = require '../form.coffee'
 
 scene = new Scene
 	width: Screen.width
 	height: Screen.height
-
-m = new Mesh
+###
+mesh = new Mesh
 	parent: scene
 	geometry: new Form.BoxGeometry 1, 1, 1
 	material: new Form.MeshNormalMaterial
+		wireframe: true
+###
+Import {path: './models/skull.obj', parent: scene, material: new THREE.MeshNormalMaterial, scale: .002}, (model) ->
 
-m.on 'mouseover', ->
-	console.log 'Mouse Over'
+	model.on 'mouseover', ->
+		console.log 'Mouse Over'
 
-m.on 'mouseout', ->
-	console.log 'Mouse Out'
+	model.on 'mouseout', ->
+		console.log 'Mouse Out'
 
-m.on 'mousedown', ->
-	console.log 'Mouse Down'
+	model.on 'mousedown', ->
+		console.log 'Mouse Down'
 
-m.on 'mouseup', ->
-	console.log 'Mouse Up'
+	model.on 'mouseup', ->
+		console.log 'Mouse Up'
 
-scene.animationLoop = () ->
-	for m, i in scene.scene.children
-		m.rotation.x += (i + 1) / 100
-		m.rotation.y += (i + 1) / 100
+	scene.animationLoop = () ->
+		model.rotation.x += .01
+		model.rotation.y += .01

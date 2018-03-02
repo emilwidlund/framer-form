@@ -3,7 +3,10 @@ _ = Framer._
 class exports.Mesh extends THREE.Mesh
     constructor: (properties={}) ->
         super properties.geometry, properties.material
-        properties.parent.scene.add @
+
+        if properties.parent
+            if properties.parent.scene then properties.parent.scene.add @
+            else properties.parent.add @
         
 
         # POSITION
@@ -13,5 +16,4 @@ class exports.Mesh extends THREE.Mesh
         @position.z = properties.z || 0
 
     on: (eventName, cb) ->
-        @addEventListener eventName, ->
-            cb()
+        @addEventListener eventName, cb

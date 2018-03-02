@@ -75,7 +75,7 @@ class exports.Scene extends Layer
     
     handleRaycaster: () =>
         @raycaster.setFromCamera @mouse, @camera
-        intersects = @raycaster.intersectObjects @scene.children
+        intersects = @raycaster.intersectObjects @scene.children, true
 
         if intersects.length && @intersected != intersects[0]
             @intersected = intersects[0]
