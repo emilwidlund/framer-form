@@ -38,18 +38,19 @@ class exports.Scene extends Layer
         @mouse = new THREE.Vector2
         @intersected = null
         @intersectedEventEmitted = false
-
-        onMouseMove = (e) =>
+        @mousedown = false
+        
+        @on 'mousemove', (e) =>
             @mouse.x = (e.clientX / @width) * 2 - 1
             @mouse.y = -(e.clientY / @height) * 2 + 1
-        
-        @on 'mousemove', onMouseMove, false
 
-        @on 'mousedown', ->
+        @on 'mousedown', (e) =>
+            @mousedown = true
             if @intersected
                 @intersected.object.dispatchEvent {type: 'mousedown'}
         
-        @on 'mouseup', ->
+        @on 'mouseup', (e) =>
+            @mousedown = false
             if @intersected
                 @intersected.object.dispatchEvent {type: 'mouseup'}
 
@@ -69,6 +70,8 @@ class exports.Scene extends Layer
         @handleRaycaster()
 
         @renderer.render @scene, @camera
+    
+
     
     handleRaycaster: () =>
         @raycaster.setFromCamera @mouse, @camera
