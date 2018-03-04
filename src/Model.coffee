@@ -1,5 +1,6 @@
 require '../lib/OBJLoader.js'
 {BaseClass} = require './BaseClass.coffee'
+{Animation} = require './Animation.coffee'
 {Mesh} = require './Mesh.coffee'
 
 class exports.Model extends BaseClass
@@ -71,20 +72,7 @@ class exports.Model extends BaseClass
         @rotationZ = rotation[2] || 0
     
     animate: (properties) ->
-        console.log properties
-
-        framesRendered = 0
-        framesTotal = properties.options.time * 60
-
-        animation = () =>
-            @mesh.rotation.y += THREE.Math.degToRad(properties.rotationY / (properties.options.time * 60))
-
-        intervalDisposer = setInterval () -> 
-            if framesRendered >= framesTotal
-                return clearInterval intervalDisposer
-            requestAnimationFrame animation
-            framesRendered++
-        , 1000 / 60
+        new Animation @, properties
 
     @define 'scale',
         get: -> @mesh.scale,

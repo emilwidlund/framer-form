@@ -11,12 +11,10 @@ new Model
 	scale: .01
 	onLoad: (model) ->
 
-		console.log model
-
 		model.animate
-			rotationY: 360
+			z: 2
 			options:
-				time: 1
+				time: 10
 
 		scene.on Events.MouseMove, (e) ->
 			model.rotationY = Utils.modulate(e.clientX, [0, Screen.width], [-30, 30], true)
