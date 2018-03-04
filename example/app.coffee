@@ -12,7 +12,7 @@ new Model
 	onLoad: (model) ->
 
 		model.animate
-			z: 2
+			z: 10
 			options:
 				time: 10
 

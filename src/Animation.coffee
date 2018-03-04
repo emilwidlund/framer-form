@@ -13,20 +13,22 @@ class exports.Animation extends Framer.EventEmitter
         @properties = @filterProperties properties
         @options = _.defaults properties.options, 
             time: 1
+            delay: 0
 
         @fps = 60
         @time = @options.time
         @renderedFrames = 0
         @totalFrames = @time * @fps
 
-        @intervalDisposer = setInterval () => 
-            if @renderedFrames >= @totalFrames
-                return @disposeInterval
+        Utils.delay @options.delay, =>
+            @intervalDisposer = setInterval () => 
+                if @renderedFrames >= @totalFrames
+                    return @disposeInterval
 
-            requestAnimationFrame @animationLoop
-            
-            @renderedFrames++
-        , 1000 / @fps
+                requestAnimationFrame @animationLoop
+                
+                @renderedFrames++
+            , 1000 / @fps
     
     filterProperties: (properties) ->
         props = Object.assign {}, properties
