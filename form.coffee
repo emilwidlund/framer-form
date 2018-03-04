@@ -3,9 +3,9 @@ window.Form = window.THREE
 
 {Scene} = require './src/Scene.coffee'
 {Mesh} = require './src/Mesh.coffee'
-{Import} = require './src/Import.coffee'
+{Model} = require './src/Model.coffee'
 
 module.exports =
     Scene: Scene
     Mesh: Mesh
-    Import: Import
+    Model: Model
