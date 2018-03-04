@@ -29,7 +29,7 @@ class exports.Scene extends Layer
         @camera = new THREE.PerspectiveCamera(35, @width / @height, 0.1, 10000)
         @camera.position.x = 0
         @camera.position.y = 0
-        @camera.position.z = 10
+        @camera.position.z = 100
 
 
         # RAYCASTER

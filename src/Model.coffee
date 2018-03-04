@@ -1,4 +1,5 @@
 require '../lib/OBJLoader.js'
+require '../lib/MTLLoader.js'
 {BaseClass} = require './BaseClass.coffee'
 {Animation} = require './Animation.coffee'
 {Mesh} = require './Mesh.coffee'
@@ -8,7 +9,7 @@ class exports.Model extends BaseClass
         super()
         switch @getExtension properties.path
             when 'obj'
-                @loadObj properties.path, (model) =>
+                @loadObj properties, (model) =>
                     @mesh = model
                     @boundingBox = new THREE.Box3().setFromObject @mesh
                     @setupModel properties
@@ -16,10 +17,11 @@ class exports.Model extends BaseClass
     getExtension: (path) ->
         path.split('.').pop()
 
-    loadObj: (path, cb) ->
+    loadObj: (properties, cb) ->
         @loader = new THREE.OBJLoader
-        @loader.load path, (obj) ->
-            cb(obj)
+        # @loader.setMaterials materials
+        @loader.load properties.path, (obj) ->
+            cb obj
 
     setupModel: (properties) ->
         if properties.material

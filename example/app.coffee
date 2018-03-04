@@ -8,14 +8,12 @@ new Model
 	path: './models/skull.obj'
 	parent: scene
 	material: new Form.MeshNormalMaterial
-	scale: .01
+	scale: .1
 	onLoad: (model) ->
-
-		model.animate
-			z: 10
-			options:
-				time: 10
 
 		scene.on Events.MouseMove, (e) ->
 			model.rotationY = Utils.modulate(e.clientX, [0, Screen.width], [-30, 30], true)
 			model.rotationX = Utils.modulate(e.clientY, [0, Screen.height], [-30, 30], true)
+
+
+		
