@@ -48,11 +48,15 @@ class exports.Scene extends Layer
             @mousedown = true
             if @intersected
                 @intersected.object.dispatchEvent {type: 'mousedown'}
+                @intersected.object.dispatchEvent {type: 'onmousedown'}
+                @intersected.object.dispatchEvent {type: 'click'}
+                @intersected.object.dispatchEvent {type: 'onclick'}
         
         @on 'mouseup', (e) =>
             @mousedown = false
             if @intersected
                 @intersected.object.dispatchEvent {type: 'mouseup'}
+                @intersected.object.dispatchEvent {type: 'onmouseup'}
 
 
         # ANIMATION LOOP
