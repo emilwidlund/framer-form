@@ -46,3 +46,7 @@ This module is still under development and is not yet considered functional. An 
 - Framer Library
 - Inflate.js
 - Underscore.js
+
+### Author
+
+My name is Emil Widlund and I am the author of this module. For any questions, highfives or concerns, please contact <a href="https://twitter.com/emilwidlund">me on Twitter</a>.
