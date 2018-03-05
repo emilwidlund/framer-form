@@ -10,9 +10,10 @@ light.position.z = 500
 scene.scene.add light
 
 new Model
-	path: './models/samba/samba.fbx'
+	path: './models/helmet/DamagedHelmet.gltf'
 	parent: scene
-	scale: .2
+	scale: 1
+	material: new THREE.MeshNormalMaterial
 	onLoad: (model) ->
 
 		scene.animationLoop = () ->

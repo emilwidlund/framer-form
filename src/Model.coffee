@@ -6,6 +6,8 @@ require '../lib/MTLLoader.js'
 require '../lib/FBXLoader.js'
 window.Zlib = require('../lib/inflate.min.js').Zlib
 
+require '../lib/GLTFLoader.js'
+
 {BaseClass} = require './BaseClass.coffee'
 {Animation} = require './Animation.coffee'
 {Mesh} = require './Mesh.coffee'
@@ -197,4 +199,10 @@ class FBX
             
                 updateMixer()
 
+            cb model
+
+class GLTF
+    constructor: (properties, cb) ->
+        @modelLoader = new THREE.GLTFLoader
+        @modelLoader.load properties.path, (model) ->
             cb model
