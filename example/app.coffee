@@ -5,15 +5,12 @@ scene = new Scene
 	height: Screen.height
 
 new Model
-	path: './models/skull.obj'
+	path: './models/imperial.obj'
 	parent: scene
 	material: new Form.MeshNormalMaterial
-	scale: .1
+	scale: .005
 	onLoad: (model) ->
 
 		scene.on Events.MouseMove, (e) ->
-			model.rotationY = Utils.modulate(e.clientX, [0, Screen.width], [-30, 30], true)
-			model.rotationX = Utils.modulate(e.clientY, [0, Screen.height], [-30, 30], true)
-
-
-		
+			model.rotationY = Utils.modulate e.clientX, [0, Screen.width], [-30, 30], true
+			model.rotationX = Utils.modulate e.clientY, [0, Screen.height], [-30, 30], true

@@ -11,7 +11,14 @@ class exports.Model extends BaseClass
             when 'obj'
                 @loadObj properties, (model) =>
                     @mesh = model
+
                     @boundingBox = new THREE.Box3().setFromObject @mesh
+                    @boundingBox.getCenter(@mesh.position)
+                    @mesh.position.multiplyScalar -1
+
+                    @pivot = new THREE.Group
+                    @pivot.add @mesh
+
                     @setupModel properties
 
     getExtension: (path) ->
@@ -46,8 +53,8 @@ class exports.Model extends BaseClass
                 c.material = material
 
     addToRenderingInstance: (parent) ->
-        if parent.scene then parent.scene.add @mesh
-        else parent.add @mesh
+        if parent.scene then parent.scene.add @pivot
+        else parent.add @pivot
     
     on: (eventName, cb) ->
         @mesh.traverse (c) ->
@@ -77,55 +84,55 @@ class exports.Model extends BaseClass
         new Animation @, properties
 
     @define 'scale',
-        get: -> @mesh.scale,
-        set: (scale) -> @mesh.scale.set(scale, scale, scale)
+        get: -> @pivot.scale,
+        set: (scale) -> @pivot.scale.set(scale, scale, scale)
     
     @define 'scaleX',
-        get: -> @mesh.scale.x,
-        set: (scale) -> @mesh.scale.set(scale, @mesh.scale.y, @mesh.scale.z)
+        get: -> @pivot.scale.x,
+        set: (scale) -> @pivot.scale.set(scale, @pivot.scale.y, @pivot.scale.z)
 
     @define 'scaleY',
-        get: -> @mesh.scale.y,
-        set: (scale) -> @mesh.scale.set(@mesh.scale.x, scale, @mesh.scale.z)
+        get: -> @pivot.scale.y,
+        set: (scale) -> @pivot.scale.set(@pivot.scale.x, scale, @pivot.scale.z)
     
     @define 'scaleZ',
-        get: -> @mesh.scale.z,
-        set: (scale) -> @mesh.scale.set(@mesh.scale.x, @mesh.scale.y, scale)
+        get: -> @pivot.scale.z,
+        set: (scale) -> @pivot.scale.set(@pivot.scale.x, @pivot.scale.y, scale)
 
     @define 'x',
-        get: -> @mesh.position.x,
-        set: (x) -> @mesh.position.x = x
+        get: -> @pivot.position.x,
+        set: (x) -> @pivot.position.x = x
     
     @define 'y',
-        get: -> @mesh.position.y,
-        set: (y) -> @mesh.position.y = y
+        get: -> @pivot.position.y,
+        set: (y) -> @pivot.position.y = y
     
     @define 'z',
-        get: -> @mesh.position.z,
-        set: (z) -> @mesh.position.z = z
+        get: -> @pivot.position.z,
+        set: (z) -> @pivot.position.z = z
 
     @define 'rotationX',
-        get: -> @mesh.rotation.x,
-        set: (x) -> @mesh.rotation.x = THREE.Math.degToRad(x)
+        get: -> @pivot.rotation.x,
+        set: (x) -> @pivot.rotation.x = THREE.Math.degToRad(x)
     
     @define 'rotationY',
-        get: -> @mesh.rotation.y,
-        set: (y) -> @mesh.rotation.y = THREE.Math.degToRad(y)
+        get: -> @pivot.rotation.y,
+        set: (y) -> @pivot.rotation.y = THREE.Math.degToRad(y)
     
     @define 'rotationZ',
-        get: -> @mesh.rotation.z,
-        set: (z) -> @mesh.rotation.z = THREE.Math.degToRad(z)
+        get: -> @pivot.rotation.z,
+        set: (z) -> @pivot.rotation.z = THREE.Math.degToRad(z)
     
     @define 'parent',
-        get: -> @mesh.parent,
-        set: (parent) -> @mesh.parent = parent
+        get: -> @pivot.parent,
+        set: (parent) -> @pivot.parent = parent
     
     @define 'visible',
-        get: -> @mesh.visible
-        set: (bool) -> @mesh.visible = bool
+        get: -> @pivot.visible
+        set: (bool) -> @pivot.visible = bool
     
     @define 'children',
-        get: -> @mesh.children
+        get: -> @pivot.children
     
     @define 'size',
         get: -> {
