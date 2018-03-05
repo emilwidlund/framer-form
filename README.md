@@ -47,6 +47,6 @@ This module is still under development and is not yet considered functional. An 
 - Inflate.js
 - Underscore.js
 
-### Author
+### Contact
 
-My name is Emil Widlund and I am the author of this module. For any questions, highfives or concerns, please contact <a href="https://twitter.com/emilwidlund">me on Twitter</a>.
+For any questions, highfives or concerns, please contact <a href="https://twitter.com/emilwidlund">me on Twitter</a>. If you found a bug, feel free to add an Issue to this repository and I'll take a look when I have time.
