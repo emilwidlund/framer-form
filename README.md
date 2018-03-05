@@ -1,6 +1,6 @@
 # Framer Form
 
-Framer Form is a <a href="https://framer.com" target="_blank">Framer</a>-Module built with the purpose of exposing an extremely easy-to-use API for rendering 3D-graphics. Its purpose is not to reinvent and improve existing WebGL-rendering techniques, its purpose is rather to take existing techniques & libraries and expose them in the Framer Environment. It is built with common Framer-concepts like Animations, States & Events in mind.
+Framer Form is a <a href="https://framer.com" target="_blank">Framer</a>-module built with the purpose of exposing an extremely easy-to-use API for rendering 3D-graphics. Its purpose is not to reinvent and improve existing WebGL-rendering techniques, its purpose is rather to take existing techniques & libraries and expose them in the Framer Environment. It is built with common Framer-concepts like Animations, States & Events in mind.
 
 ### What can I expect from this module?
 
