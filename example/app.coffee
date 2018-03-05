@@ -4,13 +4,26 @@ scene = new Scene
 	width: Screen.width
 	height: Screen.height
 
+light = new Form.PointLight
+light.position.y = 500
+light.position.z = 500
+scene.scene.add light
+
 new Model
 	path: './models/imperial.obj'
 	parent: scene
-	material: new Form.MeshNormalMaterial
-	scale: .005
+	material: new Form.MeshStandardMaterial
+	scale: .004
 	onLoad: (model) ->
 
-		scene.on Events.MouseMove, (e) ->
-			model.rotationY = Utils.modulate e.clientX, [0, Screen.width], [-30, 30], true
-			model.rotationX = Utils.modulate e.clientY, [0, Screen.height], [-30, 30], true
+		model.animate
+			rotationY: 360
+			options:
+				time: 2
+		
+		Utils.delay 3, ->
+			console.log model.x
+###
+		scene.animationLoop = () ->
+			model.rotationY += .05
+###

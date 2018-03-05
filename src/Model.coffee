@@ -84,7 +84,7 @@ class exports.Model extends BaseClass
         new Animation @, properties
 
     @define 'scale',
-        get: -> @pivot.scale,
+        get: -> @pivot.scale.x,
         set: (scale) -> @pivot.scale.set(scale, scale, scale)
     
     @define 'scaleX',
@@ -112,15 +112,15 @@ class exports.Model extends BaseClass
         set: (z) -> @pivot.position.z = z
 
     @define 'rotationX',
-        get: -> @pivot.rotation.x,
+        get: -> THREE.Math.radToDeg(@pivot.rotation.x),
         set: (x) -> @pivot.rotation.x = THREE.Math.degToRad(x)
     
     @define 'rotationY',
-        get: -> @pivot.rotation.y,
+        get: -> THREE.Math.radToDeg(@pivot.rotation.y),
         set: (y) -> @pivot.rotation.y = THREE.Math.degToRad(y)
     
     @define 'rotationZ',
-        get: -> @pivot.rotation.z,
+        get: -> THREE.Math.radToDeg(@pivot.rotation.z),
         set: (z) -> @pivot.rotation.z = THREE.Math.degToRad(z)
     
     @define 'parent',

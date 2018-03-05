@@ -3,13 +3,14 @@ _ = Framer._
 {Model} = require './Model.coffee'
 
 class exports.Animation extends Framer.EventEmitter
-    constructor: (mesh, properties={}) ->
+    constructor: (model, properties={}) ->
         super()
 
         if !properties
             throw new Error 'Please specify a property to animate!'
 
-        @mesh = mesh
+        @model = model
+        @mesh = model.mesh
         @properties = @filterProperties properties
         @options = _.defaults properties.options, 
             time: 1
@@ -19,6 +20,8 @@ class exports.Animation extends Framer.EventEmitter
         @time = @options.time
         @renderedFrames = 0
         @totalFrames = @time * @fps
+        @deltas = @calculateDeltas()
+        console.log @deltas
 
         Utils.delay @options.delay, =>
             @intervalDisposer = setInterval () => 
@@ -35,31 +38,22 @@ class exports.Animation extends Framer.EventEmitter
         delete props.options
         props
 
+    calculateDeltas: () ->
+        deltas = Object.keys(@properties).map (k) =>
+            if @model[k] > @properties[k]
+                {[k]: -Math.abs(@model[k] - @properties[k])}
+            else if @model[k] < @properties[k]
+                {[k]: Math.abs(@model[k] - @properties[k])}
+            else
+                null
+        
+        deltas.filter (d) ->
+            d
+
+
     animationLoop: () =>
-        for k, i in Object.keys @properties
-
-            # Small hack to handle scaling animations
-            if k.x then k == 'scale'
-
-            if @properties[k] < @mesh[k] || @properties[k] < @mesh[k].x
-                delta = @mesh[k] - @properties[k]
-                if k.includes 'rotation'
-                    @mesh.mesh.rotation[k.slice(-1).toLowerCase()] -= THREE.Math.degToRad(@properties[k] / (@time * @fps))
-                else if k == 'scale'
-                    delta = @mesh[k].x - @properties[k]
-                    @mesh[k] = @mesh[k].x - Math.abs delta / (@time * @fps)
-                else
-                    @mesh[k] = @mesh[k] - Math.abs delta / (@time * @fps)
-
-            if @properties[k] > @mesh[k] || @properties[k] > @mesh[k].x
-                delta = @properties[k] - @mesh[k]
-                if k.includes 'rotation'
-                    @mesh.mesh.rotation[k.slice(-1).toLowerCase()] += THREE.Math.degToRad(@properties[k] / (@time * @fps))
-                else if k == 'scale'
-                    delta = @properties[k] - @mesh[k].x
-                    @mesh[k] = @mesh[k].x + Math.abs delta / (@time * @fps)
-                else
-                    @mesh[k] = @mesh[k] + Math.abs delta / (@time * @fps)
+        for delta, i in @deltas
+            @model[Object.keys(delta)[0]] += Object.values(delta)[0] / (@time * @fps)
 
     disposeInterval: () ->
         clearInterval @intervalDisposer
