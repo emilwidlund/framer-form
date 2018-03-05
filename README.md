@@ -20,7 +20,7 @@ scene = new Scene
 ```
 
 #### Model
-A Model is a component that imports your 3D-model of choice. It applies associated materials, animation clips and other model-related concepts. As you can see below, the syntax is very familiar to other Framer classes. The code below imports an FBX-model with the name `bike.fbx`, applies the properties and returns the model in the onLoad-callback. As soon as it is imported, we give the scene an animationLoop-function that will be called 60 times a second. In this specific function below, we tell the model to rotate around its Y-axis by .1 degrees each iteration.
+A Model is a component that imports your 3D-model of choice. It applies associated materials, animation clips and other model-related concepts. As you can see below, the syntax is very familiar to other Framer classes. The code below imports an FBX-model with the name `bike.fbx`, applies the properties to the model and returns the model in the onLoad-callback. As soon as it is imported, we give the scene an animationLoop-function that will be called 60 times a second. In this specific function below, we tell the model to rotate around its Y-axis by .1 degrees each iteration.
 
 ```
 new Model
@@ -38,4 +38,11 @@ new Model
 
 ### Where can I download the module and import it to my Framer Project?
 
-This module is still under development and is not yet considered functional. An Alpha-release is expected to be released in Spring 2018. Most plausible around April.
+This module is still under development and is not yet considered functional. An Alpha-release is expected to be released in Spring 2018. Hopefully in April.
+
+### Built with
+
+- Three.js
+- Framer Library
+- Inflate.js
+- Underscore.js
