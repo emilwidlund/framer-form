@@ -13,17 +13,8 @@ new Model
 	path: './models/imperial.obj'
 	parent: scene
 	material: new Form.MeshStandardMaterial
-	scale: .004
+	scale: .006
 	onLoad: (model) ->
 
-		model.animate
-			rotationY: 360
-			options:
-				time: 2
-		
-		Utils.delay 3, ->
-			console.log model.x
-###
 		scene.animationLoop = () ->
 			model.rotationY += .05
-###
