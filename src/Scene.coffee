@@ -17,6 +17,7 @@ class exports.Scene extends Layer
         @renderer.domElement.style.width = '100%'
         @renderer.domElement.style.height = '100%'
         @renderer.setSize(@width, @height)
+        @renderer.shadowMap.enabled = true;
 
 
         # SCENE

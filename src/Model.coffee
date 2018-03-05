@@ -18,6 +18,8 @@ class exports.Model extends BaseClass
 
         _.defaults properties,
             animate: true
+            castShadow: true
+            receiveShadow: true
 
         switch @getExtension properties.path
             when 'obj'
@@ -44,6 +46,8 @@ class exports.Model extends BaseClass
         if properties.material
             @applyMaterial properties.material
         
+        @setupShadowSettings properties
+        
         if properties.smoothShading
             @mesh.traverse (c) ->
                 if c instanceof THREE.Mesh
@@ -66,6 +70,12 @@ class exports.Model extends BaseClass
         @mesh.traverse (c) ->
             if c instanceof THREE.Mesh
                 c.material = material
+
+    setupShadowSettings: (properties) ->
+        @mesh.traverse (c) ->
+            if c instanceof THREE.Mesh
+                c.castShadow = properties.castShadow
+                c.receiveShadow = properties.receiveShadow
 
     addToRenderingInstance: (parent) ->
         if parent.scene then parent.scene.add @pivot
@@ -186,7 +196,7 @@ class FBX
         @clock = new THREE.Clock
 
         @modelLoader.load path, (model) =>
-            
+
             if properties.animate
                 model.mixer = new THREE.AnimationMixer model
 
