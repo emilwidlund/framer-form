@@ -18,6 +18,7 @@ class exports.Scene extends Layer
         @renderer.domElement.style.height = '100%'
         @renderer.setSize(@width, @height)
         @renderer.shadowMap.enabled = true;
+        @renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
 
         # SCENE
