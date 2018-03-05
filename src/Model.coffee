@@ -4,8 +4,6 @@ require '../lib/OBJLoader.js'
 require '../lib/MTLLoader.js'
 
 require '../lib/FBXLoader.js'
-
-
 window.Zlib = require('../lib/inflate.min.js').Zlib
 
 {BaseClass} = require './BaseClass.coffee'
@@ -15,6 +13,9 @@ window.Zlib = require('../lib/inflate.min.js').Zlib
 class exports.Model extends BaseClass
     constructor: (properties={}) ->
         super()
+
+        _.defaults properties,
+            animate: true
 
         switch @getExtension properties.path
             when 'obj'
@@ -184,17 +185,16 @@ class FBX
 
         @modelLoader.load path, (model) =>
             
+            if properties.animate
+                model.mixer = new THREE.AnimationMixer model
 
-            model.mixer = new THREE.AnimationMixer model
-
-            action = model.mixer.clipAction model.animations[0]
-            action.play()
-
+                action = model.mixer.clipAction model.animations[0]
+                action.play()
+                
+                updateMixer = () =>
+                    requestAnimationFrame updateMixer
+                    model.mixer.update @clock.getDelta()
             
-            updateMixer = () =>
-                requestAnimationFrame updateMixer
-                model.mixer.update @clock.getDelta()
-        
-            updateMixer()
+                updateMixer()
 
             cb model
