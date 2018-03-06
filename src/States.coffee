@@ -25,6 +25,7 @@ class exports.States extends BaseClass
 
         @stateObjects = 
             default: @filterProperties @modelPropertiesFromPrototype
+            initial: @filterProperties @modelPropertiesFromPrototype
 
     filterProperties: (propeties) ->
         newPropertyObj = {}
