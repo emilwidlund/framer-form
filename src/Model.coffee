@@ -202,7 +202,7 @@ class FBX
 
         @modelLoader.load path, (model) =>
 
-            if properties.animate
+            if properties.animate && model.animations[0]
                 model.mixer = new THREE.AnimationMixer model
 
                 action = model.mixer.clipAction model.animations[0]
@@ -215,6 +215,7 @@ class FBX
                 updateMixer()
 
             cb model
+        , null, (e) -> console.log e
 
 class GLTF
     constructor: (properties, cb) ->
