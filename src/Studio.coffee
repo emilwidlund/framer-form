@@ -21,8 +21,8 @@ class exports.Studio extends Scene
         @light.shadow.camera.bottom = -100
         @light.shadow.camera.left = -120
         @light.shadow.camera.right = 120
-        @light.shadowMapWidth = 2048
-        @light.shadowMapHeight = 2048
+        @light.shadow.mapSize.width = 2048
+        @light.shadow.mapSize.height = 2048
         @scene.add @light
 
         @floor = new THREE.Mesh( new THREE.PlaneGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
