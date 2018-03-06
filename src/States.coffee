@@ -23,7 +23,7 @@ class exports.States extends BaseClass
 
         @modelPropertiesFromPrototype = Object.getOwnPropertyNames Object.getPrototypeOf @model
 
-        @stateObjects = 
+        @states = 
             default: @filterProperties @modelPropertiesFromPrototype
             initial: @filterProperties @modelPropertiesFromPrototype
 
@@ -33,8 +33,4 @@ class exports.States extends BaseClass
             if acceptedModelProperties.includes k
                 newPropertyObj[k] = @model[k]
         return newPropertyObj
-
-    
-    @define 'states',
-        get: -> @stateObjects
     
