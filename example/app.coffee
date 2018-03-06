@@ -13,8 +13,6 @@ studio = new Studio
 new Model
 	path: './models/samba/samba.fbx'
 	parent: studio
-	scale: .2
+	scale: 1
+	reposition: false
 	onLoad: (model) ->
-	
-		studio.animationLoop = () ->
-			model.rotationY += 0.3

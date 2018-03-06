@@ -20,6 +20,7 @@ class exports.Model extends BaseClass
             animate: true
             castShadow: true
             receiveShadow: true
+            reposition: true
 
         switch @getExtension properties.path
             when 'obj'
@@ -36,9 +37,8 @@ class exports.Model extends BaseClass
         path.split('.').pop()
 
     setupModel: (properties) ->
-        @boundingBox = new THREE.Box3().setFromObject @mesh
-        @boundingBox.getCenter(@mesh.position)
-        @mesh.position.multiplyScalar -1
+        if properties.reposition
+            @repositionMesh()
 
         @pivot = new THREE.Group
         @pivot.add @mesh
@@ -65,6 +65,11 @@ class exports.Model extends BaseClass
 
         if properties.onLoad
             properties.onLoad @
+
+    repositionMesh: () ->
+        @boundingBox = new THREE.Box3().setFromObject @mesh
+        @offset = @boundingBox.getCenter @mesh.position
+        @mesh.position.multiplyScalar -1
 
     applyMaterial: (material) ->
         @mesh.traverse (c) ->
