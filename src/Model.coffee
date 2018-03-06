@@ -10,6 +10,7 @@ require '../lib/GLTFLoader.js'
 
 {BaseClass} = require './BaseClass.coffee'
 {Animation} = require './Animation.coffee'
+{States} = require './States.coffee'
 {Mesh} = require './Mesh.coffee'
 
 class exports.Model extends BaseClass
@@ -170,6 +171,13 @@ class exports.Model extends BaseClass
             width: @boundingBox.max.x - @boundingBox.min.x
             depth: @boundingBox.max.z - @boundingBox.min.z
         }
+    
+    @define 'states',
+        get: ->
+            @_states ?= new States @
+            return @_states.states
+        set: (states) ->
+            _.extend @states, states
 
 
 

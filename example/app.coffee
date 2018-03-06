@@ -8,7 +8,13 @@ new Model
 	path: './models/samba/samba.fbx'
 	parent: studio
 	reposition: false
+	scale: .1
 	onLoad: (model) ->
+
+		model.states.test =
+			rotationX: 180
+		
+		console.log model.states
 
 		studio.animationLoop = () ->
 			model.rotationY += .1
