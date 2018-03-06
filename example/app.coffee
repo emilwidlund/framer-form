@@ -1,22 +1,15 @@
 {Scene, Studio, Mesh, Model} = require '../form.coffee'
 
-studio = new Studio
+scene = new Scene
 	width: Screen.width
 	height: Screen.height
 
+light = new THREE.PointLight
+light.position.set 0, 100, 100
+scene.scene.add light
+
 new Model
 	path: './models/samba/samba.fbx'
-	parent: studio
-	reposition: false
-	animate: false
+	parent: scene
+	scale: .1
 	onLoad: (model) ->
-
-		model.states.test =
-			scale: 5
-			options:
-				time: 3
-
-		model.animate 'test'
-
-		Utils.delay 5, ->
-			model.animate 'default'
