@@ -7,7 +7,10 @@ class exports.Animation extends Framer.EventEmitter
         super()
 
         if !properties
-            throw new Error 'Please specify a property to animate!'
+            throw new Error 'Please specify properties or a state to animate!'
+        
+        if _.isString properties
+            properties = model.states[properties]
 
         @model = model
         @mesh = model.mesh
@@ -21,17 +24,17 @@ class exports.Animation extends Framer.EventEmitter
         @renderedFrames = 0
         @totalFrames = @time * @fps
         @deltas = @calculateDeltas()
-        console.log @deltas
 
-        Utils.delay @options.delay, =>
-            @intervalDisposer = setInterval () => 
-                if @renderedFrames >= @totalFrames
-                    return @disposeInterval
+        if @deltas.length
+            Utils.delay @options.delay, =>
+                @intervalDisposer = setInterval () => 
+                    if @renderedFrames >= @totalFrames
+                        return @disposeInterval
 
-                requestAnimationFrame @animationLoop
-                
-                @renderedFrames++
-            , 1000 / @fps
+                    requestAnimationFrame @animationLoop
+                    
+                    @renderedFrames++
+                , 1000 / @fps
     
     filterProperties: (properties) ->
         props = Object.assign {}, properties

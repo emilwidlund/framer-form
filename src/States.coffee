@@ -8,9 +8,7 @@ acceptedModelProperties = [
     'rotationY'
     'rotationZ'
     'scale'
-    'scaleX'
-    'scaleY'
-    'scaleZ'
+    'options'
 ]
 
 class exports.States extends BaseClass
@@ -21,11 +19,11 @@ class exports.States extends BaseClass
         @mesh = @model.mesh
         @pivot = @model.pivot
 
-        @modelPropertiesFromPrototype = Object.getOwnPropertyNames Object.getPrototypeOf @model
+        @initialModelProperties = Object.getOwnPropertyNames Object.getPrototypeOf @model.initialProperties
 
         @states = 
-            default: @filterProperties @modelPropertiesFromPrototype
-            initial: @filterProperties @modelPropertiesFromPrototype
+            default: @filterProperties @initialModelProperties
+            initial: @filterProperties @initialModelProperties
 
     filterProperties: (propeties) ->
         newPropertyObj = {}

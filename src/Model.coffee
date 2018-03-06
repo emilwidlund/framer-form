@@ -44,6 +44,8 @@ class exports.Model extends BaseClass
         @pivot = new THREE.Group
         @pivot.add @mesh
 
+        @saveInitialProperties()
+
         if properties.material
             @applyMaterial properties.material
         
@@ -71,6 +73,9 @@ class exports.Model extends BaseClass
         @boundingBox = new THREE.Box3().setFromObject @mesh
         @offset = @boundingBox.getCenter @mesh.position
         @mesh.position.multiplyScalar -1
+
+    saveInitialProperties: () ->
+        @initialProperties = @
 
     applyMaterial: (material) ->
         @mesh.traverse (c) ->
