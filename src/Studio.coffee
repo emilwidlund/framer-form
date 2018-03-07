@@ -28,11 +28,11 @@ class exports.Studio extends Scene
         @scene.add @light
 
         @light2 = new THREE.DirectionalLight 0xff9999, .3
-        @light2.position.set -100, 100, -300
+        @light2.position.set -100, 200, -300
         @scene.add @light2
 
         @light3 = new THREE.DirectionalLight 0x6666ff, .2
-        @light3.position.set 100, 100, -300
+        @light3.position.set 100, 200, -300
         @scene.add @light3
 
         @floorGeo = new THREE.PlaneGeometry 2000, 2000
