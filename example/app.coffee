@@ -5,11 +5,11 @@ scene = new Studio
 	height: Screen.height
 
 new Model
-	path: './models/character/Defeated.dae'
+	path: './models/flamingo/flamingo.json'
 	parent: scene
-	animation: 1
-	reposition: false
-	scale: 50
+	scale: 1
+	y: 120
+	material: new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0xffffff, shininess: 20, morphTargets: true, vertexColors: THREE.FaceColors, flatShading: true } )
 	onLoad: (model) ->
 
 		scene.on Events.MouseMove, (e) ->
