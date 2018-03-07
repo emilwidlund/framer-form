@@ -59,6 +59,9 @@ class exports.Model extends BaseClass
                 if c instanceof THREE.Mesh
                     c.material.shading = THREE.SmoothShading
         
+        if properties.animate && @mesh.animations[0]
+            @handleAnimations()
+
         if properties.parent
             @addToRenderingInstance properties.parent
 
@@ -94,6 +97,19 @@ class exports.Model extends BaseClass
     addToRenderingInstance: (parent) ->
         if parent.scene then parent.scene.add @pivot
         else parent.add @pivot
+    
+    handleAnimations: () ->
+        @clock = new THREE.Clock
+        @mesh.mixer = new THREE.AnimationMixer @mesh
+
+        action = @mesh.mixer.clipAction @mesh.animations[0]
+        action.play()
+        
+        @updateMixer()
+        
+    updateMixer: () =>
+        requestAnimationFrame @updateMixer
+        @mesh.mixer.update @clock.getDelta()
     
     on: (eventName, cb) ->
         @mesh.traverse (c) ->
@@ -212,24 +228,8 @@ class OBJ
 
 class FBX
     constructor: (properties, cb) ->
-        path = properties.path
         @modelLoader = new THREE.FBXLoader
-        @clock = new THREE.Clock
-
-        @modelLoader.load path, (model) =>
-
-            if properties.animate && model.animations[0]
-                model.mixer = new THREE.AnimationMixer model
-
-                action = model.mixer.clipAction model.animations[0]
-                action.play()
-                
-                updateMixer = () =>
-                    requestAnimationFrame updateMixer
-                    model.mixer.update @clock.getDelta()
-            
-                updateMixer()
-
+        @modelLoader.load properties.path, (model) =>
             cb model
         , null, (e) -> console.log e
 
