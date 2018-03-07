@@ -6,6 +6,17 @@ Framer Form is a <a href="https://framer.com" target="_blank">Framer</a>-module 
 
 As most people probably want to import their own models & 3D-meshes to their Framer Prototype, Framer Form will have solid support for a wide array of different file formats. Import anything from FBX, 3DS & OBJ to JSON files, and have their respective materials applied with one simple line of code.
 
+#### Currently Supported File Formats
+- OBJ / MTL
+- FBX
+- GLTF / GLB
+- COLLADA / DAE
+
+#### File Formats to be added
+- JSON
+- 3DS
+- SEA3D
+
 ### What does the syntax look like?
 
 Framer Form aims to deliver an easy and familiar syntax for all its components. Framer Form has 2 fundamental components that you will interact with.
