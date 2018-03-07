@@ -1,16 +1,24 @@
 _ = Framer._
 
-require '../lib/OBJLoader.js'
-require '../lib/MTLLoader.js'
+# LIB LOADERS
 
-require '../lib/FBXLoader.js'
-window.Zlib = require('../lib/inflate.min.js').Zlib
+require './lib/OBJLoader.js'
+require './lib/MTLLoader.js'
+require './lib/FBXLoader.js'
+require './lib/GLTFLoader.js'
+window.Zlib = require('./lib/inflate.min.js').Zlib
 
-require '../lib/GLTFLoader.js'
+# CLASSES
 
 {BaseClass} = require './BaseClass.coffee'
 {Animation} = require './Animation.coffee'
 {States} = require './States.coffee'
+
+# LOADERS
+
+{OBJ} = require './loaders/OBJ.coffee'
+{FBX} = require './loaders/FBX.coffee'
+{GLTF} = require './loaders/GLTF.coffee'
 
 class exports.Model extends BaseClass
     constructor: (properties={}) ->
@@ -202,39 +210,3 @@ class exports.Model extends BaseClass
             return @_states.states
         set: (states) ->
             _.extend @states, states
-
-
-
-
-
-class OBJ
-    constructor: (properties, cb) ->
-        path = properties.path
-        @dirPath = path.substring 0, path.indexOf(path.split('/').pop())
-        @modelPath = path.split('/').pop()
-        @materialPath = @modelPath.replace '.obj', '.mtl'
-        
-        @materialLoader = new THREE.MTLLoader
-        @modelLoader = new THREE.OBJLoader
-
-        @materialLoader.setPath @dirPath
-        @materialLoader.load @materialPath, (materials) =>
-            materials.preload()
-
-            @modelLoader.setMaterials materials
-            @modelLoader.setPath @dirPath
-            @modelLoader.load @modelPath, (model) =>
-                cb model
-
-class FBX
-    constructor: (properties, cb) ->
-        @modelLoader = new THREE.FBXLoader
-        @modelLoader.load properties.path, (model) =>
-            cb model
-        , null, (e) -> console.log e
-
-class GLTF
-    constructor: (properties, cb) ->
-        @modelLoader = new THREE.GLTFLoader
-        @modelLoader.load properties.path, (model) ->
-            cb model

@@ -1,4 +1,4 @@
-window.THREE = require './lib/three.min.js'
+window.THREE = require './src/lib/three.min.js'
 window.Form = window.THREE
 
 {Scene} = require './src/Scene.coffee'
