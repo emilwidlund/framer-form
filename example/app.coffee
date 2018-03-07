@@ -16,13 +16,9 @@ new Model
 		deltaX = 0
 		clock = new THREE.Clock
 
-		scene.on 'mousemove', (e) ->
-			if e.clientX > lastX then deltaX = e.clientX - lastX
-			else deltaX = e.clientX - lastX
-			lastX = e.clientX
-
+		scene.on Events.Pan, (e) ->
 			if scene.mousedown
-				model.rotationY += deltaX * 0.3
+				model.rotationY += e.deltaX * 0.3
 
 		scene.animationLoop = () ->
 			model.y = Math.sin(clock.getElapsedTime()) * 20 + 120
