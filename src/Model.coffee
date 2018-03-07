@@ -11,7 +11,6 @@ require '../lib/GLTFLoader.js'
 {BaseClass} = require './BaseClass.coffee'
 {Animation} = require './Animation.coffee'
 {States} = require './States.coffee'
-{Mesh} = require './Mesh.coffee'
 
 class exports.Model extends BaseClass
     constructor: (properties={}) ->
