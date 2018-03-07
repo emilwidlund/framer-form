@@ -10,10 +10,10 @@ As most people probably want to import their own models & 3D-meshes to their Fra
 - OBJ / MTL
 - FBX
 - GLTF / GLB
-- COLLADA / DAE
+- DAE
+- JSON
 
 #### File Formats to be added
-- JSON
 - 3DS
 - SEA3D
 
