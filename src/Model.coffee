@@ -32,7 +32,7 @@ class exports.Model extends BaseClass
                 new FBX properties, (model) =>
                     @mesh = model
                     @setupModel properties
-            when 'glb'
+            when 'gltf' || 'glb'
                 new GLTF properties, (model) =>
                     @mesh = model
                     @setupModel properties
