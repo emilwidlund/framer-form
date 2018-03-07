@@ -21,4 +21,4 @@ new Model
 				model.rotationY += e.deltaX * 0.3
 
 		scene.animationLoop = () ->
-			model.y = Math.sin(clock.getElapsedTime()) * 20 + 120
+			model.y = Math.sin(clock.getElapsedTime()) * 20 + 110
