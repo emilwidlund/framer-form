@@ -65,7 +65,7 @@ class exports.Model extends BaseClass
                     c.material.shading = THREE.SmoothShading
         
         if properties.animate && @mesh.animations && @mesh.animations[0]
-            @handleAnimations()
+            @handleAnimations properties
 
         if properties.parent
             @addToRenderingInstance properties.parent
@@ -103,12 +103,17 @@ class exports.Model extends BaseClass
         if parent.scene then parent.scene.add @pivot
         else parent.add @pivot
     
-    handleAnimations: () ->
+    handleAnimations: (properties) ->
+        if _.isNumber properties.animation
+            @animationIndex = properties.animation - 1
+        else
+            @animationIndex = 0
+
         @clock = new THREE.Clock
         @mesh.mixer = new THREE.AnimationMixer @mesh
 
-        action = @mesh.mixer.clipAction @mesh.animations[0]
-        action.play()
+        @action = @mesh.mixer.clipAction @mesh.animations[@animationIndex]
+        @action.play()
         
         @updateMixer()
         
@@ -207,3 +212,11 @@ class exports.Model extends BaseClass
             return @_states.states
         set: (states) ->
             _.extend @states, states
+    
+    @define 'animation',
+        get: -> @animationIndex + 1,
+        set: (animation) -> 
+            if @mesh.animations[animation - 1]
+                @animationIndex = animation - 1
+                @action = @mesh.mixer.clipAction @mesh.animations[@animationIndex]
+                @action.play()

@@ -9,11 +9,15 @@ light.position.set 0, 100, 100
 scene.scene.add light
 
 new Model
-	path: './models/fighter/F-15C_Eagle.dae'
+	path: './models/samba/samba.fbx'
 	parent: scene
-	scale: 3
+	scale: .005
+	animation: 1
 	rotationY: 180
 	onLoad: (model) ->
 
+		model.states.current =
+			scale: 2
+
 		scene.animationLoop = () ->
-			model.rotationY += .2
+			model.rotationY += 5
