@@ -1,23 +1,16 @@
 {Scene, Studio, Mesh, Model} = require '../form.coffee'
 
-scene = new Scene
+scene = new Studio
 	width: Screen.width
 	height: Screen.height
 
-light = new THREE.PointLight
-light.position.set 0, 100, 100
-scene.scene.add light
-
 new Model
-	path: './models/samba/samba.fbx'
+	path: './models/character/Defeated.dae'
 	parent: scene
-	scale: .005
 	animation: 1
-	rotationY: 180
+	reposition: false
+	scale: 50
 	onLoad: (model) ->
 
-		model.states.current =
-			scale: 2
-
-		scene.animationLoop = () ->
-			model.rotationY += 5
+		scene.on Events.MouseMove, (e) ->
+			model.rotationY = Utils.modulate e.clientX, [0, Screen.width], [-180, 180], true
