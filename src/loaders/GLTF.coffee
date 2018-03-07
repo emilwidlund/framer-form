@@ -1,3 +1,5 @@
+require '../lib/GLTFLoader.js'
+
 class exports.GLTF
     constructor: (properties, cb) ->
         @modelLoader = new THREE.GLTFLoader

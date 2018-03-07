@@ -1,3 +1,6 @@
+require '../lib/OBJLoader.js'
+require '../lib/MTLLoader.js'
+
 class exports.OBJ
     constructor: (properties, cb) ->
         path = properties.path

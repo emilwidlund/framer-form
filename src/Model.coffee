@@ -1,13 +1,5 @@
 _ = Framer._
 
-# LIB LOADERS
-
-require './lib/OBJLoader.js'
-require './lib/MTLLoader.js'
-require './lib/FBXLoader.js'
-require './lib/GLTFLoader.js'
-window.Zlib = require('./lib/inflate.min.js').Zlib
-
 # CLASSES
 
 {BaseClass} = require './BaseClass.coffee'
@@ -19,6 +11,7 @@ window.Zlib = require('./lib/inflate.min.js').Zlib
 {OBJ} = require './loaders/OBJ.coffee'
 {FBX} = require './loaders/FBX.coffee'
 {GLTF} = require './loaders/GLTF.coffee'
+{Collada} = require './loaders/Collada.coffee'
 
 class exports.Model extends BaseClass
     constructor: (properties={}) ->
@@ -41,6 +34,10 @@ class exports.Model extends BaseClass
                     @setupModel properties
             when 'glb'
                 new GLTF properties, (model) =>
+                    @mesh = model
+                    @setupModel properties
+            when 'dae'
+                new Collada properties, (model) =>
                     @mesh = model
                     @setupModel properties
 
@@ -67,7 +64,7 @@ class exports.Model extends BaseClass
                 if c instanceof THREE.Mesh
                     c.material.shading = THREE.SmoothShading
         
-        if properties.animate && @mesh.animations[0]
+        if properties.animate && @mesh.animations && @mesh.animations[0]
             @handleAnimations()
 
         if properties.parent

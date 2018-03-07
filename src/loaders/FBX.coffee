@@ -1,3 +1,6 @@
+require '../lib/FBXLoader.js'
+window.Zlib = require('../lib/inflate.min.js').Zlib
+
 class exports.FBX
     constructor: (properties, cb) ->
         @modelLoader = new THREE.FBXLoader
