@@ -8,9 +8,21 @@ new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
 	scale: 1
-	y: 120
+	rotationY: -40
 	material: new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0xffffff, shininess: 20, morphTargets: true, vertexColors: THREE.FaceColors, flatShading: true } )
 	onLoad: (model) ->
+		
+		lastX = 0
+		deltaX = 0
+		clock = new THREE.Clock
 
-		scene.on Events.MouseMove, (e) ->
-			model.rotationY = Utils.modulate e.clientX, [0, Screen.width], [-180, 180], true
+		scene.on 'mousemove', (e) ->
+			if e.clientX > lastX then deltaX = e.clientX - lastX
+			else deltaX = e.clientX - lastX
+			lastX = e.clientX
+
+			if scene.mousedown
+				model.rotationY += deltaX * 0.3
+
+		scene.animationLoop = () ->
+			model.y = Math.sin(clock.getElapsedTime()) * 20 + 120

@@ -22,47 +22,26 @@ class exports.Studio extends Scene
         @light.shadow.camera.bottom = -100
         @light.shadow.camera.left = -120
         @light.shadow.camera.right = 120
+        @light.shadow.radius = 20
         @light.shadow.mapSize.width = 2048 * 2
         @light.shadow.mapSize.height = 2048 * 2
         @scene.add @light
 
-        @light2 = new THREE.PointLight 0xff9999, .3
-        @light2.position.set -50, 100, -300
-        @light2.castShadow = true
-        @light2.shadow.bias = .0001
-        @light2.shadow.camera.top = 180
-        @light2.shadow.camera.bottom = -100
-        @light2.shadow.camera.left = -120
-        @light2.shadow.camera.right = 120
-        @light2.shadow.mapSize.width = 2048 * 2
-        @light2.shadow.mapSize.height = 2048 * 2
+        @light2 = new THREE.DirectionalLight 0xff9999, .3
+        @light2.position.set -100, 100, -300
         @scene.add @light2
 
-        @light3 = new THREE.PointLight 0x6666ff, .3
-        @light3.position.set 50, 100, -300
-        @light3.castShadow = true
-        @light3.shadow.bias = .0001
-        @light3.shadow.camera.top = 180
-        @light3.shadow.camera.bottom = -100
-        @light3.shadow.camera.left = -120
-        @light3.shadow.camera.right = 120
-        @light3.shadow.mapSize.width = 2048 * 2
-        @light3.shadow.mapSize.height = 2048 * 2
+        @light3 = new THREE.DirectionalLight 0x6666ff, .2
+        @light3.position.set 100, 100, -300
         @scene.add @light3
 
-        @light4 = new THREE.DirectionalLight 0xffffff, .2
-        @light4.position.set 0, 200, -100
-        @light4.castShadow = true
-        @light4.shadow.bias = .0001
-        @light4.shadow.camera.top = 180
-        @light4.shadow.camera.bottom = -100
-        @light4.shadow.camera.left = -120
-        @light4.shadow.camera.right = 120
-        @light4.shadow.mapSize.width = 2048 * 2
-        @light4.shadow.mapSize.height = 2048 * 2
-        @scene.add @light4
-
-        @floor = new THREE.Mesh new THREE.PlaneGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial { color: 0x888888, depthWrite: false }
+        @floorGeo = new THREE.PlaneGeometry 2000, 2000
+        @floorMat = new THREE.MeshStandardMaterial
+            roughness: .6
+            color: 0xaaaaaa
+            metalness: 0.2
+            bumpScale: 0.0005
+        @floor = new THREE.Mesh @floorGeo, @floorMat
         @floor.rotation.x = -Math.PI / 2
         @floor.receiveShadow = true
         @scene.add @floor
