@@ -32,6 +32,10 @@ class exports.Model extends BaseClass
                 new FBX properties, (model) =>
                     @mesh = model
                     @setupModel properties
+            when 'glb'
+                new GLTF properties, (model) =>
+                    @mesh = model
+                    @setupModel properties
 
 
     getExtension: (path) ->
