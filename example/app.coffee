@@ -9,7 +9,7 @@ light.position.set 0, 100, 100
 scene.scene.add light
 
 new Model
-	path: './models/helmet/DamagedHelmet.gltf'
+	path: './models/fighter/F-15C_Eagle.dae'
 	parent: scene
 	scale: 3
 	rotationY: 180
