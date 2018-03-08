@@ -1,4 +1,4 @@
-{Scene, Studio, Model} = require '../form.coffee'
+{Scene, Studio, Model, MeshPhongMaterial} = require '../form.coffee'
 
 scene = new Studio
 	width: Screen.width
@@ -9,12 +9,12 @@ new Model
 	parent: scene
 	scale: 1
 	rotationY: -40
-	material: new THREE.MeshPhongMaterial
+	material: new MeshPhongMaterial
 		color: 0xffffff
 		specular: 0xffffff
 		shininess: 20
 		morphTargets: true
-		vertexColors: THREE.FaceColors
+		vertexColors: FORM.FaceColors
 		flatShading: true
 	onLoad: (model) ->
 		
