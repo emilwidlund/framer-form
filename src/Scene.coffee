@@ -33,6 +33,8 @@ class exports.Scene extends Layer
         @camera.position.y = 0
         @camera.position.z = 100
 
+        Canvas.onResize @onWindowResize
+
 
         # RAYCASTER
 
@@ -98,3 +100,11 @@ class exports.Scene extends Layer
             @intersected.object.dispatchEvent {type: 'mouseover'}
             @intersected.object.dispatchEvent {type: 'onmouseover'}
             @intersectedEventEmitted = true
+    
+    onWindowResize: () =>
+        @width = Screen.width
+        @height = Screen.height
+        @camera.aspect = @width / @height
+        @camera.updateProjectionMatrix()
+
+        @renderer.setSize @width, @height
