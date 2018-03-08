@@ -43,10 +43,11 @@ class exports.Animation extends Framer.EventEmitter
 
     calculateDeltas: () ->
         deltas = Object.keys(@properties).map (k) =>
+            newObj = {}
             if @model[k] > @properties[k]
-                {[k]: -Math.abs(@model[k] - @properties[k])}
+                newObj[k] = -Math.abs @model[k] - @properties[k]
             else if @model[k] < @properties[k]
-                {[k]: Math.abs(@model[k] - @properties[k])}
+                newObj[k] = Math.abs @model[k] - @properties[k]
             else
                 null
         
