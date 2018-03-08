@@ -12,8 +12,6 @@ new Model
 	material: new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0xffffff, shininess: 20, morphTargets: true, vertexColors: THREE.FaceColors, flatShading: true } )
 	onLoad: (model) ->
 		
-		lastX = 0
-		deltaX = 0
 		clock = new THREE.Clock
 
 		scene.on Events.Pan, (e) ->
