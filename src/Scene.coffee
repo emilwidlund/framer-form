@@ -14,6 +14,7 @@ class exports.Scene extends Layer
         
         @_element.appendChild @renderer.domElement
         @renderer.setSize @width, @height
+        @renderer.setPixelRatio window.devicePixelRatio
         @renderer.domElement.style.width = '100%'
         @renderer.domElement.style.height = '100%'
         @renderer.shadowMap.enabled = true

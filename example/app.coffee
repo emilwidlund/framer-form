@@ -1,4 +1,4 @@
-{Scene, Studio, Mesh, Model} = require '../form.coffee'
+{Scene, Studio, Model} = require '../form.coffee'
 
 scene = new Studio
 	width: Screen.width
