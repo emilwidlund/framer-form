@@ -9,7 +9,13 @@ new Model
 	parent: scene
 	scale: 1
 	rotationY: -40
-	material: new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0xffffff, shininess: 20, morphTargets: true, vertexColors: THREE.FaceColors, flatShading: true } )
+	material: new THREE.MeshPhongMaterial
+		color: 0xffffff
+		specular: 0xffffff
+		shininess: 20
+		morphTargets: true
+		vertexColors: THREE.FaceColors
+		flatShading: true
 	onLoad: (model) ->
 		
 		clock = new THREE.Clock

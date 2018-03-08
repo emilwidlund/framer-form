@@ -35,7 +35,7 @@ class exports.Studio extends Scene
         @light3.position.set 100, 200, -300
         @scene.add @light3
 
-        @floorGeo = new THREE.PlaneGeometry 2000, 2000
+        @floorGeo = new THREE.CircleGeometry 800, 100
         @floorMat = new THREE.MeshStandardMaterial
             roughness: .6
             color: 0xaaaaaa
