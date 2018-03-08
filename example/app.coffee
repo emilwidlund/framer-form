@@ -7,7 +7,7 @@ scene = new Studio
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
-	scale: .1
+	scale: 1
 	rotationY: -40
 	material: new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0xffffff, shininess: 20, morphTargets: true, vertexColors: THREE.FaceColors, flatShading: true } )
 	onLoad: (model) ->
@@ -15,8 +15,7 @@ new Model
 		clock = new THREE.Clock
 
 		scene.on Events.Pan, (e) ->
-			if scene.mousedown
-				model.rotationY += e.deltaX * 0.3
+			model.rotationY += e.deltaX * 0.3
 
 		scene.animationLoop = () ->
 			model.y = Math.sin(clock.getElapsedTime()) * 20 + 110
