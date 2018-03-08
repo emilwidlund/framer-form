@@ -67,10 +67,13 @@ class exports.Scene extends Layer
 
         @loop()
 
+        Framer.CurrentContext.on 'reset', =>
+            cancelAnimationFrame @animationLoopRequestId
+
 
 
     loop: () =>
-        requestAnimationFrame @loop
+        @animationLoopRequestId = requestAnimationFrame @loop
 
         if @animationLoop
             @animationLoop()

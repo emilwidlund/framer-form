@@ -121,9 +121,12 @@ class exports.Model extends BaseClass
         @action.play()
         
         @updateMixer()
+
+        Framer.CurrentContext.on 'reset', =>
+            cancelAnimationFrame @mixerRequestId
         
     updateMixer: () =>
-        requestAnimationFrame @updateMixer
+        @mixerRequestId = requestAnimationFrame @updateMixer
         @mesh.mixer.update @clock.getDelta()
     
     on: (eventName, cb) ->

@@ -35,7 +35,11 @@ class exports.Animation extends Framer.EventEmitter
                     
                     @renderedFrames++
                 , 1000 / @fps
-    
+        
+        Framer.CurrentContext.on 'reset', =>
+            if @intervalDisposer
+                clearInterval @intervalDisposer
+
     filterProperties: (properties) ->
         props = Object.assign {}, properties
         delete props.options
@@ -50,6 +54,7 @@ class exports.Animation extends Framer.EventEmitter
                 newObj[k] = Math.abs @model[k] - @properties[k]
             else
                 null
+            newObj
         
         deltas.filter (d) ->
             d
