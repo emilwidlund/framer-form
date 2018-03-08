@@ -4,8 +4,6 @@ scene = new Studio
 	width: Screen.width
 	height: Screen.height
 
-console.log scene
-
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
