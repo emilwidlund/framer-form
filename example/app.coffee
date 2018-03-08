@@ -4,10 +4,12 @@ scene = new Studio
 	width: Screen.width
 	height: Screen.height
 
+console.log scene
+
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
-	scale: 1
+	scale: .1
 	rotationY: -40
 	material: new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0xffffff, shininess: 20, morphTargets: true, vertexColors: THREE.FaceColors, flatShading: true } )
 	onLoad: (model) ->

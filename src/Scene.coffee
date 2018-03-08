@@ -10,13 +10,12 @@ class exports.Scene extends Layer
         
         @renderer = new THREE.WebGLRenderer
             antialias: true
-            devicePixelRatio: window.devicePixelRatio
             alpha: true
         
         @_element.appendChild @renderer.domElement
+        @renderer.setSize @width, @height
         @renderer.domElement.style.width = '100%'
         @renderer.domElement.style.height = '100%'
-        @renderer.setSize @width, @height
         @renderer.shadowMap.enabled = true
         @renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
