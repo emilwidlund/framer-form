@@ -16,15 +16,6 @@ reservedStateError = (name) ->
 
 class exports.States extends BaseClass
 
-    @defineReserved = (propertyName, descriptor) ->
-        descriptor.configurable = true
-        descriptor.enumerable ?= false
-        descriptor.set ?= -> reservedStateError propertyName
-        Object.defineProperty @prototype, propertyName, descriptor
-    
-    @defineReserved 'current',
-        get: -> @currentState
-
     constructor: (model) ->
         super()
 
@@ -37,6 +28,9 @@ class exports.States extends BaseClass
         @states = 
             default: @filterProperties @initialModelProperties
             initial: @filterProperties @initialModelProperties
+            current: @filterProperties @initialModelProperties
+        
+        @currentState = @states.default
 
     filterProperties: (propeties) ->
         newPropertyObj = {}
@@ -44,3 +38,14 @@ class exports.States extends BaseClass
             if acceptedModelProperties.includes k
                 newPropertyObj[k] = @model[k]
         return newPropertyObj
+    
+    @define 'current',
+        get: -> @states.current,
+        set: (state) ->
+            @states.current = state
+            Object.keys(state).map (k)  =>
+                @model[k] = state[k]
+    
+    @define 'previous',
+        get: -> @states.previous
+        set: (state) -> @states.previous = state

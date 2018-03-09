@@ -81,6 +81,8 @@ class exports.Model extends BaseClass
         
         if properties.visible
             @visible = properties.visible
+        
+        @_states = new States @
 
         if properties.onLoad
             properties.onLoad @
@@ -155,6 +157,14 @@ class exports.Model extends BaseClass
     
     animate: (properties) ->
         new Animation @, properties
+    
+    stateSwitch: (state) ->
+        Object.keys(@_states.states).map (k) => 
+            if k == state
+                @_states.previous = @_states.currentState
+                @_states.current = @_states.states[k]
+
+
 
     @define 'scale',
         get: -> @pivot.scale.x,
@@ -216,8 +226,7 @@ class exports.Model extends BaseClass
     
     @define 'states',
         get: ->
-            @_states ?= new States @
-            return @_states.states
+            @_states.states
         set: (states) ->
             _.extend @states, states
     
