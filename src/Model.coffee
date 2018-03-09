@@ -161,8 +161,17 @@ class exports.Model extends BaseClass
     stateSwitch: (state) ->
         Object.keys(@_states.states).map (k) => 
             if k == state
-                @_states.previous = @_states.currentState
                 @_states.current = @_states.states[k]
+                Object.keys(@_states.current).map (pk)  =>
+                    @[pk] = @_states.current[pk]
+    
+    stateCycle: (stateA, stateB) ->
+        if @states.current == @states[stateA] || @states.current == @states[stateB]
+            if @states.current == @states[stateA] then @animate stateB
+            else if @states.current == @states[stateB] then @animate stateA
+        else
+            @animate stateA
+            
 
 
 

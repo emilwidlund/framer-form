@@ -29,8 +29,6 @@ class exports.States extends BaseClass
             default: @filterProperties @initialModelProperties
             initial: @filterProperties @initialModelProperties
             current: @filterProperties @initialModelProperties
-        
-        @currentState = @states.default
 
     filterProperties: (propeties) ->
         newPropertyObj = {}
@@ -42,10 +40,8 @@ class exports.States extends BaseClass
     @define 'current',
         get: -> @states.current,
         set: (state) ->
+            @states.previous = @states.current
             @states.current = state
-            Object.keys(state).map (k)  =>
-                @model[k] = state[k]
     
     @define 'previous',
         get: -> @states.previous
-        set: (state) -> @states.previous = state

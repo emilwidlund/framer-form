@@ -10,7 +10,10 @@ class exports.Animation extends Framer.EventEmitter
             throw new Error 'Please specify properties or a state to animate!'
         
         if _.isString properties
-            properties = model.states[properties]
+            Object.keys(model.states).map (k) => 
+                if k == properties
+                    model.states.current = model.states[k]
+                    properties = model.states[properties]
 
         @model = model
         @mesh = model.mesh
