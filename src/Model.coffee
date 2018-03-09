@@ -159,17 +159,22 @@ class exports.Model extends BaseClass
         new Animation @, properties
     
     stateSwitch: (state) ->
-        Object.keys(@_states.states).map (k) => 
+        # Loop through states on model to find the specified one
+        Object.keys(@states).map (k) => 
             if k == state
-                @_states.current = @_states.states[k]
-                Object.keys(@_states.current).map (pk)  =>
-                    @[pk] = @_states.current[pk]
+                @states.current = @states[k]
+
+                # Loop through property keys on the state and apply the values to model
+                Object.keys(@states.current).map (pk)  =>
+                    @[pk] = @states.current[pk]
     
     stateCycle: (stateA, stateB) ->
+        # Check if stateA or stateB already is the current state on model
         if @states.current == @states[stateA] || @states.current == @states[stateB]
             if @states.current == @states[stateA] then @animate stateB
             else if @states.current == @states[stateB] then @animate stateA
         else
+            # If neither are current, animate to stateA
             @animate stateA
             
 
