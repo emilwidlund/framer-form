@@ -4,6 +4,7 @@ _ = Framer._
 
 class exports.Camera extends BaseClass
     constructor: (properties={}) ->
+        super()
 
         _.defaults properties,
             x: 0
@@ -12,13 +13,13 @@ class exports.Camera extends BaseClass
             rotationX: 0
             rotationY: 0
             rotationZ: 0
-            perspective: 35
+            fov: 35
             near: 0.1
             far: 10000
 
-        @camera = new THREE.PerspectiveCamera(
-            properties.perspective, 
-            properties.width / properties.height, 
+        @nativeCamera = new THREE.PerspectiveCamera(
+            properties.fov, 
+            properties.aspect, 
             properties.near, 
             properties.far
         )
@@ -37,25 +38,45 @@ class exports.Camera extends BaseClass
         @rotationZ = rotations[2]
     
     @define 'x',
-        get: -> @camera.position.x
-        set: (x) -> @camera.position.x = x
+        get: -> @nativeCamera.position.x
+        set: (x) -> @nativeCamera.position.x = x
     
     @define 'y',
-        get: -> @camera.position.y
-        set: (y) -> @camera.position.y = y
+        get: -> @nativeCamera.position.y
+        set: (y) -> @nativeCamera.position.y = y
     
     @define 'z',
-        get: -> @camera.position.z
-        set: (z) -> @camera.position.z = z
+        get: -> @nativeCamera.position.z
+        set: (z) -> @nativeCamera.position.z = z
     
     @define 'rotationX',
-        get: -> THREE.Math.radToDeg @camera.rotation.x
-        set: (x) -> @camera.rotation.x = THREE.Math.degToRad x
+        get: -> THREE.Math.radToDeg @nativeCamera.rotation.x
+        set: (x) -> @nativeCamera.rotation.x = THREE.Math.degToRad x
     
     @define 'rotationY',
-        get: -> THREE.Math.radToDeg @camera.rotation.y
-        set: (y) -> @camera.rotation.y = THREE.Math.degToRad y
+        get: -> THREE.Math.radToDeg @nativeCamera.rotation.y
+        set: (y) -> @nativeCamera.rotation.y = THREE.Math.degToRad y
     
     @define 'rotationZ',
-        get: -> THREE.Math.radToDeg @camera.rotation.z
-        set: (z) -> @camera.rotation.z = THREE.Math.degToRad z
+        get: -> THREE.Math.radToDeg @nativeCamera.rotation.z
+        set: (z) -> @nativeCamera.rotation.z = THREE.Math.degToRad z
+    
+    @define 'fov',
+        get: -> @nativeCamera.fov
+        set: (fov) -> @nativeCamera.fov = fov
+    
+    @define 'zoom',
+        get: -> @nativeCamera.zoom
+        set: (factor) -> @nativeCamera.zoom = factor
+    
+    @define 'near',
+        get: -> @nativeCamera.near
+        set: (near) -> @nativeCamera.near = near
+    
+    @define 'far',
+        get: -> @nativeCamera.far
+        set: (far) -> @nativeCamera.far = far
+    
+    @define 'aspect',
+        get: -> @nativeCamera.aspect
+        set: (aspect) -> @nativeCamera.aspect = aspect

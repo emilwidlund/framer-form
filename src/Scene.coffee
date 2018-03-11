@@ -1,5 +1,7 @@
 _ = Framer._
 
+{Camera} = require './_Camera.coffee'
+
 class exports.Scene extends Layer
     constructor: (properties={}) ->
         super _.defaults properties,
@@ -27,11 +29,13 @@ class exports.Scene extends Layer
 
 
         # CAMERA
+        cameraProps = _.defaults properties.camera,
+            aspect: properties.width / properties.height
 
-        @camera = new THREE.PerspectiveCamera(35, @width / @height, 0.1, 10000)
-        @camera.position.x = 0
-        @camera.position.y = 0
-        @camera.position.z = 100
+        @camera = new Camera cameraProps
+
+
+        # RESIZING
 
         Canvas.onResize @onWindowResize
 
@@ -80,12 +84,12 @@ class exports.Scene extends Layer
         
         @handleRaycaster()
 
-        @renderer.render @scene, @camera
+        @renderer.render @scene, @camera.nativeCamera
     
 
     
     handleRaycaster: () =>
-        @raycaster.setFromCamera @mouse, @camera
+        @raycaster.setFromCamera @mouse, @camera.nativeCamera
         intersects = @raycaster.intersectObjects @scene.children, true
 
         if intersects.length && @intersected != intersects[0]
@@ -108,6 +112,6 @@ class exports.Scene extends Layer
         @width = Screen.width
         @height = Screen.height
         @camera.aspect = @width / @height
-        @camera.updateProjectionMatrix()
+        @camera.nativeCamera.updateProjectionMatrix()
 
         @renderer.setSize @width, @height

@@ -7,8 +7,9 @@ class exports.Studio extends Scene
         @scene.background = new THREE.Color 0x9191a0
         @scene.fog = new THREE.Fog 0x9191a0, 400, 1000
 
-        @camera.position.set 0, 220, 500
-        @camera.rotation.x = THREE.Math.degToRad -15
+        @camera.y = 220
+        @camera.z = 500
+        @camera.rotationX = -15
         
         @hlight = new THREE.HemisphereLight 0xffffff, 0x444444
         @hlight.position.y = 200
