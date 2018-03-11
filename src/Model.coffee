@@ -2,9 +2,9 @@ _ = Framer._
 
 # CLASSES
 
-{BaseClass} = require './BaseClass.coffee'
-{Animation} = require './Animation.coffee'
-{States} = require './States.coffee'
+{BaseClass} = require './_BaseClass.coffee'
+{Animation} = require './_Animation.coffee'
+{States} = require './_States.coffee'
 
 # LOADERS
 

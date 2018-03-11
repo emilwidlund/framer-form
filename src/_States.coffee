@@ -1,4 +1,4 @@
-{BaseClass} = require './BaseClass.coffee'
+{BaseClass} = require './_BaseClass.coffee'
 
 acceptedModelProperties = [
     'x'
