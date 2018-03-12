@@ -20,11 +20,10 @@ new Model
 		flatShading: true
 	onLoad: (model) ->
 
-		scene.camera.controls.autoRotate = true
-		scene.camera.controls.autoRotateSpeed = 10
 		scene.camera.controls.target = model.position
+		scene.camera.controls.autoRotate = true
 		
-		clock = new THREE.Clock
+		clock = new FORM.Clock
 
 		scene.on Events.Pan, (e) ->
 			model.rotationY += e.deltaX * 0.3

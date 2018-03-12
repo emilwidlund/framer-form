@@ -4,8 +4,10 @@ require './lib/OrbitControls'
 {BaseClass} = require './_BaseClass.coffee'
 
 class exports.Camera extends BaseClass
-    constructor: (properties={}) ->
+    constructor: (properties={}, sceneDOM) ->
         super()
+
+        @sceneDOM = sceneDOM
 
         _.defaults properties,
             x: 0
@@ -32,9 +34,11 @@ class exports.Camera extends BaseClass
         @setRotation [properties.rotationX, properties.rotationY, properties.rotationZ]
     
     setupOrbitControls: (properties) ->
-        @controls = new THREE.OrbitControls @nativeCamera
+        @controls = new THREE.OrbitControls @nativeCamera, @sceneDOM
         @controls.enablePan = false
+        @controls.enableZoom = false
         @controls.enableRotate = false
+        @controls.autoRotateSpeed = 10
 
     setPosition: (positions) ->
         @x = positions[0]

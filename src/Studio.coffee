@@ -16,7 +16,7 @@ class exports.Studio extends Scene
         @scene.add @hlight
 
         @light = new THREE.DirectionalLight 0xffffff, .2
-        @light.position.set 0, 200, 100
+        @light.position.set 0, 200, 0
         @light.castShadow = true
         @light.shadow.bias = .0001
         @light.shadow.camera.top = 180

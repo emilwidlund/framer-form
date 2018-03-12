@@ -33,7 +33,7 @@ class exports.Scene extends Layer
         cameraProps = _.defaults properties.camera,
             aspect: properties.width / properties.height
 
-        @camera = new Camera cameraProps
+        @camera = new Camera cameraProps, @._element
 
 
         # RESIZING
@@ -82,10 +82,9 @@ class exports.Scene extends Layer
 
         if @animationLoop
             @animationLoop()
-            
+
         if @camera.controls
-            if @camera.controls.enableDamping || @camera.controls.autoRotate
-                @camera.controls.update()
+            @camera.controls.update()
 
         @handleRaycaster()
 
