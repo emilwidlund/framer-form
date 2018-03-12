@@ -29,6 +29,7 @@ class exports.Scene extends Layer
 
 
         # CAMERA
+
         cameraProps = _.defaults properties.camera,
             aspect: properties.width / properties.height
 
@@ -81,7 +82,11 @@ class exports.Scene extends Layer
 
         if @animationLoop
             @animationLoop()
-        
+            
+        if @camera.controls
+            if @camera.controls.enableDamping || @camera.controls.autoRotate
+                @camera.controls.update()
+
         @handleRaycaster()
 
         @renderer.render @scene, @camera.nativeCamera

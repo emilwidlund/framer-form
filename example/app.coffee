@@ -3,6 +3,8 @@
 scene = new Studio
 	width: Screen.width
 	height: Screen.height
+	camera:
+		orbitControls: true
 
 new Model
 	path: './models/flamingo/flamingo.json'
@@ -17,6 +19,10 @@ new Model
 		vertexColors: FORM.FaceColors
 		flatShading: true
 	onLoad: (model) ->
+
+		scene.camera.controls.autoRotate = true
+		scene.camera.controls.autoRotateSpeed = 10
+		scene.camera.controls.target = model.position
 		
 		clock = new THREE.Clock
 

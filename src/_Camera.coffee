@@ -1,5 +1,6 @@
 _ = Framer._
 
+require './lib/OrbitControls'
 {BaseClass} = require './_BaseClass.coffee'
 
 class exports.Camera extends BaseClass
@@ -24,9 +25,17 @@ class exports.Camera extends BaseClass
             properties.far
         )
 
+        if properties.orbitControls
+            @setupOrbitControls()
+
         @setPosition [properties.x, properties.y, properties.z]
         @setRotation [properties.rotationX, properties.rotationY, properties.rotationZ]
     
+    setupOrbitControls: (properties) ->
+        @controls = new THREE.OrbitControls @nativeCamera
+        @controls.enablePan = false
+        @controls.enableRotate = false
+
     setPosition: (positions) ->
         @x = positions[0]
         @y = positions[1]
@@ -42,30 +51,42 @@ class exports.Camera extends BaseClass
     
     @define 'x',
         get: -> @nativeCamera.position.x
-        set: (x) -> @nativeCamera.position.x = x
+        set: (x) -> 
+            @nativeCamera.position.x = x
+            @controls.update() if @controls
     
     @define 'y',
         get: -> @nativeCamera.position.y
-        set: (y) -> @nativeCamera.position.y = y
+        set: (y) -> 
+            @nativeCamera.position.y = y
+            @controls.update() if @controls
     
     @define 'z',
         get: -> @nativeCamera.position.z
-        set: (z) -> @nativeCamera.position.z = z
+        set: (z) -> 
+            @nativeCamera.position.z = z
+            @controls.update() if @controls
 
     @define 'rotation',
         get: -> @nativeCamera.rotation
     
     @define 'rotationX',
         get: -> THREE.Math.radToDeg @nativeCamera.rotation.x
-        set: (x) -> @nativeCamera.rotation.x = THREE.Math.degToRad x
+        set: (x) -> 
+            @nativeCamera.rotation.x = THREE.Math.degToRad x
+            @controls.update() if @controls
     
     @define 'rotationY',
         get: -> THREE.Math.radToDeg @nativeCamera.rotation.y
-        set: (y) -> @nativeCamera.rotation.y = THREE.Math.degToRad y
+        set: (y) -> 
+            @nativeCamera.rotation.y = THREE.Math.degToRad y
+            @controls.update() if @controls
     
     @define 'rotationZ',
         get: -> THREE.Math.radToDeg @nativeCamera.rotation.z
-        set: (z) -> @nativeCamera.rotation.z = THREE.Math.degToRad z
+        set: (z) -> 
+            @nativeCamera.rotation.z = THREE.Math.degToRad z
+            @controls.update() if @controls
     
     @define 'fov',
         get: -> @nativeCamera.fov
