@@ -4,11 +4,13 @@ window.FORM = window.THREE
 {Scene} = require './src/Scene.coffee'
 {Studio} = require './src/Studio.coffee'
 {Model} = require './src/Model.coffee'
+{Mesh} = require './src/Mesh.coffee'
 
 module.exports =
     Scene: Scene
     Studio: Studio
     Model: Model
+    Mesh: Mesh
 
     # MATERIALS
 

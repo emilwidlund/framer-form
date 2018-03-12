@@ -1,4 +1,11 @@
-{Scene, Studio, Model, MeshPhongMaterial} = require '../form.coffee'
+{
+	Scene 
+	Studio 
+	Model 
+	Mesh
+	MeshPhongMaterial
+	MeshNormalMaterial
+} = require '../form.coffee'
 
 scene = new Studio
 	width: Screen.width
@@ -6,11 +13,24 @@ scene = new Studio
 	camera:
 		orbitControls: true
 
+m = new Mesh
+	parent: scene
+	geometry: new FORM.BoxGeometry 30, 30, 30
+	material: new MeshPhongMaterial
+	y: 50
+	x: 100
+
+m2 = new Mesh
+	parent: scene
+	geometry: new FORM.BoxGeometry 30, 30, 30
+	material: new MeshPhongMaterial
+	y: 50
+	x: -100
+
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
 	scale: 1
-	rotationY: -40
 	material: new MeshPhongMaterial
 		color: 0xffffff
 		specular: 0xffffff
@@ -22,6 +42,7 @@ new Model
 
 		scene.camera.controls.target = model.position
 		scene.camera.controls.autoRotate = true
+		scene.camera.controls.enableRotate = true
 		
 		clock = new FORM.Clock
 

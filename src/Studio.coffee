@@ -36,6 +36,14 @@ class exports.Studio extends Scene
         @light3.position.set 100, 200, -300
         @scene.add @light3
 
+        @light4 = new THREE.DirectionalLight 0xff9999, .3
+        @light4.position.set -100, 200, 300
+        @scene.add @light4
+
+        @light5 = new THREE.DirectionalLight 0x6666ff, .2
+        @light5.position.set 100, 200, 300
+        @scene.add @light5
+
         @floorGeo = new THREE.CircleGeometry 800, 100
         @floorMat = new THREE.MeshStandardMaterial
             roughness: .6
