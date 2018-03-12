@@ -43,13 +43,13 @@ new Model
 		scene.camera.controls.target = model.position
 		scene.camera.controls.autoRotate = true
 		scene.camera.controls.enableRotate = true
-		
-		clock = new FORM.Clock
 
 		###
 		scene.on Events.Pan, (e) ->
 			model.rotationY += e.deltaX * 0.3
 		###
+		
+		clock = new FORM.Clock
 
 		scene.animationLoop = () ->
 			model.y = Math.sin(clock.getElapsedTime()) * 20 + 110
