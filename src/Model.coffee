@@ -196,6 +196,9 @@ class exports.Model extends BaseClass
         get: -> @pivot.scale.z,
         set: (scale) -> @pivot.scale.set(@pivot.scale.x, @pivot.scale.y, scale)
 
+    @define 'position',
+        get: -> @pivot.position
+
     @define 'x',
         get: -> @pivot.position.x,
         set: (x) -> @pivot.position.x = x
@@ -207,6 +210,9 @@ class exports.Model extends BaseClass
     @define 'z',
         get: -> @pivot.position.z,
         set: (z) -> @pivot.position.z = z
+
+    @define 'rotation',
+        get: -> @pivot.rotation
 
     @define 'rotationX',
         get: -> THREE.Math.radToDeg(@pivot.rotation.x),

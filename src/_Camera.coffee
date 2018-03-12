@@ -36,6 +36,9 @@ class exports.Camera extends BaseClass
         @rotationX = rotations[0]
         @rotationY = rotations[1]
         @rotationZ = rotations[2]
+
+    @define 'position',
+        get: -> @nativeCamera.position
     
     @define 'x',
         get: -> @nativeCamera.position.x
@@ -48,6 +51,9 @@ class exports.Camera extends BaseClass
     @define 'z',
         get: -> @nativeCamera.position.z
         set: (z) -> @nativeCamera.position.z = z
+
+    @define 'rotation',
+        get: -> @nativeCamera.rotation
     
     @define 'rotationX',
         get: -> THREE.Math.radToDeg @nativeCamera.rotation.x
