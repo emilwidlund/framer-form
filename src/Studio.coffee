@@ -28,9 +28,6 @@ class exports.Studio extends Scene
         @light.shadow.mapSize.height = 2048
         @scene.add @light
 
-        @lightHelper = new THREE.CameraHelper @light.shadow.camera, 4
-        @scene.add @lightHelper
-
         @light2 = new THREE.DirectionalLight 0xff9999, .3
         @light2.position.set -100, 200, -300
         @scene.add @light2
