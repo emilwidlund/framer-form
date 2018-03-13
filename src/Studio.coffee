@@ -15,17 +15,14 @@ class exports.Studio extends Scene
         @hlight.position.y = 200
         @scene.add @hlight
 
-        @light = new THREE.DirectionalLight 0xffffff, .2
+        @light = new THREE.PointLight 0xffffff, .1
         @light.position.set 0, 400, 0
         @light.castShadow = true
+        @light.shadow.camera.far = 1000
         @light.shadow.bias = .0001
-        @light.shadow.camera.top = 400
-        @light.shadow.camera.bottom = -400
-        @light.shadow.camera.left = -400
-        @light.shadow.camera.right = 400
-        @light.shadow.radius = 5
-        @light.shadow.mapSize.width = 2048
-        @light.shadow.mapSize.height = 2048
+        @light.shadow.radius = 15
+        @light.shadow.mapSize.width = 4096
+        @light.shadow.mapSize.height = 4096
         @scene.add @light
 
         @light2 = new THREE.DirectionalLight 0xff9999, .3

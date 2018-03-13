@@ -42,7 +42,6 @@ class exports.Animation extends Framer.EventEmitter
             Utils.delay @options.delay, =>
                 # Create an interval that runs every 60 seconds
                 @intervalDisposer = setInterval () => 
-
                     # Check if the amount of rendered frames exceeds amount of total frames that the animtion is supposed to run for
                     if @renderedFrames >= @totalFrames
                         # If it exceeds, dispose/end the animation

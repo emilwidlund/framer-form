@@ -10,24 +10,22 @@
 scene = new Studio
 	width: Screen.width
 	height: Screen.height
-	###
 	camera:
 		orbitControls: true
-	###
 
 m = new Mesh
 	parent: scene
 	geometry: new FORM.BoxGeometry 30, 30, 30
 	material: new MeshPhongMaterial
-	y: 50
-	x: 200
+	y: 100
+	x: 120
 
 m2 = new Mesh
 	parent: scene
 	geometry: new FORM.BoxGeometry 30, 30, 30
 	material: new MeshPhongMaterial
-	y: 50
-	x: -200
+	y: 100
+	x: -120
 
 new Model
 	path: './models/flamingo/flamingo.json'
@@ -43,16 +41,25 @@ new Model
 	onLoad: (model) ->
 
 		model.animate
-			rotationY: 90
+			rotationZ: 180
 			options:
-				time: 1.2
+				time: 1.5
 				curve: 'easeInOutQuart'
+				delay: 1
+		
+		Utils.delay 5, ->
+			model.animate
+				rotationZ: 360
+				options:
+					time: 1.5
+					curve: 'easeInOutQuart'
 
-		###
+		
 		scene.camera.controls.target = model.position
 		scene.camera.controls.autoRotate = true
 		scene.camera.controls.enableRotate = true
-
+		
+		###
 		scene.on Events.Pan, (e) ->
 			model.rotationY += e.deltaX * 0.3
 		###
@@ -60,4 +67,10 @@ new Model
 		clock = new FORM.Clock
 
 		scene.animationLoop = () ->
-			model.y = Math.sin(clock.getElapsedTime()) * 20 + 110
+			model.y = Math.sin(clock.getElapsedTime()) * 20 + 140
+			
+			m.rotationZ += 1
+			m.rotationY += 1
+
+			m2.rotationZ -= 1
+			m2.rotationY -= 1
