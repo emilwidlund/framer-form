@@ -18,14 +18,14 @@ m = new Mesh
 	geometry: new FORM.BoxGeometry 30, 30, 30
 	material: new MeshPhongMaterial
 	y: 50
-	x: 100
+	x: 200
 
 m2 = new Mesh
 	parent: scene
 	geometry: new FORM.BoxGeometry 30, 30, 30
 	material: new MeshPhongMaterial
 	y: 50
-	x: -100
+	x: -200
 
 new Model
 	path: './models/flamingo/flamingo.json'
