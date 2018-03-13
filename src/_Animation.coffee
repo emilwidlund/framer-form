@@ -186,7 +186,7 @@ class exports.Animation extends Framer.EventEmitter
         if (t /= d / 2) < 1 
             c / 2 * Math.pow(2, 10 * (t - 1)) + b
         else 
-            c/2 * (-Math.pow(2, -10 * --t) + 2) + b
+            c / 2 * (-Math.pow(2, -10 * --t) + 2) + b
 
     easeInCirc: (x, t, b, c, d) ->
         -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b
