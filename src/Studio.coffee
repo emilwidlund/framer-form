@@ -4,8 +4,8 @@ class exports.Studio extends Scene
     constructor: (properties={}) ->
         super properties
 
-        @scene.background = new THREE.Color 0x9191a0
-        @scene.fog = new THREE.Fog 0x9191a0, 400, 1000
+        @scene.background = new THREE.Color 0x9181a0
+        @scene.fog = new THREE.Fog 0x9181a0, 400, 1000
 
         @camera.y = 220
         @camera.z = 500
