@@ -38,8 +38,10 @@ class exports.Animation extends Framer.EventEmitter
         if @deltas.length
         # Delay the loop if specified, otherwise 0s
             Utils.delay @options.delay, =>
+
                 # Create an interval that runs every 60 seconds
                 @intervalDisposer = setInterval () => 
+
                     # Check if the amount of rendered frames exceeds amount of total frames that the animtion is supposed to run for
                     if @renderedFrames >= @totalFrames
                         # If it exceeds, dispose/end the animation
@@ -79,8 +81,21 @@ class exports.Animation extends Framer.EventEmitter
         deltas.filter (d) ->
             d
 
+    applyEasing: (renderedFrames, startValue, endValue, totalFrames) ->
+
+        renderedFrames /= totalFrames / 2
+
+        if renderedFrames < 1 
+            endValue / 2 * renderedFrames * renderedFrames + startValue
+        
+        renderedFrames--
+	    
+        -endValue / 2 * (renderedFrames * (renderedFrames - 2) - 1) + startValue
 
     animationLoop: () =>
+
+        console.log @applyEasing(@renderedFrames, 0, -50, @totalFrames)
+
         for delta, i in @deltas
             @model[Object.keys(delta)[0]] += Object.values(delta)[0] / (@time * @fps)
 

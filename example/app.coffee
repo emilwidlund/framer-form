@@ -10,8 +10,10 @@
 scene = new Studio
 	width: Screen.width
 	height: Screen.height
+	###
 	camera:
 		orbitControls: true
+	###
 
 m = new Mesh
 	parent: scene
@@ -40,11 +42,16 @@ new Model
 		flatShading: true
 	onLoad: (model) ->
 
+		model.animate
+			x: 50
+			options:
+				time: 5
+
+		###
 		scene.camera.controls.target = model.position
 		scene.camera.controls.autoRotate = true
 		scene.camera.controls.enableRotate = true
 
-		###
 		scene.on Events.Pan, (e) ->
 			model.rotationY += e.deltaX * 0.3
 		###
