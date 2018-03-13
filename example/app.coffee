@@ -47,12 +47,12 @@ new Model
 				curve: 'easeInOutQuart'
 				delay: 1
 		
-		Utils.delay 5, ->
-			model.animate
-				rotationZ: 360
-				options:
-					time: 1.5
-					curve: 'easeInOutQuart'
+		model.animate
+			rotationZ: 360
+			options:
+				time: 1.5
+				curve: 'easeInOutQuart'
+				delay: 3
 
 		
 		scene.camera.controls.target = model.position

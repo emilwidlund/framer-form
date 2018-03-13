@@ -5,41 +5,48 @@ _ = Framer._
 class exports.Animation extends Framer.EventEmitter
     constructor: (model, properties={}) ->
         super()
-
-        if !properties
-            throw new Error 'Please specify properties or a state to animate!'
         
-        # If properties is a string, then it is a State Name
-        if _.isString properties
-            stateName = properties
+        delay = 0
 
-            # Loop through states on model to find the specified state
-            Object.keys(model.states).map (k) => 
-                if k == stateName
-                    # Set current state to specified state and apply state properties to properties variable
-                    model.states.current = model.states[k]
-                    properties = model.states[stateName]
+        if properties.options
+            if properties.options.delay
+                delay = properties.options.delay
 
-        @model = model
-        @mesh = model.mesh
-        @properties = @filterProperties properties
-        @options = _.defaults properties.options, 
-            time: 1
-            delay: 0
-            curve: 'linear'
-
-        @fps = 60
-        @time = @options.time
-        @renderedFrames = 0
-        @totalFrames = @time * @fps
-        @modelPropertyInitialValues = {}
-        @deltas = @calculateDeltas()
-
-
-        # If there are differences between animation property values and the model's current property values (Delta)
-        if @deltas.length
         # Delay the loop if specified, otherwise 0s
-            Utils.delay @options.delay, =>
+        Utils.delay delay, =>
+
+            if !properties
+                throw new Error 'Please specify properties or a state to animate!'
+            
+            # If properties is a string, then it is a State Name
+            if _.isString properties
+                stateName = properties
+
+                # Loop through states on model to find the specified state
+                Object.keys(model.states).map (k) => 
+                    if k == stateName
+                        # Set current state to specified state and apply state properties to properties variable
+                        model.states.current = model.states[k]
+                        properties = model.states[stateName]
+
+            @model = model
+            @mesh = model.mesh
+            @properties = @filterProperties properties
+            @options = _.defaults properties.options, 
+                time: 1
+                delay: 0
+                curve: 'linear'
+
+            @fps = 60
+            @time = @options.time
+            @renderedFrames = 0
+            @totalFrames = @time * @fps
+            @modelPropertyInitialValues = {}
+            @deltas = @calculateDeltas()
+
+
+            # If there are differences between animation property values and the model's current property values (Delta)
+            if @deltas.length
                 # Create an interval that runs every 60 seconds
                 @intervalDisposer = setInterval () => 
                     # Check if the amount of rendered frames exceeds amount of total frames that the animtion is supposed to run for
@@ -51,12 +58,12 @@ class exports.Animation extends Framer.EventEmitter
                     requestAnimationFrame @animationLoop
                     @renderedFrames++
                 , 1000 / @fps
-        
-        # Make sure to dispose our animation loop if Framer's CurrentContext resets
-        # Otherwise we'll leak loads of memory
-        Framer.CurrentContext.on 'reset', =>
-            if @intervalDisposer
-                clearInterval @intervalDisposer
+            
+            # Make sure to dispose our animation loop if Framer's CurrentContext resets
+            # Otherwise we'll leak loads of memory
+            Framer.CurrentContext.on 'reset', =>
+                if @intervalDisposer
+                    clearInterval @intervalDisposer
 
     filterProperties: (properties) ->
         props = Object.assign {}, properties
