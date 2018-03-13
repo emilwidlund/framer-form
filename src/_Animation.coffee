@@ -38,7 +38,6 @@ class exports.Animation extends Framer.EventEmitter
         if @deltas.length
         # Delay the loop if specified, otherwise 0s
             Utils.delay @options.delay, =>
-
                 # Create an interval that runs every 60 seconds
                 @intervalDisposer = setInterval () => 
 
@@ -77,27 +76,37 @@ class exports.Animation extends Framer.EventEmitter
             else
                 null
             newObj
-        
+
         deltas.filter (d) ->
             d
 
-    applyEasing: (renderedFrames, startValue, endValue, totalFrames) ->
+    applyEasing: (t, b, c, d) ->
 
-        renderedFrames /= totalFrames / 2
+        t /= d
+        c * t * t + b
 
-        if renderedFrames < 1 
-            endValue / 2 * renderedFrames * renderedFrames + startValue
+        ###
+        t /= d / 2
+
+        if t < 1 
+            c / 2 * t * t + b
         
-        renderedFrames--
+        t--
 	    
-        -endValue / 2 * (renderedFrames * (renderedFrames - 2) - 1) + startValue
+        -c / 2 * (t * (t - 2) - 1) + b
+        ###
 
     animationLoop: () =>
 
-        console.log @applyEasing(@renderedFrames, 0, -50, @totalFrames)
-
         for delta, i in @deltas
-            @model[Object.keys(delta)[0]] += Object.values(delta)[0] / (@time * @fps)
+
+            prop = Object.keys(delta)[0]
+            deltaValue = Object.values(delta)[0]
+
+            finalValue = @applyEasing(@renderedFrames, 0, deltaValue, @totalFrames)
+            console.log finalValue
+
+            @model[prop] = finalValue
 
     disposeInterval: () ->
         clearInterval @intervalDisposer

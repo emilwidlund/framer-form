@@ -43,9 +43,9 @@ new Model
 	onLoad: (model) ->
 
 		model.animate
-			x: 50
+			x: 100
 			options:
-				time: 5
+				time: 1
 
 		###
 		scene.camera.controls.target = model.position
