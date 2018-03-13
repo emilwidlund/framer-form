@@ -6,14 +6,14 @@ class exports.Animation extends Framer.EventEmitter
     constructor: (model, properties={}) ->
         super()
         
-        delay = 0
-
-        if properties.options
-            if properties.options.delay
-                delay = properties.options.delay
+        @properties = @filterProperties properties
+        @options = _.defaults properties.options, 
+            time: 1
+            delay: 0
+            curve: 'linear'
 
         # Delay the loop if specified, otherwise 0s
-        Utils.delay delay, =>
+        Utils.delay @options.delay, =>
 
             if !properties
                 throw new Error 'Please specify properties or a state to animate!'
@@ -31,12 +31,6 @@ class exports.Animation extends Framer.EventEmitter
 
             @model = model
             @mesh = model.mesh
-            @properties = @filterProperties properties
-            @options = _.defaults properties.options, 
-                time: 1
-                delay: 0
-                curve: 'linear'
-
             @fps = 60
             @time = @options.time
             @renderedFrames = 0
