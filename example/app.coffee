@@ -43,7 +43,7 @@ new Model
 	onLoad: (model) ->
 
 		model.animate
-			x: 100
+			rotationY: 90
 			options:
 				time: 2
 				curve: 'easeInOutQuart'
