@@ -45,7 +45,8 @@ new Model
 		model.animate
 			x: 100
 			options:
-				time: 1
+				time: 2
+				curve: 'easeInOutQuart'
 
 		###
 		scene.camera.controls.target = model.position

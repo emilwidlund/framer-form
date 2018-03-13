@@ -26,6 +26,7 @@ class exports.Animation extends Framer.EventEmitter
         @options = _.defaults properties.options, 
             time: 1
             delay: 0
+            curve: 'linear'
 
         @fps = 60
         @time = @options.time
@@ -82,19 +83,10 @@ class exports.Animation extends Framer.EventEmitter
 
     applyEasing: (t, b, c, d) ->
 
-        t /= d
-        c * t * t + b
-
-        ###
-        t /= d / 2
-
-        if t < 1 
-            c / 2 * t * t + b
-        
-        t--
-	    
-        -c / 2 * (t * (t - 2) - 1) + b
-        ###
+        if @options.curve.includes 'ease'
+            @[@options.curve] t, b, c, d
+        else
+            @linear t, b, c, d
 
     animationLoop: () =>
 
@@ -103,10 +95,9 @@ class exports.Animation extends Framer.EventEmitter
             prop = Object.keys(delta)[0]
             deltaValue = Object.values(delta)[0]
 
-            finalValue = @applyEasing(@renderedFrames, 0, deltaValue, @totalFrames)
-            console.log finalValue
+            easedValue = @applyEasing(@renderedFrames, 0, deltaValue, @totalFrames)
 
-            @model[prop] = finalValue
+            @model[prop] = easedValue
 
     disposeInterval: () ->
         clearInterval @intervalDisposer
@@ -114,71 +105,73 @@ class exports.Animation extends Framer.EventEmitter
 
 
 
+    linear: (t, b, c, d) ->
+        c * t / d + b
 
-    easeInQuad: (x, t, b, c, d) ->
+    easeInQuad: (t, b, c, d) ->
         c * (t /= d) * t + b
 
-    easeOutQuad: (x, t, b, c, d) ->
+    easeOutQuad: (t, b, c, d) ->
         -c * (t /= d) * (t - 2) + b
 
-    easeInOutQuad: (x, t, b, c, d) ->
+    easeInOutQuad: (t, b, c, d) ->
         if (t /= d / 2) < 1
             c / 2 * t * t + b
         else
             -c / 2 * ((--t) * (t - 2) - 1) + b
 
-    easeInCubic: (x, t, b, c, d) ->
+    easeInCubic: (t, b, c, d) ->
         c * (t /= d) * t * t + b
 
-    easeOutCubic: (x, t, b, c, d) ->
+    easeOutCubic: (t, b, c, d) ->
         c * ((t = t / d - 1) * t * t + 1) + b
 
-    easeInOutCubic: (x, t, b, c, d) ->
+    easeInOutCubic: (t, b, c, d) ->
         if (t /= d / 2) < 1 
             c / 2 * t * t * t + b
         else 
             c / 2 * ((t -= 2) * t * t + 2) + b
 
-    easeInQuart: (x, t, b, c, d) ->
+    easeInQuart: (t, b, c, d) ->
         c * (t /= d) * t * t * t + b
 
-    easeOutQuart: (x, t, b, c, d) ->
+    easeOutQuart: (t, b, c, d) ->
         -c * ((t = t / d - 1) * t * t * t - 1) + b
 
-    easeInOutQuart: (x, t, b, c, d) ->
+    easeInOutQuart: (t, b, c, d) ->
         if (t /= d / 2) < 1
             c / 2 * t * t * t * t + b
         else 
             -c / 2 * ((t -= 2) * t * t * t - 2) + b
 
-    easeInQuint: (x, t, b, c, d) ->
+    easeInQuint: (t, b, c, d) ->
         c * (t /= d) * t * t * t * t + b
 
-    easeOutQuint: (x, t, b, c, d) ->
+    easeOutQuint: (t, b, c, d) ->
         c * ((t = t / d - 1) * t * t * t * t + 1) + b
 
-    easeInOutQuint: (x, t, b, c, d) ->
+    easeInOutQuint: (t, b, c, d) ->
         if (t /= d / 2) < 1
             c / 2 * t * t * t * t * t + b
         else 
             c / 2 * ((t -= 2) * t * t * t * t + 2) + b
 
-    easeInSine: (x, t, b, c, d) ->
+    easeInSine: (t, b, c, d) ->
         -c * Math.cos(t / d * (Math.PI / 2)) + c + b
 
-    easeOutSine: (x, t, b, c, d) ->
+    easeOutSine: (t, b, c, d) ->
         c * Math.sin(t / d * (Math.PI / 2)) + b
 
-    easeInOutSine: (x, t, b, c, d) ->
+    easeInOutSine: (t, b, c, d) ->
         -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b
 
-    easeInExpo: (x, t, b, c, d) ->
+    easeInExpo: (t, b, c, d) ->
         (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b
 
-    easeOutExpo: (x, t, b, c, d) ->
+    easeOutExpo: (t, b, c, d) ->
         (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b
 
-    easeInOutExpo: (x, t, b, c, d) ->
+    easeInOutExpo: (t, b, c, d) ->
         if t == 0
             b
         if t == d
@@ -188,19 +181,19 @@ class exports.Animation extends Framer.EventEmitter
         else 
             c / 2 * (-Math.pow(2, -10 * --t) + 2) + b
 
-    easeInCirc: (x, t, b, c, d) ->
+    easeInCirc: (t, b, c, d) ->
         -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b
 
-    easeOutCirc: (x, t, b, c, d) ->
+    easeOutCirc: (t, b, c, d) ->
         c * Math.sqrt(1 - (t = t / d - 1) * t) + b
 
-    easeInOutCirc: (x, t, b, c, d) ->
+    easeInOutCirc: (t, b, c, d) ->
         if (t /= d / 2) < 1
             -c / 2 * (Math.sqrt(1 - t * t) - 1) + b
         else 
             c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b
 
-    easeInElastic: (x, t, b, c, d) ->
+    easeInElastic: (t, b, c, d) ->
         s = 1.70158
         p = 0
         a = c
@@ -220,7 +213,7 @@ class exports.Animation extends Framer.EventEmitter
 
         -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p )) + b
 
-    easeOutElastic: (x, t, b, c, d) ->
+    easeOutElastic: (t, b, c, d) ->
         s = 1.70158
         p = 0
         a = c
@@ -240,7 +233,7 @@ class exports.Animation extends Framer.EventEmitter
 
         a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b
 
-    easeInOutElastic: (x, t, b, c, d) ->
+    easeInOutElastic: (t, b, c, d) ->
         s = 1.70158
         p = 0
         a = c
