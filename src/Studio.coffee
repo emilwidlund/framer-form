@@ -21,8 +21,8 @@ class exports.Studio extends Scene
         @light.shadow.camera.far = 1000
         @light.shadow.bias = .0001
         @light.shadow.radius = 15
-        @light.shadow.mapSize.width = 4096
-        @light.shadow.mapSize.height = 4096
+        @light.shadow.mapSize.width = 2048
+        @light.shadow.mapSize.height = 2048
         @scene.add @light
 
         @light2 = new THREE.DirectionalLight 0xff9999, .3
