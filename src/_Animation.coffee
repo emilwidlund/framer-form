@@ -32,6 +32,7 @@ class exports.Animation extends Framer.EventEmitter
         @time = @options.time
         @renderedFrames = 0
         @totalFrames = @time * @fps
+        @modelPropertyInitialValues = {}
         @deltas = @calculateDeltas()
 
 
@@ -69,6 +70,9 @@ class exports.Animation extends Framer.EventEmitter
         # This function returns an array of key/value pairs that contains the value (Delta) to animate for every property
 
         deltas = Object.keys(@properties).map (k) =>
+
+            @modelPropertyInitialValues[k] = @model[k]
+
             newObj = {}
             if @model[k] > @properties[k]
                 newObj[k] = -Math.abs @model[k] - @properties[k]
@@ -95,7 +99,7 @@ class exports.Animation extends Framer.EventEmitter
             prop = Object.keys(delta)[0]
             deltaValue = Object.values(delta)[0]
 
-            easedValue = @applyEasing(@renderedFrames, 0, deltaValue, @totalFrames)
+            easedValue = @applyEasing(@renderedFrames, @modelPropertyInitialValues[prop], deltaValue, @totalFrames)
 
             @model[prop] = easedValue
 
