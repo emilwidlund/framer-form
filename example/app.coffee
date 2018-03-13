@@ -45,7 +45,7 @@ new Model
 		model.animate
 			rotationY: 90
 			options:
-				time: 2
+				time: 1.2
 				curve: 'easeInOutQuart'
 
 		###
