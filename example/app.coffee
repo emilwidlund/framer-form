@@ -13,19 +13,17 @@ scene = new Studio
 	camera:
 		orbitControls: true
 
-m = new Mesh
-	parent: scene
-	geometry: new FORM.BoxGeometry 30, 30, 30
-	material: new MeshPhongMaterial
-	y: 100
-	x: 120
+cubes = []
 
-m2 = new Mesh
-	parent: scene
-	geometry: new FORM.BoxGeometry 30, 30, 30
-	material: new MeshPhongMaterial
-	y: 100
-	x: -120
+for i in [0..10]
+	m = new Mesh
+		parent: scene
+		geometry: new FORM.BoxGeometry 15, 15, 15
+		material: new MeshPhongMaterial
+		y: 80
+	
+	cubes.push m
+
 
 new Model
 	path: './models/flamingo/flamingo.json'
@@ -40,37 +38,22 @@ new Model
 		flatShading: true
 	onLoad: (model) ->
 
-		model.animate
-			rotationZ: 180
-			options:
-				time: 1.5
-				curve: 'easeInOutQuart'
-				delay: 1
-		
-		model.animate
-			rotationZ: 360
-			options:
-				time: 1.5
-				curve: 'easeInOutQuart'
-				delay: 3
-
-		
 		scene.camera.controls.target = model.position
-		scene.camera.controls.autoRotate = true
 		scene.camera.controls.enableRotate = true
-		
+
 		###
 		scene.on Events.Pan, (e) ->
 			model.rotationY += e.deltaX * 0.3
 		###
 		
 		clock = new FORM.Clock
+		orbitRadius = 150
 
 		scene.animationLoop = () ->
-			model.y = Math.sin(clock.getElapsedTime()) * 20 + 140
-			
-			m.rotationZ += 1
-			m.rotationY += 1
+			model.y = Math.sin(clock.getElapsedTime()) * 20 + 120
 
-			m2.rotationZ -= 1
-			m2.rotationY -= 1
+			for c, i in cubes
+				c.x = Math.cos(clock.getElapsedTime()) * orbitRadius * (i * .2)
+				c.z = Math.sin(clock.getElapsedTime()) * orbitRadius * (i * .2)
+
+				c.y = Math.sin(clock.getElapsedTime()) * 20 + 80
