@@ -78,7 +78,12 @@ class exports.Model extends BaseClass
         @setScale properties.scale, properties.scaleX, properties.scaleY, properties.scaleZ
         @setPosition [properties.x, properties.y, properties.z]
         @setRotation [properties.rotationX, properties.rotationY, properties.rotationZ]
-        
+        @setMid(
+            midX: properties.midX
+            midY: properties.midY
+            midZ: properties.midZ
+        )
+
         if properties.visible
             @visible = properties.visible
         
@@ -154,6 +159,11 @@ class exports.Model extends BaseClass
         @rotationX = rotation[0] || 0
         @rotationY = rotation[1] || 0
         @rotationZ = rotation[2] || 0
+
+    setMid: (mid) ->
+        Object.keys(mid).map (k) =>
+            if mid[k]
+                @[k] = mid[k]
     
     animate: (properties) ->
         new Animation @, properties
@@ -226,6 +236,15 @@ class exports.Model extends BaseClass
         get: -> THREE.Math.radToDeg(@pivot.rotation.z),
         set: (z) -> @pivot.rotation.z = THREE.Math.degToRad(z)
     
+    @define 'midX',
+        set: (midX) -> @mesh.position.x = -midX
+    
+    @define 'midY',
+        set: (midY) -> @mesh.position.y = -midY
+    
+    @define 'midZ',
+        set: (midZ) -> @mesh.position.z = -midZ
+
     @define 'parent',
         get: -> @pivot.parent,
         set: (parent) -> @pivot.parent = parent
