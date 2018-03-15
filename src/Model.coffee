@@ -137,9 +137,13 @@ class exports.Model extends BaseClass
         @mesh.mixer.update @clock.getDelta()
     
     on: (eventName, cb) ->
-        @mesh.traverse (c) ->
-            if c instanceof THREE.Mesh
-                c.addEventListener eventName, cb
+
+        if eventName.includes 'change'
+            @pivot.addEventListener eventName, cb
+        else
+            @mesh.traverse (c) ->
+                if c instanceof THREE.Mesh
+                    c.addEventListener eventName, cb
 
 
     setScale: (uniformScale, scaleX, scaleY, scaleZ) ->
@@ -192,49 +196,69 @@ class exports.Model extends BaseClass
 
     @define 'scale',
         get: -> @pivot.scale.x,
-        set: (scale) -> @pivot.scale.set(scale, scale, scale)
+        set: (scale) -> 
+            @pivot.scale.set(scale, scale, scale)
+            @pivot.dispatchEvent {type: 'change:scale', value: @scale}
     
     @define 'scaleX',
         get: -> @pivot.scale.x,
-        set: (scale) -> @pivot.scale.set(scale, @pivot.scale.y, @pivot.scale.z)
+        set: (scale) -> 
+            @pivot.scale.set(scale, @pivot.scale.y, @pivot.scale.z)
+            @pivot.dispatchEvent {type: 'change:scaleX', value: @scaleX}
 
     @define 'scaleY',
         get: -> @pivot.scale.y,
-        set: (scale) -> @pivot.scale.set(@pivot.scale.x, scale, @pivot.scale.z)
+        set: (scale) -> 
+            @pivot.scale.set(@pivot.scale.x, scale, @pivot.scale.z)
+            @pivot.dispatchEvent {type: 'change:scaleY', value: @scaleY}
     
     @define 'scaleZ',
         get: -> @pivot.scale.z,
-        set: (scale) -> @pivot.scale.set(@pivot.scale.x, @pivot.scale.y, scale)
+        set: (scale) -> 
+            @pivot.scale.set(@pivot.scale.x, @pivot.scale.y, scale)
+            @pivot.dispatchEvent {type: 'change:scaleZ', value: @scaleZ}
 
     @define 'position',
         get: -> @pivot.position
 
     @define 'x',
         get: -> @pivot.position.x,
-        set: (x) -> @pivot.position.x = x
+        set: (x) -> 
+            @pivot.position.x = x
+            @pivot.dispatchEvent {type: 'change:x', value: @x}
     
     @define 'y',
         get: -> @pivot.position.y,
-        set: (y) -> @pivot.position.y = y
+        set: (y) -> 
+            @pivot.position.y = y
+            @pivot.dispatchEvent {type: 'change:y', value: @y}
     
     @define 'z',
         get: -> @pivot.position.z,
-        set: (z) -> @pivot.position.z = z
+        set: (z) -> 
+            @pivot.position.z = z
+            @pivot.dispatchEvent {type: 'change:z', value: @z}
 
     @define 'rotation',
         get: -> @pivot.rotation
 
     @define 'rotationX',
         get: -> THREE.Math.radToDeg(@pivot.rotation.x),
-        set: (x) -> @pivot.rotation.x = THREE.Math.degToRad(x)
+        set: (x) -> 
+            @pivot.rotation.x = THREE.Math.degToRad(x)
+            @pivot.dispatchEvent {type: 'change:rotationX', value: @rotationX}
     
     @define 'rotationY',
         get: -> THREE.Math.radToDeg(@pivot.rotation.y),
-        set: (y) -> @pivot.rotation.y = THREE.Math.degToRad(y)
+        set: (y) -> 
+            @pivot.rotation.y = THREE.Math.degToRad(y)
+            @pivot.dispatchEvent {type: 'change:rotationY', value: @rotationY}
     
     @define 'rotationZ',
         get: -> THREE.Math.radToDeg(@pivot.rotation.z),
-        set: (z) -> @pivot.rotation.z = THREE.Math.degToRad(z)
+        set: (z) -> 
+            @pivot.rotation.z = THREE.Math.degToRad(z)
+            @pivot.dispatchEvent {type: 'change:rotationZ', value: @rotationZ}
     
     @define 'midX',
         set: (midX) -> @mesh.position.x = -midX
@@ -247,11 +271,15 @@ class exports.Model extends BaseClass
 
     @define 'parent',
         get: -> @pivot.parent,
-        set: (parent) -> @pivot.parent = parent
+        set: (parent) -> 
+            @pivot.parent = parent
+            @pivot.dispatchEvent {type: 'change:parent', value: @parent}
     
     @define 'visible',
         get: -> @pivot.visible
-        set: (bool) -> @pivot.visible = bool
+        set: (bool) -> 
+            @pivot.visible = bool
+            @pivot.dispatchEvent {type: 'change:visible', value: @visible}
     
     @define 'children',
         get: -> @pivot.children
