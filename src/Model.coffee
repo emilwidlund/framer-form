@@ -139,7 +139,7 @@ class exports.Model extends BaseClass
     on: (eventName, cb) ->
 
         if eventName.includes 'change'
-            @pivot.addEventListener eventName, cb
+            @pivot.addEventListener eventName, (e) -> cb(e.value)
         else
             @mesh.traverse (c) ->
                 if c instanceof THREE.Mesh

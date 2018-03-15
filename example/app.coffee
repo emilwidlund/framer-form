@@ -40,4 +40,4 @@ new Model
 				curve: 'easeInOutQuart'
 
 		model.on 'change:rotationY', (e) ->
-			console.log e.value
+			console.log e
