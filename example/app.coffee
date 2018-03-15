@@ -36,8 +36,5 @@ new Model
 			rotationY: -45
 			options:
 				time: 2
-				delay: 2
+				delay: 5
 				curve: 'easeInOutQuart'
-
-		model.on 'change:rotationY', (e) ->
-			console.log e
