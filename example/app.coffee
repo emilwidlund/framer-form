@@ -22,12 +22,17 @@ new Model
 		specular: 0xffffff
 		shininess: 20
 		morphTargets: true
-		vertexColors: FORM.FaceColors
+		vertexColors: THREE.FaceColors
 		flatShading: true
 	onLoad: (model) ->
 
-		model.animate
-			rotationY: 40
+		model.states.test = 
+			rotationY: 50
 			options:
-				time: 1.5
+				time: 2
 				curve: 'easeInOutQuart'
+			
+		model.animate 'test'
+
+		scene.on Events.Pan, (e) ->
+			model.rotationY += e.deltaX * .3

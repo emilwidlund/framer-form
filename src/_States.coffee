@@ -27,7 +27,6 @@ class exports.States extends BaseClass
 
         @states = 
             default: @filterProperties @initialModelProperties
-            initial: @filterProperties @initialModelProperties
             current: @filterProperties @initialModelProperties
 
     filterProperties: (propeties) ->

@@ -6,6 +6,20 @@ class exports.Animation extends Framer.EventEmitter
     constructor: (model, properties={}) ->
         super()
         
+        if !properties
+                throw new Error 'Please specify properties or a state to animate!'
+            
+        # If properties is a string, then it is a State Name
+        if _.isString properties
+            stateName = properties
+
+            # Loop through states on model to find the specified state
+            Object.keys(model.states).map (k) => 
+                if k == stateName
+                    # Set current state to specified state and apply state properties to properties variable
+                    model.states.current = model.states[k]
+                    properties = model.states[stateName]
+
         @properties = @filterProperties properties
         @options = _.defaults properties.options, 
             time: 1
@@ -14,20 +28,6 @@ class exports.Animation extends Framer.EventEmitter
 
         # Delay the loop if specified, otherwise 0s
         Utils.delay @options.delay, =>
-
-            if !properties
-                throw new Error 'Please specify properties or a state to animate!'
-            
-            # If properties is a string, then it is a State Name
-            if _.isString properties
-                stateName = properties
-
-                # Loop through states on model to find the specified state
-                Object.keys(model.states).map (k) => 
-                    if k == stateName
-                        # Set current state to specified state and apply state properties to properties variable
-                        model.states.current = model.states[k]
-                        properties = model.states[stateName]
 
             @model = model
             @mesh = model.mesh
