@@ -2,7 +2,7 @@
 
 Download this repository. Copy form.coffee and the src-folder to the modules-folder in your Framer Project.
 
-_This will change for the Alpha-release. There will then be a more convinent way to install this module._
+_This will change for the Alpha-release. There will be a more convinent way to install this module._
 
 ### Importing submodules
 
