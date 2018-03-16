@@ -17,6 +17,7 @@ l = new Light
 	type: 'point'
 	y: 300
 
+
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
