@@ -18,7 +18,7 @@ You can import the submodules individually like this:
 } = require 'form'
 ```
 
-Or simply just assign a varaible to the whole object like this:
+Or simply just assign a variable to the whole object like this:
 
 ```
 FORM = require 'form'
