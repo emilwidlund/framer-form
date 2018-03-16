@@ -4,6 +4,10 @@
 
 Framer Form is a <a href="https://framer.com" target="_blank">Framer</a>-module built with the purpose of exposing an extremely easy-to-use API for rendering 3D-graphics. Its purpose is not to reinvent and improve existing WebGL-rendering techniques, its purpose is rather to take existing techniques & libraries and expose them in the Framer Environment. It is built to support common Framer-concepts like Animations, States & Events in mind.
 
+### Demo
+
+https://framer.cloud/RzLsF
+
 ### What can you expect from this module?
 
 As most people probably want to import their own models & 3D-meshes to their Framer Prototype, Framer Form will have solid support for a wide array of different file formats. Import anything from FBX, 3DS & OBJ to JSON files, and have their respective materials applied with one simple line of code.
