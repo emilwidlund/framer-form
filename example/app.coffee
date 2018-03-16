@@ -26,6 +26,9 @@ new Model
 		flatShading: true
 	onLoad: (model) ->
 
+		scene.on Events.Pan, (e) ->
+			model.rotationY += e.deltaX * .3
+
 		model.states.test = 
 			rotationY: 50
 			options:
@@ -33,6 +36,3 @@ new Model
 				curve: 'easeInOutQuart'
 			
 		model.animate 'test'
-
-		scene.on Events.Pan, (e) ->
-			model.rotationY += e.deltaX * .3

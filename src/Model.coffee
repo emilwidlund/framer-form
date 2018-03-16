@@ -139,11 +139,24 @@ class exports.Model extends BaseClass
     on: (eventName, cb) ->
 
         if eventName.includes 'change'
-            @pivot.addEventListener eventName, (e) -> cb(e.value)
+
+            callback = (e) -> cb(e.value)
+
+            @pivot.addEventListener eventName, callback
+
+            Framer.CurrentContext.on 'reset', =>
+                @pivot.removeEventListener eventName, callback
+
         else
             @mesh.traverse (c) ->
                 if c instanceof THREE.Mesh
-                    c.addEventListener eventName, cb
+
+                    callback = () -> cb()
+
+                    c.addEventListener eventName, callback
+
+                    Framer.CurrentContext.on 'reset', =>
+                        c.removeEventListener eventName, callback
 
 
     setScale: (uniformScale, scaleX, scaleY, scaleZ) ->
