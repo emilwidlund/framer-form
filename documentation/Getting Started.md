@@ -30,24 +30,24 @@ Let's import a simple FBX-model and make it listen to touch-inputs
 
 ```
 {
-	Studio 
-	Model 
-	MeshPhongMaterial
+  Studio 
+  Model 
+  MeshPhongMaterial
 } = require '../form.coffee'
 
 scene = new Studio
-	width: Screen.width
-	height: Screen.height
+  width: Screen.width
+  height: Screen.height
 
 new Model
-	path: './models/bike.fbx'
-	parent: scene
-	scale: 1
-	y: 80
-	rotationY: -40
-	onLoad: (model) ->
+  path: './models/bike.fbx'
+  parent: scene
+  scale: 1
+  y: 80
+  rotationY: -40
+  onLoad: (model) ->
 
-		scene.on Events.Pan, (e) ->
+    scene.on Events.Pan, (e) ->
       model.rotationY += e.deltaX * .3
 ```
 
