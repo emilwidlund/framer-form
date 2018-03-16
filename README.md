@@ -4,15 +4,9 @@
 
 Framer Form is a <a href="https://framer.com" target="_blank">Framer</a>-module built with the purpose of exposing an extremely easy-to-use API for rendering 3D-graphics. Its purpose is not to reinvent and improve existing WebGL-rendering techniques, its purpose is rather to take existing techniques & libraries and expose them in the Framer Environment. It is built to support common Framer-concepts like Animations, States & Events in mind.
 
-### Demo
-![alt text](https://raw.githubusercontent.com/emilwidlund/framer-form/master/marketing/flamingo.png)
-
-#### Interactive Framer Demo Prototype
-https://framer.cloud/RzLsF
-
 ### What can you expect from this module?
 
-As most people probably want to import their own models & 3D-meshes to their Framer Prototype, Framer Form will have solid support for a wide array of different file formats. Import anything from FBX, 3DS & OBJ to JSON files, and have their respective materials applied with one simple line of code.
+As most people probably want to import their own models & 3D-meshes to their Framer Prototype, Framer Form will have solid support for a wide array of different file formats. Import anything from FBX, DAE & OBJ to JSON files, and have their respective materials applied with one simple line of code.
 
 #### Currently Supported File Formats
 - OBJ / MTL
@@ -20,10 +14,6 @@ As most people probably want to import their own models & 3D-meshes to their Fra
 - GLTF / GLB
 - DAE
 - JSON
-
-#### File Formats to be added
-- 3DS
-- SEA3D
 
 ### What does the syntax look like?
 
@@ -58,6 +48,12 @@ new Model
 ### Where can I download the module and import it to my Framer Project?
 
 This module is still under development and is not yet considered functional. An Alpha-release is expected to be released in Spring 2018. Hopefully in April.
+
+### Demo
+![alt text](https://raw.githubusercontent.com/emilwidlund/framer-form/master/marketing/flamingo.png)
+
+#### Interactive Framer Demo Prototype
+https://framer.cloud/RzLsF
 
 ### Built with
 
