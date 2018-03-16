@@ -28,12 +28,3 @@ new Model
 
 		scene.on Events.Pan, (e) ->
 			model.rotationY += e.deltaX * .3
-
-		model.states.test = 
-			rotationY: 50
-			options:
-				delay: 2
-				time: 1.5
-				curve: 'easeInOutQuart'
-			
-		model.animate 'test'

@@ -8,6 +8,9 @@ acceptedModelProperties = [
     'rotationY'
     'rotationZ'
     'scale'
+    'scaleX'
+    'scaleY'
+    'scaleZ'
     'options'
 ]
 
