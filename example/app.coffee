@@ -27,14 +27,7 @@ new Model
 	onLoad: (model) ->
 
 		model.animate
-			rotationY: 200
+			rotationY: 40
 			options:
-				time: 1
-				curve: 'easeInOutQuart'
-			
-		model.animate
-			rotationY: -45
-			options:
-				time: 2
-				delay: 5
+				time: 1.5
 				curve: 'easeInOutQuart'
