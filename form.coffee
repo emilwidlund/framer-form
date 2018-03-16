@@ -4,12 +4,14 @@ window.THREE = require './src/lib/three.min.js'
 {Studio} = require './src/Studio.coffee'
 {Model} = require './src/Model.coffee'
 {Mesh} = require './src/Mesh.coffee'
+{Light} = require './src/Light.coffee'
 
 module.exports =
     Scene: Scene
     Studio: Studio
     Model: Model
     Mesh: Mesh
+    Light: Light
 
     # MATERIALS
 

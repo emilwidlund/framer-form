@@ -12,7 +12,7 @@ class exports.Camera extends BaseClass
         _.defaults properties,
             x: 0
             y: 0
-            z: 100
+            z: 500
             rotationX: 0
             rotationY: 0
             rotationZ: 0

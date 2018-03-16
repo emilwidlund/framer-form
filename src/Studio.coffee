@@ -8,7 +8,6 @@ class exports.Studio extends Scene
         @scene.fog = new THREE.Fog 0x9181a0, 400, 1000
 
         @camera.y = 220
-        @camera.z = 500
         @camera.rotationX = -15
         
         @hlight = new THREE.HemisphereLight 0xffffff, 0x444444

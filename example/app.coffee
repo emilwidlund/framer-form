@@ -5,24 +5,29 @@
 	Mesh
 	MeshPhongMaterial
 	MeshNormalMaterial
+	Light
 } = require '../form.coffee'
 
-scene = new Studio
+scene = new Scene
 	width: Screen.width
 	height: Screen.height
+
+l = new Light
+	parent: scene
+	type: 'point'
+	y: 300
 
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
 	scale: 1
-	y: 80
 	rotationY: -40
 	material: new MeshPhongMaterial
 		color: 0xffffff
 		specular: 0xffffff
 		shininess: 20
-		morphTargets: true
 		vertexColors: THREE.FaceColors
+		morphTargets: true
 		flatShading: true
 	onLoad: (model) ->
 

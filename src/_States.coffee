@@ -23,8 +23,6 @@ class exports.States extends BaseClass
         super()
 
         @model = model
-        @mesh = @model.mesh
-        @pivot = @model.pivot
 
         @initialModelProperties = Object.getOwnPropertyNames Object.getPrototypeOf @model.initialProperties
 

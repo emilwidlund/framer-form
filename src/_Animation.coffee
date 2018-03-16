@@ -7,7 +7,7 @@ class exports.Animation extends Framer.EventEmitter
         super()
         
         if !properties
-                throw new Error 'Please specify properties or a state to animate!'
+                throw Error 'Please specify properties or a state to animate!'
             
         # If properties is a string, then it is a State Name
         if _.isString properties
@@ -30,7 +30,7 @@ class exports.Animation extends Framer.EventEmitter
         Utils.delay @options.delay, =>
 
             @model = model
-            @mesh = model.mesh
+            @mesh = model.mesh || model.light
             @fps = 60
             @time = @options.time
             @renderedFrames = 0
