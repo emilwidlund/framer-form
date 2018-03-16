@@ -26,7 +26,7 @@ FORM = require 'form'
 
 ### Quick Start
 
-Let's import a simple FBX-model and make it listen to touch-inputs
+Let's import a simple FBX-model and make it rotate when we touch the screen.
 
 ```
 {
