@@ -32,7 +32,8 @@ new Model
 		model.states.test = 
 			rotationY: 50
 			options:
-				time: 2
+				delay: 2
+				time: 1.5
 				curve: 'easeInOutQuart'
 			
 		model.animate 'test'
