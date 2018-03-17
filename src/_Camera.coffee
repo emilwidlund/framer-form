@@ -19,6 +19,12 @@ class exports.Camera extends BaseClass
             fov: 35
             near: 0.1
             far: 10000
+            enablePan: false
+            enableZoom: false
+            enableRotate: false
+            autoRotate: false
+            autoRotateSpeed: 10
+            target: new THREE.Vector3 0, 0, 0
 
         @nativeCamera = new THREE.PerspectiveCamera(
             properties.fov, 
@@ -28,17 +34,19 @@ class exports.Camera extends BaseClass
         )
 
         if properties.orbitControls
-            @setupOrbitControls()
+            @setupOrbitControls properties
 
         @setPosition [properties.x, properties.y, properties.z]
         @setRotation [properties.rotationX, properties.rotationY, properties.rotationZ]
     
     setupOrbitControls: (properties) ->
         @controls = new THREE.OrbitControls @nativeCamera, @sceneDOM
-        @controls.enablePan = false
-        @controls.enableZoom = false
-        @controls.enableRotate = false
-        @controls.autoRotateSpeed = 10
+        @controls.enablePan = properties.enablePan
+        @controls.enableZoom = properties.enableZoom
+        @controls.enableRotate = properties.enableRotate
+        @controls.autoRotate = properties.autoRotate
+        @controls.autoRotateSpeed = properties.autoRotateSpeed
+        @controls.target = properties.target
 
     setPosition: (positions) ->
         @x = positions[0]

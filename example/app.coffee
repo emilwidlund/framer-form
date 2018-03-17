@@ -11,6 +11,10 @@
 scene = new Scene
 	width: Screen.width
 	height: Screen.height
+	camera:
+		orbitControls: true
+		autoRotate: true
+		enableRotate: true
 
 l = new Light
 	parent: scene
@@ -32,5 +36,7 @@ new Model
 		flatShading: true
 	onLoad: (model) ->
 
+		###
 		scene.on Events.Pan, (e) ->
 			model.rotationY += e.deltaX * .3
+		###
