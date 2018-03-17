@@ -51,5 +51,6 @@ Internally it is a <a href="https://threejs.org/docs/#api/cameras/PerspectiveCam
 - `enablePan` - Bool - Enables Camera Touch Panning. Default is `false`
 - `enableZoom` - Bool - Enables Camera Touch Zooming. Default is `false`
 - `enableRotate` - Bool - Enables Camera Touch Rotating. Default is `false`
+- `autoRotate` - Bool - Enables Auto Orbiting around the target position. Default is `false`
 - `autoRotateSpeed` - Number - Specifies the auto rotation speed while orbiting. Default is 10
-- `target` - Position - Specifies a position for the camera to orbit around. If you want to orbit around a model, make sure to specify `model.position`. Default is `null`
+- `target` - Position - Specifies a position for the camera to orbit around. If you want to orbit around a model, make sure to specify `model.position`. Default is `new THREE.Vector3(0, 0, 0)`
