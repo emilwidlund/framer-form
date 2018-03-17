@@ -8,11 +8,19 @@ new Scene
   height: Screen.height
 ```
 
-The scene layer supports all of the <a href="https://framer.com/docs/#layer.layer">default Framer Layer-properties</a>.
-
 ### Properties
+The scene layer supports all of the <a href="https://framer.com/docs/#layer.layer">default Framer Layer-properties</a>.
 - `camera` - <a href="#camera">Camera</a> - The camera used within the scene
 - `animationLoop` - Function - Give this property a function and it will be executed each frame.
+
+_If you want to render your 3D-assets on a transparent scene, all you have to do is specify `background: 'transparent'`_
+
+```
+new Scene
+  width: Screen.width
+  height: Screen.height
+  background: 'transparent'
+```
 
 #### Example: Updating using the Animation Loop
 If you want to continuously update the rotationY or any other property on your model, you can use the animationLoop.
