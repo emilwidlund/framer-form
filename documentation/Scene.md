@@ -11,7 +11,7 @@ new Scene
 The scene layer supports all of the <a href="https://framer.com/docs/#layer.layer">default Framer Layer-properties</a>.
 
 ### Properties
-- `camera` - Camera - The camera used within the scene
+- `camera` - <a href="#camera">Camera</a> - The camera used within the scene
 - `animationLoop` - Function - Give this property a function and it will be executed each frame.
 
 #### Example: Updating using the Animation Loop
