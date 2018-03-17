@@ -32,7 +32,7 @@ new Model
 
 ## Camera
 The camera captures the scene and feeds data in to the renderer.
-Internally it is a PerspectiveCamera with 35 in Field of View.
+Internally it is a <a href="https://threejs.org/docs/#api/cameras/PerspectiveCamera">PerspectiveCamera</a> with 35 in Field of View.
 
 ### Properties
 - `x` - Number - Specifies the camera x position. Default is 0.
