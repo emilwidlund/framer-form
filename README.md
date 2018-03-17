@@ -50,10 +50,9 @@ new Model
 This module is still under development and is not yet considered functional. An Alpha-release is expected to be released in Spring 2018. Hopefully in April.
 
 ### Demo
+<a href="https://framer.cloud/RzLsF">
 ![alt text](https://raw.githubusercontent.com/emilwidlund/framer-form/master/marketing/flamingo.png)
-
-#### Interactive Framer Demo Prototype
-https://framer.cloud/RzLsF
+</a>
 
 ### Built with
 
