@@ -1,9 +1,7 @@
 class exports.JSON
     constructor: (properties, cb) ->
-        @modelLoader = new THREE.JSONLoader
-        @modelLoader.load properties.path, (geometry, materials) =>
-            material = materials[0]
-            model = new THREE.Mesh geometry, material
-            model.animations = geometry.animations
+
+        @modelLoader = new THREE.ObjectLoader
+        @modelLoader.load properties.path, (model) =>
             cb model
-        , null, (e) -> console.log e
+        , null, (e) console.log e

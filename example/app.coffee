@@ -8,7 +8,7 @@
 	Light
 } = require '../form.coffee'
 
-scene = new Scene
+scene = new Studio
 	width: Screen.width
 	height: Screen.height
 	camera:
@@ -16,24 +16,13 @@ scene = new Scene
 		autoRotate: true
 		enableRotate: true
 
-l = new Light
-	parent: scene
-	type: 'point'
-	y: 300
-
 
 new Model
-	path: './models/flamingo/flamingo.json'
+	path: './models/train/train.fbx'
 	parent: scene
-	scale: 1
+	scale: 20
+	reposition: false
 	rotationY: -40
-	material: new MeshPhongMaterial
-		color: 0xffffff
-		specular: 0xffffff
-		shininess: 20
-		vertexColors: THREE.FaceColors
-		morphTargets: true
-		flatShading: true
 	onLoad: (model) ->
 
 		###
