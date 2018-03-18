@@ -12,7 +12,7 @@ _ = Framer._
 {FBX} = require './loaders/FBX.coffee'
 {GLTF} = require './loaders/GLTF.coffee'
 {Collada} = require './loaders/Collada.coffee'
-{JSON} = require './loaders/JSON.coffee'
+{JSONObject} = require './loaders/JSONObject.coffee'
 
 class exports.Model extends BaseClass
     constructor: (properties={}) ->
@@ -42,7 +42,7 @@ class exports.Model extends BaseClass
                     @mesh = model
                     @setupModel properties
             when 'json'
-                new JSON properties, (model) =>
+                new JSONObject properties, (model) =>
                     @mesh = model
                     @setupModel properties
 

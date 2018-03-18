@@ -18,12 +18,21 @@ scene = new Studio
 
 
 new Model
-	path: './models/train/train.fbx'
+	path: './models/flamingo/flamingo.json'
 	parent: scene
-	scale: 20
-	reposition: false
+	scale: 1
+	y: 80
 	rotationY: -40
+	material: new MeshPhongMaterial
+		color: 0xffffff
+		specular: 0xffffff
+		shininess: 20
+		vertexColors: THREE.FaceColors
+		morphTargets: true
+		flatShading: true
 	onLoad: (model) ->
+
+		scene.camera.controls.target = model.position
 
 		###
 		scene.on Events.Pan, (e) ->
