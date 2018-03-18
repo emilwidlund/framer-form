@@ -11,7 +11,6 @@ class exports.JSONObject
     loadObject: (properties, cb) ->
         @modelLoader = new THREE.ObjectLoader
         @modelLoader.load properties.path, (model) =>
-            console.log model
             cb model
         , null, (e) -> console.log e
     
