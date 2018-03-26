@@ -1,14 +1,19 @@
+_ = Framer._
+
 {Scene} = require './Scene.coffee'
 
 class exports.Studio extends Scene
     constructor: (properties={}) ->
+
+        _.defaults properties,
+            camera:
+                y: 220
+                rotationX: -15
+
         super properties
 
         @scene.background = new THREE.Color 0x9181a0
         @scene.fog = new THREE.Fog 0x9181a0, 400, 1000
-
-        @camera.y = 220
-        @camera.rotationX = -15
         
         @hlight = new THREE.HemisphereLight 0xffffff, 0x444444
         @hlight.position.y = 200

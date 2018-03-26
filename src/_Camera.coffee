@@ -2,6 +2,8 @@ _ = Framer._
 
 require './lib/OrbitControls'
 {BaseClass} = require './_BaseClass.coffee'
+{Animation} = require './_Animation.coffee'
+{States} = require './_States.coffee'
 
 class exports.Camera extends BaseClass
     constructor: (properties={}, sceneDOM) ->
@@ -38,6 +40,10 @@ class exports.Camera extends BaseClass
 
         @setPosition [properties.x, properties.y, properties.z]
         @setRotation [properties.rotationX, properties.rotationY, properties.rotationZ]
+
+        @saveInitialProperties()
+
+        @_states = new States @
     
     setupOrbitControls: (properties) ->
         @controls = new THREE.OrbitControls @nativeCamera, @sceneDOM
@@ -48,6 +54,9 @@ class exports.Camera extends BaseClass
         @controls.autoRotateSpeed = properties.autoRotateSpeed
         @controls.target = properties.target
 
+    saveInitialProperties: () ->
+        @initialProperties = @
+
     setPosition: (positions) ->
         @x = positions[0]
         @y = positions[1]
@@ -57,6 +66,28 @@ class exports.Camera extends BaseClass
         @rotationX = rotations[0]
         @rotationY = rotations[1]
         @rotationZ = rotations[2]
+    
+    animate: (properties) ->
+        new Animation @, properties
+    
+    stateSwitch: (state) ->
+        # Loop through states on model to find the specified one
+        Object.keys(@states).map (k) => 
+            if k == state
+                @states.current = @states[k]
+
+                # Loop through property keys on the state and apply the values to model
+                Object.keys(@states.current).map (pk)  =>
+                    @[pk] = @states.current[pk]
+    
+    stateCycle: (stateA, stateB) ->
+        # Check if stateA or stateB already is the current state on model
+        if @states.current == @states[stateA] || @states.current == @states[stateB]
+            if @states.current == @states[stateA] then @animate stateB
+            else if @states.current == @states[stateB] then @animate stateA
+        else
+            # If neither are current, animate to stateA
+            @animate stateA
 
     @define 'position',
         get: -> @nativeCamera.position
@@ -119,3 +150,9 @@ class exports.Camera extends BaseClass
     @define 'aspect',
         get: -> @nativeCamera.aspect
         set: (aspect) -> @nativeCamera.aspect = aspect
+    
+    @define 'states',
+        get: ->
+            @_states.states
+        set: (states) ->
+            _.extend @states, states

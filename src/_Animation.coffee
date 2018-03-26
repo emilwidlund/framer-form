@@ -30,7 +30,7 @@ class exports.Animation extends Framer.EventEmitter
         Utils.delay @options.delay, =>
 
             @model = model
-            @mesh = model.mesh || model.light
+            @mesh = model.mesh || model.light || model.nativeCamera
             @fps = 60
             @time = @options.time
             @renderedFrames = 0

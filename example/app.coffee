@@ -11,10 +11,6 @@
 scene = new Studio
 	width: Screen.width
 	height: Screen.height
-	camera:
-		orbitControls: true
-		autoRotate: true
-		enableRotate: true
 
 
 new Model
@@ -32,7 +28,11 @@ new Model
 		flatShading: true
 	onLoad: (model) ->
 
-		scene.camera.controls.target = model.position
+		scene.camera.animate 
+			rotationY: 360
+			options:
+				time: 3
+				curve: 'easeInOutQuart'
 
 		###
 		scene.on Events.Pan, (e) ->
