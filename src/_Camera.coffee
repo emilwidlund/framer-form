@@ -57,6 +57,15 @@ class exports.Camera extends BaseClass
     saveInitialProperties: () ->
         @initialProperties = @
 
+    on: (eventName, cb) ->
+
+        if eventName.includes 'change'
+            callback = (e) -> cb(e.value)
+            @nativeCamera.addEventListener eventName, callback
+
+            Framer.CurrentContext.on 'reset', =>
+                @nativeCamera.removeEventListener eventName, callback
+
     setPosition: (positions) ->
         @x = positions[0]
         @y = positions[1]
@@ -97,18 +106,21 @@ class exports.Camera extends BaseClass
         set: (x) -> 
             @nativeCamera.position.x = x
             @controls.update() if @controls
+            @nativeCamera.dispatchEvent {type: 'change:x', value: @x}
     
     @define 'y',
         get: -> @nativeCamera.position.y
         set: (y) -> 
             @nativeCamera.position.y = y
             @controls.update() if @controls
+            @nativeCamera.dispatchEvent {type: 'change:y', value: @y}
     
     @define 'z',
         get: -> @nativeCamera.position.z
         set: (z) -> 
             @nativeCamera.position.z = z
             @controls.update() if @controls
+            @nativeCamera.dispatchEvent {type: 'change:z', value: @z}
 
     @define 'rotation',
         get: -> @nativeCamera.rotation
@@ -118,38 +130,51 @@ class exports.Camera extends BaseClass
         set: (x) -> 
             @nativeCamera.rotation.x = THREE.Math.degToRad x
             @controls.update() if @controls
+            @nativeCamera.dispatchEvent {type: 'change:rotationX', value: @rotationX}
     
     @define 'rotationY',
         get: -> THREE.Math.radToDeg @nativeCamera.rotation.y
         set: (y) -> 
             @nativeCamera.rotation.y = THREE.Math.degToRad y
             @controls.update() if @controls
+            @nativeCamera.dispatchEvent {type: 'change:rotationY', value: @rotationY}
     
     @define 'rotationZ',
         get: -> THREE.Math.radToDeg @nativeCamera.rotation.z
         set: (z) -> 
             @nativeCamera.rotation.z = THREE.Math.degToRad z
             @controls.update() if @controls
+            @nativeCamera.dispatchEvent {type: 'change:rotationZ', value: @rotationZ}
     
     @define 'fov',
         get: -> @nativeCamera.fov
-        set: (fov) -> @nativeCamera.fov = fov
+        set: (fov) -> 
+            @nativeCamera.fov = fov
+            @nativeCamera.dispatchEvent {type: 'change:fov', value: @fov}
     
     @define 'zoom',
         get: -> @nativeCamera.zoom
-        set: (factor) -> @nativeCamera.zoom = factor
+        set: (factor) -> 
+            @nativeCamera.zoom = factor
+            @nativeCamera.dispatchEvent {type: 'change:zoom', value: @zoom}
     
     @define 'near',
         get: -> @nativeCamera.near
-        set: (near) -> @nativeCamera.near = near
+        set: (near) -> 
+            @nativeCamera.near = near
+            @nativeCamera.dispatchEvent {type: 'change:near', value: @near}
     
     @define 'far',
         get: -> @nativeCamera.far
-        set: (far) -> @nativeCamera.far = far
+        set: (far) -> 
+            @nativeCamera.far = far
+            @nativeCamera.dispatchEvent {type: 'change:far', value: @far}
     
     @define 'aspect',
         get: -> @nativeCamera.aspect
-        set: (aspect) -> @nativeCamera.aspect = aspect
+        set: (aspect) -> 
+            @nativeCamera.aspect = aspect
+            @nativeCamera.dispatchEvent {type: 'change:aspect', value: @aspect}
     
     @define 'states',
         get: ->
@@ -159,24 +184,36 @@ class exports.Camera extends BaseClass
 
     @define 'enablePan',
         get: -> @controls.enablePan
-        set: (bool) -> @controls.enablePan = bool
+        set: (bool) ->
+            @controls.enablePan = bool
+            @nativeCamera.dispatchEvent {type: 'change:enablePan', value: @enablePan}
     
     @define 'enableZoom',
         get: -> @controls.enableZoom
-        set: (bool) -> @controls.enableZoom = bool
+        set: (bool) -> 
+            @controls.enableZoom = bool
+            @nativeCamera.dispatchEvent {type: 'change:enableZoom', value: @enableZoom}
     
     @define 'enableRotate',
         get: -> @controls.enableRotate
-        set: (bool) -> @controls.enableRotate = bool
+        set: (bool) -> 
+            @controls.enableRotate = bool
+            @nativeCamera.dispatchEvent {type: 'change:enableRotate', value: @enableRotate}
     
     @define 'autoRotate',
         get: -> @controls.autoRotate
-        set: (bool) -> @controls.autoRotate = bool
+        set: (bool) -> 
+            @controls.autoRotate = bool
+            @nativeCamera.dispatchEvent {type: 'change:autoRotate', value: @autoRotate}
     
     @define 'autoRotateSpeed',
         get: -> @controls.autoRotateSpeed
-        set: (speed) -> @controls.autoRotateSpeed = speed
+        set: (speed) -> 
+            @controls.autoRotateSpeed = speed
+            @nativeCamera.dispatchEvent {type: 'change:autoRotateSpeed', value: @autoRotateSpeed}
     
     @define 'target',
         get: -> @controls.target
-        set: (vector3) -> @controls.target = vector3
+        set: (vector3) -> 
+            @controls.target = vector3
+            @nativeCamera.dispatchEvent {type: 'change:target', value: @target}

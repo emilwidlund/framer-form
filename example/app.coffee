@@ -14,7 +14,6 @@ scene = new Scene
 	camera:
 		orbitControls: true
 		autoRotate: true
-		autoRotateSpeed: 5
 
 
 new Model
@@ -30,8 +29,6 @@ new Model
 		morphTargets: true
 		flatShading: true
 	onLoad: (model) ->
-
-		scene.camera.target = model.position
 
 		###
 		scene.on Events.Pan, (e) ->
