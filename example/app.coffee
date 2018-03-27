@@ -8,18 +8,21 @@
 	Light
 } = require '../form.coffee'
 
-scene = new Studio
+scene = new Scene
 	width: Screen.width
 	height: Screen.height
+	camera:
+		orbitControls: true
+		autoRotate: true
+		autoRotateSpeed: 5
 
 
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
 	scale: 1
-	y: 80
 	rotationY: -40
-	material: new MeshPhongMaterial
+	material: new MeshNormalMaterial
 		color: 0xffffff
 		specular: 0xffffff
 		shininess: 20
@@ -28,11 +31,7 @@ new Model
 		flatShading: true
 	onLoad: (model) ->
 
-		scene.camera.animate 
-			rotationY: 360
-			options:
-				time: 3
-				curve: 'easeInOutQuart'
+		scene.camera.target = model.position
 
 		###
 		scene.on Events.Pan, (e) ->

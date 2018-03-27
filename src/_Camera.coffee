@@ -47,12 +47,12 @@ class exports.Camera extends BaseClass
     
     setupOrbitControls: (properties) ->
         @controls = new THREE.OrbitControls @nativeCamera, @sceneDOM
-        @controls.enablePan = properties.enablePan
-        @controls.enableZoom = properties.enableZoom
-        @controls.enableRotate = properties.enableRotate
-        @controls.autoRotate = properties.autoRotate
-        @controls.autoRotateSpeed = properties.autoRotateSpeed
-        @controls.target = properties.target
+        @enablePan = properties.enablePan
+        @enableZoom = properties.enableZoom
+        @enableRotate = properties.enableRotate
+        @autoRotate = properties.autoRotate
+        @autoRotateSpeed = properties.autoRotateSpeed
+        @target = properties.target
 
     saveInitialProperties: () ->
         @initialProperties = @
@@ -156,3 +156,27 @@ class exports.Camera extends BaseClass
             @_states.states
         set: (states) ->
             _.extend @states, states
+
+    @define 'enablePan',
+        get: -> @controls.enablePan
+        set: (bool) -> @controls.enablePan = bool
+    
+    @define 'enableZoom',
+        get: -> @controls.enableZoom
+        set: (bool) -> @controls.enableZoom = bool
+    
+    @define 'enableRotate',
+        get: -> @controls.enableRotate
+        set: (bool) -> @controls.enableRotate = bool
+    
+    @define 'autoRotate',
+        get: -> @controls.autoRotate
+        set: (bool) -> @controls.autoRotate = bool
+    
+    @define 'autoRotateSpeed',
+        get: -> @controls.autoRotateSpeed
+        set: (speed) -> @controls.autoRotateSpeed = speed
+    
+    @define 'target',
+        get: -> @controls.target
+        set: (vector3) -> @controls.target = vector3
