@@ -22,6 +22,7 @@ class exports.Studio extends Scene
         @light = new THREE.PointLight 0xffffff, .1
         @light.position.set 0, 400, 0
         @light.castShadow = true
+        @light.shadow.camera.near = 100
         @light.shadow.camera.far = 1000
         @light.shadow.bias = .0001
         @light.shadow.radius = 5
