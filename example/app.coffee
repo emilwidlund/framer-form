@@ -22,12 +22,15 @@ new Model
 	scale: 1
 	rotationY: -40
 	material: new MeshNormalMaterial
-		color: 0xffffff
-		specular: 0xffffff
-		shininess: 20
-		vertexColors: THREE.FaceColors
 		morphTargets: true
 		flatShading: true
+	#material: new MeshPhongMaterial
+		#color: 0xffffff
+		#specular: 0xffffff
+		#shininess: 20
+		#vertexColors: THREE.FaceColors
+		#morphTargets: true
+		#flatShading: true
 	onLoad: (model) ->
 
 		###
