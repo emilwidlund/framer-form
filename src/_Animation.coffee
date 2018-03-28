@@ -5,6 +5,9 @@ _ = Framer._
 class exports.Animation extends Framer.EventEmitter
     constructor: (model, properties={}) ->
         super()
+
+        window.gtag 'event', 'New',
+            'event_category': 'Animation'
         
         if !properties
                 throw Error 'Please specify properties or a state to animate!'

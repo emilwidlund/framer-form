@@ -12,6 +12,9 @@ class exports.Mesh extends THREE.Mesh
     constructor: (properties={}) ->
         super properties.geometry, properties.material
 
+        window.gtag 'event', 'New',
+            'event_category': 'Mesh'
+
         _.defaults properties,
             castShadow: true
             receiveShadow: true

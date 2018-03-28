@@ -18,6 +18,10 @@ class exports.Model extends BaseClass
     constructor: (properties={}) ->
         super()
 
+        window.gtag 'event', 'New',
+            'event_category': 'Model',
+            'value': properties.path
+
         _.defaults properties,
             animate: true
             castShadow: true

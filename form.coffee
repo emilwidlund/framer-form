@@ -1,4 +1,5 @@
 window.THREE = require './src/lib/three.min.js'
+require './src/GA.coffee'
 
 {Scene} = require './src/Scene.coffee'
 {Studio} = require './src/Studio.coffee'

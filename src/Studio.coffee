@@ -12,6 +12,9 @@ class exports.Studio extends Scene
 
         super properties
 
+        window.gtag 'event', 'New',
+            'event_category': 'Studio'
+
         @scene.background = new THREE.Color 0x9181a0
         @scene.fog = new THREE.Fog 0x9181a0, 400, 1000
         
