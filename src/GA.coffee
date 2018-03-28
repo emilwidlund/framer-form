@@ -10,7 +10,8 @@ window.gtag = () ->
 window.gtag 'js', new Date()
 window.gtag 'config', 'UA-75056533-3'
 
-if window.location.href.includes 'cloud.framer'
+if window.location.href.includes 'framer.cloud'
+    console.log 's'
     window.gtag 'event', 'Cloud',
         'event_category': 'Visitors'
 else
