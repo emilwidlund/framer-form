@@ -11,15 +11,11 @@
 scene = new Scene
 	width: Screen.width
 	height: Screen.height
-	camera:
-		orbitControls: true
-		autoRotate: true
 
 
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
-	scale: 1
 	rotationY: -40
 	material: new MeshNormalMaterial
 		morphTargets: true

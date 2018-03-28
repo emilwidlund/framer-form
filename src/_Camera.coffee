@@ -79,6 +79,12 @@ class exports.Camera extends BaseClass
     animate: (properties) ->
         new Animation @, properties
     
+    lookAt: (a, b, c) ->
+        if arguments.length == 1
+            @nativeCamera.lookAt a
+        else if arguments.length == 3
+            @nativeCamera.lookAt a, b, c
+    
     stateSwitch: (state) ->
         # Loop through states on model to find the specified one
         Object.keys(@states).map (k) => 

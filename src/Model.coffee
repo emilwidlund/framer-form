@@ -185,6 +185,12 @@ class exports.Model extends BaseClass
     animate: (properties) ->
         new Animation @, properties
     
+    lookAt: (a, b, c) ->
+        if arguments.length == 1
+            @pivot.lookAt a
+        else if arguments.length == 3
+            @pivot.lookAt a, b, c
+    
     stateSwitch: (state) ->
         # Loop through states on model to find the specified one
         Object.keys(@states).map (k) => 
