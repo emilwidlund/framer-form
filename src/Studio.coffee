@@ -20,7 +20,7 @@ class exports.Studio extends Scene
         @scene.add @hlight
 
         @light = new THREE.PointLight 0xffffff, .1
-        @light.position.set 0, 400, 0
+        @light.position.set 0, 800, 0
         @light.castShadow = true
         @light.shadow.camera.near = 100
         @light.shadow.camera.far = 1000
