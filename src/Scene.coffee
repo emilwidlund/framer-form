@@ -15,7 +15,7 @@ class exports.Scene extends Layer
 
         @_element.appendChild @renderer.domElement
         @renderer.setSize @width, @height
-        @renderer.setPixelRatio Framer.CurrentContext.devicePixelRatio
+        @renderer.setPixelRatio window.devicePixelRatio
         @renderer.domElement.style.width = '100%'
         @renderer.domElement.style.height = '100%'
         @renderer.shadowMap.enabled = true
@@ -111,6 +111,7 @@ class exports.Scene extends Layer
             @intersected.object.dispatchEvent {type: 'onmouseover'}
             @intersectedEventEmitted = true
     
-    onWindowResize: () =>
+    onWindowResize: (e) =>
         @camera.aspect = @width / @height
         @camera.nativeCamera.updateProjectionMatrix()
+        @renderer.setSize @width, @height
