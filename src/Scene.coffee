@@ -6,9 +6,6 @@ class exports.Scene extends Layer
     constructor: (properties={}) ->
         super _.defaults properties,
             backgroundColor: '#000'
-        
-        window.gtag 'event', 'New',
-            'event_category': 'Scene'
 
         # RENDERER
         

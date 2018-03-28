@@ -8,9 +8,6 @@ class exports.Light extends BaseClass
     constructor: (properties) ->
         super()
 
-        window.gtag 'event', 'New',
-            'event_category': 'Light'
-
         if !properties.type
             throw Error 'Please specify a light type!'
         

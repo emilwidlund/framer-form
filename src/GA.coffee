@@ -9,3 +9,10 @@ window.gtag = () ->
     dataLayer.push arguments
 window.gtag 'js', new Date()
 window.gtag 'config', 'UA-75056533-3'
+
+if window.location.href.includes 'cloud.framer'
+    window.gtag 'event', 'Cloud',
+        'event_category': 'Visitors'
+else
+    window.gtag 'event', 'Non-Cloud',
+        'event_category': 'Visitors'
