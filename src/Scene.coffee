@@ -12,10 +12,10 @@ class exports.Scene extends Layer
         @renderer = new THREE.WebGLRenderer
             antialias: true
             alpha: true
-        
+
         @_element.appendChild @renderer.domElement
         @renderer.setSize @width, @height
-        @renderer.setPixelRatio window.devicePixelRatio
+        @renderer.setPixelRatio Framer.CurrentContext.devicePixelRatio
         @renderer.domElement.style.width = '100%'
         @renderer.domElement.style.height = '100%'
         @renderer.shadowMap.enabled = true
@@ -30,14 +30,13 @@ class exports.Scene extends Layer
         # CAMERA
 
         cameraProps = _.defaults properties.camera,
-            aspect: properties.width / properties.height
+            aspect: @width / @height
 
         @camera = new Camera cameraProps, @._element
 
 
         # RESIZING
 
-        @onWindowResize()
         Canvas.onResize @onWindowResize
 
 
@@ -113,9 +112,5 @@ class exports.Scene extends Layer
             @intersectedEventEmitted = true
     
     onWindowResize: () =>
-        @width = Screen.width
-        @height = Screen.height
         @camera.aspect = @width / @height
         @camera.nativeCamera.updateProjectionMatrix()
-
-        @renderer.setSize @width, @height
