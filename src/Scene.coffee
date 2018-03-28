@@ -37,6 +37,7 @@ class exports.Scene extends Layer
 
         # RESIZING
 
+        @onWindowResize()
         Canvas.onResize @onWindowResize
 
 
