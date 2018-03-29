@@ -42,7 +42,7 @@ scene = new Studio
   height: Screen.height
 
 new Model
-  path: './models/bike.fbx'
+  path: 'models/bike.fbx'
   parent: scene
   scale: 1
   y: 80
