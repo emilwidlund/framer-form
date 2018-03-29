@@ -36,7 +36,6 @@ new Light
 - `visible` - Bool - Specifies if the light should render or not. Default is `true`
 - `states` - Object - The light states.
 - `light` - Light - Returns the native THREE.Light
-- `target` - Object - A target to cast light towards. Similar to Model's lookAt-method. Default is `null`
 
 #### Type-specific Properties
 
@@ -62,14 +61,14 @@ new Light
   - Rectangle Area Light
 - `height` - Number - Specifies the surface-height of the light. Default is 10.
   - Rectangle Area Light
+- `target` - Object - A target to cast light towards. This should be a model or similar. Default is `new Vector(0, 0, 0)`
+  - Spotlight
 
 TODO: Add documention to more properties
 
 ### Methods
 
 #### .lookAt(Vector3) .lookAt(x, y, z)
-_DEPRECATED - Use the target-property instead_
-
 Rotates the light to face the point in world space. Use this within the animationLoop to always face the position regardless of animations or similar.
 
 #### .animate(Object) .animate(String)
