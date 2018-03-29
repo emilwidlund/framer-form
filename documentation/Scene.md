@@ -32,6 +32,7 @@ scene = new Scene
 
 new Model
   path: 'models/bike.fbx'
+  parent: scene
   onLoad: (model) ->
     
     scene.animationLoop = () ->
