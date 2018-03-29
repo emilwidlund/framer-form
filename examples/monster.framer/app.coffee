@@ -2,7 +2,6 @@
 
 scene = new Studio
 	size: Screen.size
-	backgroundColor: 'transparent'
 
 new Model
 	path: 'models/monster.fbx'
