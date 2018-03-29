@@ -44,7 +44,7 @@ Rotates the model to face the point in world space. Use this within the animatio
 Animates the model with the specified properties. Works like the usual Framer Animation API.
 If the argument is a string instead of an object, Framer Form expects it to be a State-name. Exactly as the regular Framer Animation-API.
 
-`options`:
+`options` - Object - If argument is an object, you may specify an options-object with following properties:
 - `time` - Number - Animation length in seconds
 - `delay` - Number - Animation delay in seconds
 - `curve` - String - Animation Easing. This does only support the following strings:
