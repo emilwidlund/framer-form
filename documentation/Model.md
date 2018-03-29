@@ -11,12 +11,12 @@ new Model
 ```
 
 ### Properties
-- `position` - Number - Get the model position. Returns a `Vector3`
 - `x` - Number - Specifies the model x position. Default is 0.
 - `y` - Number - Specifies the model y position. Default is 0.
 - `z` - Number - Specifies the model z position. Default is 0.
+- `position` - Vector3 - Get the model position.
 - `reposition` - Bool - Specifies if Form should center your model in world space. This makes sure that your model is in the center of the scene. Default is `true`
-- `rotation` - Number - Get the model rotation. Returns a `Vector3`
+- `rotation` - Vector3 - Get the model rotation.
 - `rotationX` - Number - Specifies the model rotationX position. Default is 0.
 - `rotationY` - Number - Specifies the model rotationY position. Default is 0.
 - `rotationZ` - Number - Specifies the model rotationZ position. Default is 0.
