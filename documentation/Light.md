@@ -67,8 +67,8 @@ TODO: Add documention to more properties
 
 ### Methods
 
-#### .lookAt(Vector3) .lookAt(x, y, z) (DEPRECATED)
-_Use the target-property instead_
+#### .lookAt(Vector3) .lookAt(x, y, z)
+_DEPRECATED - Use the target-property instead_
 
 Rotates the light to face the point in world space. Use this within the animationLoop to always face the position regardless of animations or similar.
 
