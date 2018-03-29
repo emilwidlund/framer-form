@@ -11,7 +11,8 @@ class exports.Light extends BaseClass
         if !properties.type
             throw Error 'Please specify a light type!'
         
-        @properties = _.defaults properties
+        @properties = _.defaults properties,
+            castShadow: true
 
         @setupLight()
 
