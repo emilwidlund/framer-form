@@ -19,31 +19,10 @@ As most people probably want to import their own models & 3D-meshes to their Fra
 
 Framer Form aims to deliver an easy and familiar syntax for all its components. Framer Form has 2 fundamental components that you will interact with.
 
-#### Scene
-A Scene is a component that controls the 3D-environment. It handles Rendering, Cameras, Animation Loops, Raycasting and a bunch of other important concepts. But it is very easy to setup. The class itself extends the famous Framer Layer, which means that you could in theory animate & listen for common Framer Events on the scene. You can even specify "transparent" on the background-property in order to let all its geometry and meshes render with transparent background.
-
-```
-scene = new Scene
-  width: Screen.width
-  height: Screen.height
-```
-
-#### Model
-A Model is a component that imports your 3D-model of choice. It applies associated materials, animation clips and other model-related concepts. As you can see below, the syntax is very familiar to other Framer classes. The code below imports an FBX-model with the name `bike.fbx`, applies the properties to the model and returns the model in the onLoad-callback. As soon as it is imported, we give the scene an animationLoop-function that will be called 60 times a second. In this specific function below, we tell the model to rotate around its Y-axis by .1 degrees each iteration.
-
-```
-new Model
-  path: './models/bike.fbx'
-  parent: scene
-  x: 50
-  y: 320
-  rotationX: 180
-  scale: 5
-  onLoad: (model) ->
-  
-    scene.animationLoop = () ->
-      model.rotationY += .1
-```
+### Documentation
+- [Getting Started](framer-form/documentation/GettingStarted.md)
+- [Scene](framer-form/documentation/Scene.md)
+- [Model](framer-form/documentation/Model.md)
 
 ### Where can I download the module and import it to my Framer Project?
 
