@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-    entry: './example/app.coffee',
+    entry: './debug/app.coffee',
     output: {
-        path: path.resolve(__dirname, 'example'),
+        path: path.resolve(__dirname, 'debug'),
         filename: 'app.js'
     },
     devServer: {
