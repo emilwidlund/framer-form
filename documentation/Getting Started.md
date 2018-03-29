@@ -1,6 +1,6 @@
 ### Installation
 
-Download this repository. Copy form.coffee and the src-folder to the modules-folder in your Framer Project.
+Download this repository. Copy form.coffee and the form-folder to the modules-folder in your Framer Project.
 
 _This will change for the Alpha-release. There will be a more convinent way to install this module._
 
@@ -35,7 +35,7 @@ Let's import a simple FBX-model and make it rotate when we touch the screen.
   Studio 
   Model 
   MeshPhongMaterial
-} = require '../form.coffee'
+} = require 'form'
 
 scene = new Studio
   width: Screen.width
