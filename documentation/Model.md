@@ -4,6 +4,13 @@ The model class does not extend the Framer Layer class, compared to the Scene cl
 
 _Important: If you're trying to import a model to a scene and you can't see anything being rendered, it's most likely because you have no lights in your scene. Add a light or apply `new MeshNormalMaterial` to the material-property to see your model. See example further down below. If that doesn't help, adjust the model scale-property as it might be too small or too big._
 
+#### Supported File-formats
+- OBJ / MTL
+- FBX
+- GLTF / GLB
+- JSON
+- DAE
+
 ```
 new Model
   path: 'models/bike.fbx'
