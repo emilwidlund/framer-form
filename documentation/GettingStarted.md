@@ -15,7 +15,6 @@ There are 2 ways to import submodules into your Framer Prototype.
 You can import the submodules individually like this:
 ```
 {
-  Studio
   Scene
   Light
   Model
@@ -34,7 +33,6 @@ Let's import a simple FBX-model and make it rotate when we touch the screen.
 
 ```
 {
-  Studio
   Scene
   Light
   Model
