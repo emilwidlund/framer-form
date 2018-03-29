@@ -36,21 +36,26 @@ Let's import a simple FBX-model and make it rotate when we touch the screen.
 
 ```
 {
-  Studio 
+  Studio
+  Scene
+  Light
   Model 
   MeshPhongMaterial
 } = require 'form'
 
-scene = new Studio
+scene = new Scene
   width: Screen.width
   height: Screen.height
 
-new Model
-  path: 'models/bike.fbx'
+light = new Light
   parent: scene
-  scale: 1
-  y: 80
-  rotationY: -40
+  type: 'point'
+  y: 400
+  z: 300
+
+new Model
+  path: 'models/monster.fbx'
+  parent: scene
   onLoad: (model) ->
 
     scene.on Events.Pan, (e) ->
@@ -59,10 +64,9 @@ new Model
 
 ##### So what is happening here?
 - First we import our submodules that we will use.
-- Then we define our scene. We use the "Studio"-scene that has a pretty backdrop and some lights preloaded in the scene
-- We create a Model and reference the path to our bike. Make sure that you have the model located in the models-folder.
+- Then we define our scene.
+- We add a Pointlight to our scene
+- We create a Model and reference the path to our model. Make sure that you have the model located in the models-folder.
   - We add this model to the scene using the parent property
-  - We set the scale to 1 (other models may be scaled differently so you will often have to play around with this value)
-  - We set the vertical position to 80 and the Y-rotation to -40
   - We then receive the model in the onLoad-callback, where the model is the argument
 - When the model is loaded, we listen on Pan-events on the scene and take the delta-value to control the rotation on the model
