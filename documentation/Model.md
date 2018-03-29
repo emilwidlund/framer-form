@@ -37,8 +37,7 @@ new Model
 
 ### Methods
 
-#### .lookAt(Vector3)
-#### .lookAt(x, y, z)
+#### .lookAt(Vector3) .lookAt(x, y, z)
 Rotates the model to face the point in world space. Use this within the animationLoop to always face the position regardless of animations or similar.
 
 #### .animate(Object)
