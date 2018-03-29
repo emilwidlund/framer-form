@@ -11,9 +11,11 @@ new Model
 ```
 
 ### Properties
+- `position` - Number - Get the model position. Returns a `Vector3`
 - `x` - Number - Specifies the model x position. Default is 0.
 - `y` - Number - Specifies the model y position. Default is 0.
 - `z` - Number - Specifies the model z position. Default is 0.
+- `rotation` - Number - Get the model rotation. Returns a `Vector3`
 - `rotationX` - Number - Specifies the model rotationX position. Default is 0.
 - `rotationY` - Number - Specifies the model rotationY position. Default is 0.
 - `rotationZ` - Number - Specifies the model rotationZ position. Default is 0.
@@ -21,6 +23,12 @@ new Model
 - `scaleX` - Number - Specifies the model scaleX. Default is 1.
 - `scaleY` - Number - Specifies the model scaleY. Default is 1.
 - `scaleZ` - Number - Specifies the model scaleZ. Default is 1.
+- `parent` - Object - Specifies the model parent. Default is ´null´.
+- `visible` - Bool - Specifies if the model should render or not. Default is ´true´.
+- `animation` - Number - Specifies the model animation clip to play. Default is 1.
+- `children` - Array - Get the child objects.
+- `states` - Object - The model states.
+- `size` - Object - Get the model size.
 
 #### Example: Updating using the Animation Loop
 If you want to continuously update the rotationY or any other property on your model, you can use the animationLoop.
