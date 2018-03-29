@@ -2,6 +2,8 @@
 A model is your 3D-object that you designed in your 3d-modelling software. It may include geometry, materials & animations.
 The model class does not extend the Framer Layer class, compared to the Scene class.
 
+_Important: If you're trying to import a model to a scene and you can't see anything being rendered, it's most likely because you have no lights in your scene. Add a light or apply ´new MeshNormalMaterial´ to the material-property to see your model. See example further down below. If that doesn't help, adjust the model scale-property as it might be too small or too big._
+
 ```
 new Model
   path: 'models/bike.fbx'
@@ -30,9 +32,10 @@ new Model
 - `children` - Array - Get the child objects.
 - `states` - Object - The model states.
 - `size` - Object - Get the model size.
+- `material` - <a href="https://threejs.org/docs/#api/materials/Material">Material</a> - Specifies the material to use. Read the documentation in the Material-link to see which properties that are supported. Default is the bundled material that comes with your model.
 
-#### Example: Updating using the Animation Loop
-If you want to continuously update the rotationY or any other property on your model, you can use the animationLoop.
+#### Example: Make model visible in a scene without lights
+A common usecase when you just want to import something and see what the model looks like without having to setup a lot of lights. This example applies a Normal-map to your model and doesn't interact with lights. More information about Normal-maps can be found <a href="https://en.wikipedia.org/wiki/Normal_mapping">here</a>.
 
 ```
 scene = new Scene
@@ -42,6 +45,7 @@ scene = new Scene
 new Model
   path: 'models/bike.fbx'
   parent: scene
+  material: new MeshNormalMaterial
   onLoad: (model) ->
     
     scene.animationLoop = () ->
