@@ -41,7 +41,7 @@ new Model
 Rotates the model to face the point in world space. Use this within the animationLoop to always face the position regardless of animations or similar.
 
 #### .animate(Object) .animate(String)
-Animates the model with the specified properties. Works like the usual Framer Animation API.
+Animates the model with the specified properties.
 If the argument is a string instead of an object, Framer Form expects it to be a State-name. Exactly as the regular Framer Animation-API.
 
 `options` - Object - If argument is an object, you may specify an options-object with following properties:
