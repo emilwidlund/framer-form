@@ -1,5 +1,5 @@
 ## Light
-Lights are used to illuminate the scene. There are 5 types of lights supported in Framer Form:
+Lights are used to illuminate the scene. There are 6 types of lights supported in Framer Form:
 - `Pointlight`
 - `Directional Light`
 - `Hemisphere Light`
