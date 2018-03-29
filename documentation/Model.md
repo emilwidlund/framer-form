@@ -33,6 +33,8 @@ new Model
 - `states` - Object - The model states.
 - `size` - Object - Get the model size.
 - `material` - <a href="https://threejs.org/docs/#api/materials/Material">Material</a> - Specifies the material to use. Read the documentation in the Material-link to see which properties that are supported. Default is the bundled material that comes with your model.
+- `mesh` - Mesh - Returns the imported, native THREE.Mesh
+- `pivot` - Group - Returns the pivot-group. This is the object we internally apply all positions, rotations & scaling to.
 
 
 ### Methods
