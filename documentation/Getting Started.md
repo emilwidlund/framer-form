@@ -59,6 +59,6 @@ new Model
 - We create a Model and reference the path to our bike. Make sure that you have the model located in the models-folder.
   - We add this model to the scene using the parent property
   - We set the scale to 1 (other models may be scaled differently so you will often have to play around with this value)
-  - We set the vertical psotion to 80 and the Y-rotation to -40
+  - We set the vertical position to 80 and the Y-rotation to -40
   - We then receive the model in the onLoad-callback, where the model is the argument
 - When the model is loaded, we listen on Pan-events on the scene and take the delta-value to control the rotation on the model
