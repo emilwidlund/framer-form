@@ -1,3 +1,7 @@
+### Good to know
+
+Framer Form uses THREE.js for most of its internal functionality. If you're familiar with that library, it might be handy to know that `THREE` is included as a global variable when using the Form-module.
+
 ### Installation
 
 Download this repository. Copy form.coffee and the form-folder to the modules-folder in your Framer Project.
