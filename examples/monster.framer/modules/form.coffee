@@ -1,11 +1,11 @@
-window.THREE = require './src/lib/three.min.js'
-require './src/GA.coffee'
+window.THREE = require './form/lib/three.min.js'
+require './form/GA.coffee'
 
-{Scene} = require './src/Scene.coffee'
-{Studio} = require './src/Studio.coffee'
-{Model} = require './src/Model.coffee'
-{Mesh} = require './src/Mesh.coffee'
-{Light} = require './src/Light.coffee'
+{Scene} = require './form/Scene.coffee'
+{Studio} = require './form/Studio.coffee'
+{Model} = require './form/Model.coffee'
+{Mesh} = require './form/Mesh.coffee'
+{Light} = require './form/Light.coffee'
 
 module.exports =
     Scene: Scene

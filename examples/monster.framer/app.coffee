@@ -1,4 +1,4 @@
-{Scene, Studio, Model} = require '../../form'
+{Scene, Studio, Model} = require 'form'
 
 scene = new Studio
 	size: Screen.size
