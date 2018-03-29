@@ -24,7 +24,7 @@ new Model
 - `scaleY` - Number - Specifies the model scaleY. Default is 1.
 - `scaleZ` - Number - Specifies the model scaleZ. Default is 1.
 - `parent` - Object - Specifies the model parent. Default is ´null´
-- `visible` - Bool - Specifies if the model should render or not. Default is ´true´.
+- `visible` - Bool - Specifies if the model should render or not. Default is ´true´
 - `animation` - Number - Specifies the model animation clip to play. Default is 1.
 - `children` - Array - Get the child objects.
 - `states` - Object - The model states.
