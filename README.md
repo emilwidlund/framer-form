@@ -14,8 +14,9 @@ Framer Form aims to deliver an easy and familiar syntax for all its components. 
 
 ### Documentation
 - [Getting Started](documentation/GettingStarted.md)
-- [Scene](documentation/Scene.md)
-- [Model](documentation/Model.md)
+- [Scenes](documentation/Scene.md)
+- [Models](documentation/Model.md)
+- [Lights](documentation/Light.md)
 
 ### Demo
 <a href="https://framer.cloud/RzLsF">Interactive Framer Prototype</a>
