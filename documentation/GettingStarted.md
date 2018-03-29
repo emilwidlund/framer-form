@@ -15,12 +15,10 @@ There are 2 ways to import submodules into your Framer Prototype.
 You can import the submodules individually like this:
 ```
 {
-  Scene 
-  Studio 
-  Model 
-  Mesh
-  MeshPhongMaterial
-  MeshNormalMaterial
+  Studio
+  Scene
+  Light
+  Model
 } = require 'form'
 ```
 
@@ -39,8 +37,7 @@ Let's import a simple FBX-model and make it rotate when we touch the screen.
   Studio
   Scene
   Light
-  Model 
-  MeshPhongMaterial
+  Model
 } = require 'form'
 
 scene = new Scene
