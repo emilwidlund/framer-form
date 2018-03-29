@@ -13,9 +13,9 @@ As most people probably want to import their own models & 3D-meshes to their Fra
 Framer Form aims to deliver an easy and familiar syntax for all its components. Framer Form has 2 fundamental components that you will interact with.
 
 ### Documentation
-- [Getting Started](framer-form/documentation/GettingStarted.md)
-- [Scene](framer-form/documentation/Scene.md)
-- [Model](framer-form/documentation/Model.md)
+- [Getting Started](documentation/GettingStarted.md)
+- [Scene](documentation/Scene.md)
+- [Model](documentation/Model.md)
 
 ### Demo
 <a href="https://framer.cloud/RzLsF">Interactive Framer Prototype</a>
