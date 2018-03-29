@@ -40,8 +40,9 @@ new Model
 #### .lookAt(Vector3) .lookAt(x, y, z)
 Rotates the model to face the point in world space. Use this within the animationLoop to always face the position regardless of animations or similar.
 
-#### .animate(Object)
+#### .animate(Object) .animate(String)
 Animates the model with the specified properties. Works like the usual Framer Animation API.
+If the argument is a string instead of an object, Framer Form expects it to be a State-name. Exactly as the regular Framer Animation-API.
 
 `options`
 - `time` - Number - Animation length in seconds
