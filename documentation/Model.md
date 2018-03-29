@@ -34,6 +34,46 @@ new Model
 - `size` - Object - Get the model size.
 - `material` - <a href="https://threejs.org/docs/#api/materials/Material">Material</a> - Specifies the material to use. Read the documentation in the Material-link to see which properties that are supported. Default is the bundled material that comes with your model.
 
+
+### Methods
+
+#### .lookAt(Vector3)
+#### .lookAt(x, y, z)
+Rotates the model to face the point in world space. Use this within the animationLoop to always face the position regardless of animations or similar.
+
+#### .animate(Object)
+Animates the model with the specified properties. Works like the usual Framer Animation API.
+
+`options`
+- `time` - Number - Animation length in seconds
+- `delay` - Number - Animation delay in seconds
+- `curve` - String - Animation Easing. This does only support the following strings:
+  - `linear`
+  - `easeInQuad`
+  - `easeOutQuad`
+  - `easeInOutQuad`
+  - `easeInCubic`
+  - `easeOutCubic`
+  - `easeInOutCubic`
+  - `easeInQuart`
+  - `easeOutQuart`
+  - `easeInOutQuart`
+  - `easeInQuint`
+  - `easeOutQuint`
+  - `easeInOutQuint`
+  - `easeInSine`
+  - `easeOutSine`
+  - `easeInOutSine`
+  - `easeInExpo`
+  - `easeOutExpo`
+  - `easeInOutExpo`
+  - `easeInCirc`
+  - `easeOutCirc`
+  - `easeInOutCirc`
+  - `easeInElastic`
+  - `easeOutElastic`
+  - `easeInOutElastic`
+
 #### Example: Make model visible in a scene without lights
 A common usecase when you just want to import something and see what the model looks like without having to setup a lot of lights. This example applies a Normal-map to your model and doesn't interact with lights. More information about Normal-maps can be found <a href="https://en.wikipedia.org/wiki/Normal_mapping">here</a>.
 
