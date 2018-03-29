@@ -47,7 +47,7 @@ Animates the model with the specified properties. Works like the usual Framer An
 - `time` - Number - Animation length in seconds
 - `delay` - Number - Animation delay in seconds
 - `curve` - String - Animation Easing. This does only support the following strings:
-  - `linear`
+  - `linear`
   - `easeInQuad`
   - `easeOutQuad`
   - `easeInOutQuad`
@@ -71,7 +71,7 @@ Animates the model with the specified properties. Works like the usual Framer An
   - `easeInOutCirc`
   - `easeInElastic`
   - `easeOutElastic`
-  - `easeInOutElastic`
+  - `easeInOutElastic`
 
 #### Example: Make model visible in a scene without lights
 A common usecase when you just want to import something and see what the model looks like without having to setup a lot of lights. This example applies a Normal-map to your model and doesn't interact with lights. More information about Normal-maps can be found <a href="https://en.wikipedia.org/wiki/Normal_mapping">here</a>.
