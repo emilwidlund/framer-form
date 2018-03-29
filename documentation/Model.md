@@ -76,7 +76,15 @@ If the argument is a string instead of an object, Framer Form expects it to be a
   - `easeOutElastic`
   - `easeInOutElastic`
 
-#### Example: Make model visible in a scene without lights
+#### .stateCycle(String, String)
+Animate between the specified states.
+
+#### .stateSwitch(String)
+Instantly applies the specified state's properties.
+
+### Examples
+
+#### Make model visible in a scene without lights
 A common usecase when you just want to import something and see what the model looks like without having to setup a lot of lights. This example applies a Normal-map to your model and doesn't interact with lights. More information about Normal-maps can be found <a href="https://en.wikipedia.org/wiki/Normal_mapping">here</a>.
 
 ```
