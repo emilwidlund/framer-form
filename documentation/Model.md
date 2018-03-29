@@ -13,6 +13,8 @@ new Model
 ```
 
 ### Properties
+- `path` - String - Specifies the path to the model you want to import. Default is `null`
+- `parent` - Object - Specifies the model parent. Default is `null`
 - `x` - Number - Specifies the model x position. Default is 0.
 - `y` - Number - Specifies the model y position. Default is 0.
 - `z` - Number - Specifies the model z position. Default is 0.
@@ -26,7 +28,6 @@ new Model
 - `scaleX` - Number - Specifies the model scaleX. Default is 1.
 - `scaleY` - Number - Specifies the model scaleY. Default is 1.
 - `scaleZ` - Number - Specifies the model scaleZ. Default is 1.
-- `parent` - Object - Specifies the model parent. Default is `null`
 - `visible` - Bool - Specifies if the model should render or not. Default is `true`
 - `animation` - Number - Specifies the model animation clip to play. Default is 1.
 - `children` - Array - Get the child objects.
