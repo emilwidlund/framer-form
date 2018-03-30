@@ -1,4 +1,3 @@
-
 # Read the full documentation here: https://github.com/emilwidlund/framer-form#documentation
 
 scene = new Scene
