@@ -116,8 +116,8 @@ class exports.Model extends BaseClass
         else parent.add @pivot
     
     handleAnimations: (properties) ->
-        if _.isNumber properties.animation
-            @animationIndex = properties.animation - 1
+        if _.isNumber properties.animationClip
+            @animationIndex = properties.animationClip - 1
         else
             @animationIndex = 0
 
@@ -316,7 +316,7 @@ class exports.Model extends BaseClass
         set: (states) ->
             _.extend @states, states
     
-    @define 'animation',
+    @define 'animationClip',
         get: -> @animationIndex + 1,
         set: (animation) -> 
             if @mesh.animations[animation - 1]
