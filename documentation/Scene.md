@@ -54,9 +54,9 @@ The camera captures the scene and feeds data into the renderer.
 - `fov` - Number - Specifies the Field of View. Default is 35.
 - `near` - Number - Specifies the camera frustum near plane. Default is 0.1.
 - `far` - Number - Specifies the camera frustum far plane. Default is 10000.
-- `zoom` - Number - Specifies the camera zoom factor.
+- `zoom` - Number - Specifies the camera zoom factor. Default is 1.
 - `aspect` - Number - Specifies the camera aspect ratio. Default is `scene.width / scene.height`
-- `orbitControls` - Bool - Specifies if camera should orbit around a target
+- `orbitControls` - Bool - Specifies if camera should orbit around a target. Default is `false`
 - `nativeCamera` - <a href="https://threejs.org/docs/#api/cameras/PerspectiveCamera">PerspectiveCamera</a> - The native THREE Camera. Default is `new THREE.PerspectiveCamera` 
 #### If `orbitControls` is enabled
 - `enablePan` - Bool - Enables Camera Touch Panning. Default is `false`
