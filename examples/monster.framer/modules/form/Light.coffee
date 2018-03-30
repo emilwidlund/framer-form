@@ -11,7 +11,8 @@ class exports.Light extends BaseClass
         if !properties.type
             throw Error 'Please specify a light type!'
         
-        @properties = _.defaults properties
+        @properties = _.defaults properties,
+            castShadow: true
 
         @setupLight()
 
@@ -87,6 +88,12 @@ class exports.Light extends BaseClass
 
     animate: (properties) ->
         new Animation @, properties
+    
+    lookAt: (a, b, c) ->
+        if arguments.length == 1
+            @light.lookAt a
+        else if arguments.length == 3
+            @light.lookAt a, b, c
 
     stateSwitch: (state) ->
         # Loop through states on model to find the specified one

@@ -9,7 +9,7 @@ new Model
 	rotationY: -40
 	reposition: false
 	scale: 1
-	animation: 2
+	animationClip: 2
 	onLoad: (model) ->
 		
 		scene.on Events.Pan, (e) ->
