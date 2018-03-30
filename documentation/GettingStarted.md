@@ -9,7 +9,7 @@ Framer Form uses THREE.js for most of its internal functionality. If you're fami
     src='https://www.framermodules.com/assets/badge@2x.png' width='160' height='40' />
 </a>
 
-Download this repository. Copy form.coffee and the form-folder to the modules-folder in your Framer Project.
+...or download this repository. Copy form.coffee and the form-folder to the modules-folder in your Framer Project.
 
 ### Importing submodules
 
