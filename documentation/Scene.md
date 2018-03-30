@@ -42,8 +42,7 @@ new Model
 ```
 
 ## Camera
-The camera captures the scene and feeds data in to the renderer.
-Internally it is a <a href="https://threejs.org/docs/#api/cameras/PerspectiveCamera">PerspectiveCamera</a>.
+The camera captures the scene and feeds data into the renderer.
 
 ### Properties
 - `x` - Number - Specifies the camera x position. Default is 0.
