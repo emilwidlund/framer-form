@@ -54,7 +54,7 @@ new Model
   onLoad: (model) ->
 
     scene.on Events.Pan, (e) ->
-      model.rotationY += e.deltaX * .3
+      model.rotationY += e.deltaX
 ```
 
 ##### So what is happening here?
