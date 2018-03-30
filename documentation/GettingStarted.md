@@ -4,9 +4,12 @@ Framer Form uses THREE.js for most of its internal functionality. If you're fami
 
 ### Installation
 
-Download this repository. Copy form.coffee and the form-folder to the modules-folder in your Framer Project.
+<a href='https://open.framermodules.com/framer-form'>
+    <img alt='Install with Framer Modules'
+    src='https://www.framermodules.com/assets/badge@2x.png' width='160' height='40' />
+</a>
 
-_This will change for the Alpha-release. There will be a more convinent way to install this module._
+Download this repository. Copy form.coffee and the form-folder to the modules-folder in your Framer Project.
 
 ### Importing submodules
 
