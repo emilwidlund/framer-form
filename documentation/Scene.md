@@ -58,6 +58,7 @@ Internally it is a <a href="https://threejs.org/docs/#api/cameras/PerspectiveCam
 - `zoom` - Number - Specifies the camera zoom factor.
 - `aspect` - Number - Specifies the camera aspect ratio. Default is `scene.width / scene.height`
 - `orbitControls` - Bool - Specifies if camera should orbit around a target
+- `nativeCamera` - <a href="https://threejs.org/docs/#api/cameras/PerspectiveCamera">PerspectiveCamera</a> - The native THREE Camera. Default is `new THREE.PerspectiveCamera` 
 #### If `orbitControls` is enabled
 - `enablePan` - Bool - Enables Camera Touch Panning. Default is `false`
 - `enableZoom` - Bool - Enables Camera Touch Zooming. Default is `false`
