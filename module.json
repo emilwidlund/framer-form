@@ -1,6 +1,6 @@
 {
     "name": "Framer Form",
-    "description": "3D in your Framer Prototype",
+    "description": "A third dimension for your Framer Prototype",
     "author": "Emil Widlund",
     "require": "{Scene, Light, Model} = require 'form'",
     "install": [
