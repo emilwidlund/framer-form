@@ -1,0 +1,37 @@
+{
+    "name": "Framer Form",
+    "description": "3D in your Framer Prototype",
+    "author": "Emil Widlund",
+    "require": "{Scene, Light, Model} = require 'form'",
+    "install": [
+        "form.coffee",
+
+        "/form/_Animation.coffee", 
+        "/form/_BaseClass.coffee", 
+        "/form/_Camera.coffee", 
+        "/form/_States.coffee", 
+        "/form/GA.coffee", 
+        "/form/Light.coffee", 
+        "/form/Mesh.coffee", 
+        "/form/Model.coffee", 
+        "/form/Scene.coffee", 
+        "/form/Studio.coffee",
+
+        "/form/loaders/Collada.coffee", 
+        "/form/loaders/FBX.coffee", 
+        "/form/loaders/GLTF.coffee", 
+        "/form/loaders/JSONObject.coffee", 
+        "/form/loaders/OBJ.coffee", 
+
+        "/form/lib/ColladaLoader.js", 
+        "/form/lib/FBXLoader.js", 
+        "/form/lib/GLTFLoader.js", 
+        "/form/lib/inflate.min.js", 
+        "/form/lib/MTLLoader.js", 
+        "/form/lib/OBJLoader.js", 
+        "/form/lib/OrbitControls.js", 
+        "/form/lib/three.min.js"
+    ],
+    "example": "example.coffee",
+    "thumb": "/marketing/thumb.png"
+}
