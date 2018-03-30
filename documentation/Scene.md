@@ -13,6 +13,7 @@ The scene layer supports all of the <a href="https://framer.com/docs/#layer.laye
 - `camera` - <a href="#camera">Camera</a> - The camera used within the scene
 - `animationLoop` - Function - Give this property a function and it will be executed each frame.
 - `scene` - <a href="https://threejs.org/docs/#api/scenes/Scene">Scene</a> - The native THREE scene. Default is `new THREE.Scene`
+- `renderer` - <a href="https://threejs.org/docs/#api/renderers/WebGLRenderer">WebGLRenderer</a> - The native WebGL Renderer used to render the scene and its meshes. Default is `new THREE.WebGLRenderer`
 
 _If you want to render your 3D-assets on a transparent scene, all you have to do is specify `background: 'transparent'`_
 
