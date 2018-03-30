@@ -12,6 +12,7 @@ new Scene
 The scene layer supports all of the <a href="https://framer.com/docs/#layer.layer">default Framer Layer-properties</a>.
 - `camera` - <a href="#camera">Camera</a> - The camera used within the scene
 - `animationLoop` - Function - Give this property a function and it will be executed each frame.
+- `scene` - <a href="https://threejs.org/docs/#api/scenes/Scene">Scene</a> - The native THREE scene. Default is `new THREE.Scene`
 
 _If you want to render your 3D-assets on a transparent scene, all you have to do is specify `background: 'transparent'`_
 
@@ -56,7 +57,6 @@ Internally it is a <a href="https://threejs.org/docs/#api/cameras/PerspectiveCam
 - `zoom` - Number - Specifies the camera zoom factor.
 - `aspect` - Number - Specifies the camera aspect ratio. Default is `scene.width / scene.height`
 - `orbitControls` - Bool - Specifies if camera should orbit around a target
-- `scene` - <a href="https://threejs.org/docs/#api/scenes/Scene">Scene</a> - The native THREE scene. Default is `new THREE.Scene`
 #### If `orbitControls` is enabled
 - `enablePan` - Bool - Enables Camera Touch Panning. Default is `false`
 - `enableZoom` - Bool - Enables Camera Touch Zooming. Default is `false`
