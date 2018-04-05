@@ -15,13 +15,13 @@ The scene layer supports all of the <a href="https://framer.com/docs/#layer.laye
 - `scene` - <a href="https://threejs.org/docs/#api/scenes/Scene">Scene</a> - The native THREE scene. Default is `new THREE.Scene`
 - `renderer` - <a href="https://threejs.org/docs/#api/renderers/WebGLRenderer">WebGLRenderer</a> - The native WebGL Renderer used to render the scene and its meshes. Default is `new THREE.WebGLRenderer`
 
-_If you want to render your 3D-assets on a transparent scene, all you have to do is specify `background: 'transparent'`_
+_If you want to render your 3D-assets on a transparent scene, all you have to do is specify `backgroundColor: 'transparent'`_
 
 ```
 new Scene
   width: Screen.width
   height: Screen.height
-  background: 'transparent'
+  backgroundColor: 'transparent'
 ```
 
 #### Example: Updating using the Animation Loop
