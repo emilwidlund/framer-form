@@ -25,9 +25,9 @@ Framer Form aims to deliver an easy and familiar syntax for all its components. 
 - Underscore.js
 
 ### Updates
-| Date | Summary | Commit |
-| ------------- | ------------- |
-| 2018-04-10 | Fixed animate-method on Models, Lights & Cameras. | 5407e9e |
+| Date         | Summary        | Commit        |
+| :---         | :---           | :---          |
+| 2018-04-10   | Fixed animate-method on Models, Lights & Cameras. | 5407e9e |
 
 ### Contact
 For any questions, highfives or concerns, please contact <a href="https://twitter.com/emilwidlund" target="_blank">me on Twitter</a>. If you found a bug, feel free to add an Issue to this repository and I'll take a look when I have time.
