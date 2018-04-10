@@ -1,7 +1,5 @@
 _ = Framer._
 
-{Model} = require './Model.coffee'
-
 class exports.Animation extends Framer.EventEmitter
     constructor: (model, properties={}) ->
         super()

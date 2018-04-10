@@ -27,5 +27,12 @@ new Model
 		flatShading: true
 	onLoad: (model) ->
 
+		model.animate
+			x: 100
+			options: 
+				time: 2.2
+				delay: 2
+				curve: 'easeInOutQuart'
+
 		scene.on Events.Pan, (e) ->
 			model.rotationY += e.deltaX * .3
