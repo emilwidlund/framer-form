@@ -24,6 +24,7 @@ class exports.Camera extends BaseClass
             enablePan: false
             enableZoom: false
             enableRotate: false
+            enableDamping: false
             autoRotate: false
             autoRotateSpeed: 10
             target: new THREE.Vector3 0, 0, 0
@@ -50,6 +51,7 @@ class exports.Camera extends BaseClass
         @enablePan = properties.enablePan
         @enableZoom = properties.enableZoom
         @enableRotate = properties.enableRotate
+        @enableDamping = properties.enableDamping
         @autoRotate = properties.autoRotate
         @autoRotateSpeed = properties.autoRotateSpeed
         @target = properties.target
@@ -205,6 +207,18 @@ class exports.Camera extends BaseClass
         set: (bool) -> 
             @controls.enableRotate = bool
             @nativeCamera.dispatchEvent {type: 'change:enableRotate', value: @enableRotate}
+    
+    @define 'enableDamping',
+        get: -> @controls.enableDamping
+        set: (bool) -> 
+            @controls.enableDamping = bool
+            @nativeCamera.dispatchEvent {type: 'change:enableDamping', value: @enableDamping}
+    
+    @define 'dampingFactor',
+        get: -> @controls.dampingFactor
+        set: (dampingFactor) -> 
+            @controls.dampingFactor = dampingFactor
+            @nativeCamera.dispatchEvent {type: 'change:dampingFactor', value: @dampingFactor}
     
     @define 'autoRotate',
         get: -> @controls.autoRotate
