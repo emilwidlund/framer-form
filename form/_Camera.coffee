@@ -25,6 +25,7 @@ class exports.Camera extends BaseClass
             enableZoom: false
             enableRotate: false
             enableDamping: false
+            dampingFactor: 10
             autoRotate: false
             autoRotateSpeed: 10
             target: new THREE.Vector3 0, 0, 0
