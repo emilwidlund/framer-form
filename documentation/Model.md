@@ -10,6 +10,7 @@ _Important: If you're trying to import a model to a scene and you can't see anyt
 - GLTF / GLB
 - JSON
 - DAE
+- 3DS
 
 ```
 new Model
