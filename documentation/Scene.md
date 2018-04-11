@@ -62,6 +62,8 @@ The camera captures the scene and feeds data into the renderer.
 - `enablePan` - Bool - Enables Camera Touch Panning. Default is `false`
 - `enableZoom` - Bool - Enables Camera Touch Zooming. Default is `false`
 - `enableRotate` - Bool - Enables Camera Touch Rotating. Default is `false`
+- `enableDamping` - Bool - Set to `true` to enable damping (inertia), which can be used to give a sense of weight to the controls. Default is `false`
+- `dampingFactor` - Number - The damping inertia used if `.enableDamping` is `true`. Default is 1.4.
 - `autoRotate` - Bool - Enables Auto Orbiting around the target position. Default is `false`
 - `autoRotateSpeed` - Number - Specifies the auto rotation speed when auto orbiting. Default is 10.
 - `target` - Position - Specifies a position for the camera to orbit around. If you want to orbit around a model, make sure to specify `model.position`. Default is `new THREE.Vector3(0, 0, 0)`
