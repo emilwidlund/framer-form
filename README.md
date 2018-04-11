@@ -27,6 +27,7 @@ Framer Form aims to deliver an easy and familiar syntax for all its components. 
 ### Updates
 | Date         | Summary        | Commit        |
 | :---         | :---           | :---          |
+| 2018-04-11   | Implemented support for 3DS-models. | 9980f69 |
 | 2018-04-10   | Fixed animate-method on Models, Lights & Cameras. | 5407e9e |
 
 ### Contact
