@@ -1,5 +1,4 @@
 window.THREE = require './form/lib/three.min.js'
-Reflector = require './form/lib/Reflector.js'
 require './form/GA.coffee'
 
 {Scene} = require './form/Scene.coffee'
@@ -14,7 +13,6 @@ module.exports =
     Model: Model
     Mesh: Mesh
     Light: Light
-    Reflector: Reflector
 
     # MATERIALS
 
