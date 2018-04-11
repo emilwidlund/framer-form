@@ -52,6 +52,7 @@ class exports.Camera extends BaseClass
         @enableZoom = properties.enableZoom
         @enableRotate = properties.enableRotate
         @enableDamping = properties.enableDamping
+        @dampingFactor = properties.dampingFactor
         @autoRotate = properties.autoRotate
         @autoRotateSpeed = properties.autoRotateSpeed
         @target = properties.target
