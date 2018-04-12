@@ -15,6 +15,13 @@ Framer Form aims to deliver an easy and familiar syntax for all its components. 
 - [Models](documentation/Model.md)
 - [Lights](documentation/Light.md)
 
+### Updates
+| Date         | Summary        | Commit        |
+| :---         | :---           | :---          |
+| 2018-04-11   | Implemented support for damping inertia when Camera Orbiting. More information [here](documentation/Scene.md#if-orbitcontrols-is-enabled). | 0e8bec8 |
+| 2018-04-11   | Implemented support for 3DS-models. | 9980f69 |
+| 2018-04-10   | Fixed animate-method on Models, Lights & Cameras. | 5407e9e |
+
 ### Demo
 <a href="https://framer.cloud/RzLsF">Interactive Framer Prototype</a>
 
@@ -23,13 +30,6 @@ Framer Form aims to deliver an easy and familiar syntax for all its components. 
 - Framer Library
 - Inflate.js
 - Underscore.js
-
-### Updates
-| Date         | Summary        | Commit        |
-| :---         | :---           | :---          |
-| 2018-04-11   | Implemented support for damping inertia when Camera Orbiting. More information [here](documentation/Scene.md#if-orbitcontrols-is-enabled). | 0e8bec8 |
-| 2018-04-11   | Implemented support for 3DS-models. | 9980f69 |
-| 2018-04-10   | Fixed animate-method on Models, Lights & Cameras. | 5407e9e |
 
 ### Contact
 For any questions, highfives or concerns, please contact <a href="https://twitter.com/emilwidlund" target="_blank">me on Twitter</a>. If you found a bug, feel free to add an Issue to this repository and I'll take a look when I have time.
