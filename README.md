@@ -7,7 +7,7 @@ Framer Form is a <a href="https://framer.com" target="_blank">Framer</a>-module 
 As most people probably want to import their own models & 3D-meshes to their Framer Prototype, Framer Form will have solid support for a wide array of different file formats. Import anything from FBX, DAE & OBJ to JSON files, and have their respective materials applied with one simple line of code.
 
 ### What does the syntax look like?
-Framer Form aims to deliver an easy and familiar syntax for all its components. Framer Form has 2 fundamental components that you will interact with.
+Framer Form aims to deliver an easy and familiar syntax for all its components. It's important to keep the entry-barrier low for users who are new to 3D, Web & Framer.
 
 ### Documentation
 - [Getting Started](documentation/GettingStarted.md)
