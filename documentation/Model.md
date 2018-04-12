@@ -23,7 +23,7 @@ new Model
 ### Properties
 - `path` - String - Specifies the path to the model you want to import. Default is `null`
 - `parent` - Object - Specifies the model parent. Usually a scene or another model. Default is `null`
-- `onLoad` - Function - Callback to be fired when the model was successfully loaded. Default is `null`
+- `onLoad` - Function - Callback to be fired when the model successfully loads. Default is `null`
 - `x` - Number - Specifies the model x position. Default is 0.
 - `y` - Number - Specifies the model y position. Default is 0.
 - `z` - Number - Specifies the model z position. Default is 0.
