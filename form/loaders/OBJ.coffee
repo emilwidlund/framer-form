@@ -10,16 +10,10 @@ class exports.OBJ
         
         @materialLoader = new THREE.MTLLoader
         @modelLoader = new THREE.OBJLoader
-
-        @materialLoader.setTexturePath @dirPath
+        
         @materialLoader.setPath @dirPath
-        @materialLoader.crossOrigin = ''
         @materialLoader.load @materialPath, (materials) =>
             materials.preload()
-
-            for m in materials.materials
-                m.map.magFilter = THREE.NearestFilter
-                m.map.minFilter = THREE.LinearFilter
 
             @modelLoader.setMaterials materials
             @modelLoader.setPath @dirPath
