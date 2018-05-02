@@ -22,6 +22,7 @@
         "/form/loaders/GLTF.coffee", 
         "/form/loaders/JSONObject.coffee", 
         "/form/loaders/OBJ.coffee", 
+        "/form/loaders/TDS.coffee",
 
         "/form/lib/ColladaLoader.js", 
         "/form/lib/FBXLoader.js", 
@@ -29,6 +30,7 @@
         "/form/lib/inflate.min.js", 
         "/form/lib/MTLLoader.js", 
         "/form/lib/OBJLoader.js", 
+        "/form/lib/TDSLoader.js",
         "/form/lib/OrbitControls.js", 
         "/form/lib/three.min.js"
     ],
