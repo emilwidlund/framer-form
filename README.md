@@ -18,7 +18,6 @@ Framer Form aims to deliver an easy and familiar syntax for all its components. 
 ### Updates
 | Date         | Summary        | Commit        |
 | :---         | :---           | :---          |
-| 2018-04-15   | MTL-loader now applies textureFilters on materials when loading an OBJ-file. | [c3943a0](https://github.com/emilwidlund/framer-form/commit/c3943a017e6afc1f8ac98f280c543a3fd4a75919) |
 | 2018-04-11   | Implemented support for damping inertia when Camera Orbiting. More information [here](documentation/Scene.md#if-orbitcontrols-is-enabled). | [0e8bec8](https://github.com/emilwidlund/framer-form/commit/0e8bec8b9f050b689a570a9642eb1ae951aab0d1) |
 | 2018-04-11   | Implemented support for 3DS-models. | [9980f69](https://github.com/emilwidlund/framer-form/commit/9980f6909882f425f4d951d19a7e6efaeb06fb68) |
 | 2018-04-10   | Fixed animate-method on Models, Lights & Cameras. | [5407e9e](https://github.com/emilwidlund/framer-form/commit/5407e9e1892d52299925adf742416b96382cf619) |
