@@ -71,10 +71,10 @@ The camera captures the scene and feeds data into the renderer.
 ### Methods
 
 #### .lookAt(Vector3) .lookAt(x, y, z)
-Rotates the model to face the point in world space. Use this within the animationLoop to always face the position regardless of animations or similar.
+Rotates the camera to face the point in world space. Use this within the animationLoop to always face the position regardless of animations or similar.
 
 #### .animate(Object) .animate(String)
-Animates the model with the specified properties.
+Animates the camera with the specified properties.
 If the argument is a string instead of an object, Framer Form expects it to be a State-name. Exactly as the regular Framer Animation-API.
 
 `options` - Object - If argument is an object, you may specify an options-object with following properties:
@@ -112,5 +112,5 @@ If the argument is a string instead of an object, Framer Form expects it to be a
 - If arguments contain 1 string, this method will animate to the state.
 - If no arguments are specified, this method will cycle through all available states.
 
-#### .stateSwitch(String)
+#### .stateSwitch(StateName: String)
 Instantly applies the specified state's properties.
