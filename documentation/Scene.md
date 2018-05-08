@@ -67,3 +67,10 @@ The camera captures the scene and feeds data into the renderer.
 - `autoRotate` - Bool - Enables Auto Orbiting around the target position. Default is `false`
 - `autoRotateSpeed` - Number - Specifies the auto rotation speed when auto orbiting. Default is 10.
 - `target` - Position - Specifies a position for the camera to orbit around. If you want to orbit around a model, make sure to specify `model.position`. Default is `new THREE.Vector3(0, 0, 0)`
+
+### Methods
+
+#### .stateCycle(StateName: String, StateName: String)
+If arguments contain 2 strings, this method will animate between the states
+If arguments contain 1 string, this method will animate to the state
+If no arguments are specified, this method will cycle through all available states
