@@ -8,7 +8,7 @@
 	Light
 } = require '../form.coffee'
 
-scene = new Studio
+scene = new Scene
 	width: Screen.width
 	height: Screen.height
 
@@ -16,23 +16,23 @@ scene = new Studio
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
-	y: 80
 	rotationY: -40
-	material: new MeshPhongMaterial
-		color: 0xffffff
-		specular: 0xffffff
-		shininess: 20
-		vertexColors: THREE.FaceColors
+	material: new MeshNormalMaterial
 		morphTargets: true
 		flatShading: true
 	onLoad: (model) ->
 
-		model.animate
-			x: 100
-			options: 
-				time: 2.2
-				delay: 2
-				curve: 'easeInOutQuart'
-
-		scene.on Events.Pan, (e) ->
-			model.rotationY += e.deltaX * .3
+		model.states =
+			test: 
+				x: 50
+				rotationZ: 180
+				z: 0
+				rotationY: 0
+			testX:
+				x: 0
+				rotationZ: 0
+				z: 300
+				rotationY: 84
+		
+		scene.onClick ->
+			model.stateCycle()
