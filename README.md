@@ -18,7 +18,7 @@ Framer Form aims to deliver an easy and familiar syntax for all its components. 
 ### Updates
 | Date         | Summary        | Commit        |
 | :---         | :---           | :---          |
-| 2018-05-08   | .stateCycle-method on Models, Cameras & Lights now cycles between all available states if no arguments are specified. | [f2a1dfb](https://github.com/emilwidlund/framer-form/commit/f2a1dfbc412da8b634e23b66c5bfb467d9e941c1) |
+| 2018-05-08   | The stateCycle-method now cycles between all available states if no arguments are specified. | [f2a1dfb](https://github.com/emilwidlund/framer-form/commit/f2a1dfbc412da8b634e23b66c5bfb467d9e941c1) |
 | 2018-04-11   | Implemented support for damping inertia when Camera Orbiting. More information [here](documentation/Scene.md#if-orbitcontrols-is-enabled). | [0e8bec8](https://github.com/emilwidlund/framer-form/commit/0e8bec8b9f050b689a570a9642eb1ae951aab0d1) |
 | 2018-04-11   | Implemented support for 3DS-models. | [9980f69](https://github.com/emilwidlund/framer-form/commit/9980f6909882f425f4d951d19a7e6efaeb06fb68) |
 | 2018-04-10   | Fixed animate-method on Models, Lights & Cameras. | [5407e9e](https://github.com/emilwidlund/framer-form/commit/5407e9e1892d52299925adf742416b96382cf619) |
