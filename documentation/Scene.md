@@ -70,7 +70,47 @@ The camera captures the scene and feeds data into the renderer.
 
 ### Methods
 
+#### .lookAt(Vector3) .lookAt(x, y, z)
+Rotates the model to face the point in world space. Use this within the animationLoop to always face the position regardless of animations or similar.
+
+#### .animate(Object) .animate(String)
+Animates the model with the specified properties.
+If the argument is a string instead of an object, Framer Form expects it to be a State-name. Exactly as the regular Framer Animation-API.
+
+`options` - Object - If argument is an object, you may specify an options-object with following properties:
+- `time` - Number - Animation length in seconds
+- `delay` - Number - Animation delay in seconds
+- `curve` - String - Animation Easing. This does only support the following strings:
+  - `linear`
+  - `easeInQuad`
+  - `easeOutQuad`
+  - `easeInOutQuad`
+  - `easeInCubic`
+  - `easeOutCubic`
+  - `easeInOutCubic`
+  - `easeInQuart`
+  - `easeOutQuart`
+  - `easeInOutQuart`
+  - `easeInQuint`
+  - `easeOutQuint`
+  - `easeInOutQuint`
+  - `easeInSine`
+  - `easeOutSine`
+  - `easeInOutSine`
+  - `easeInExpo`
+  - `easeOutExpo`
+  - `easeInOutExpo`
+  - `easeInCirc`
+  - `easeOutCirc`
+  - `easeInOutCirc`
+  - `easeInElastic`
+  - `easeOutElastic`
+  - `easeInOutElastic`
+
 #### .stateCycle(StateName: String, StateName: String)
-If arguments contain 2 strings, this method will animate between the states
-If arguments contain 1 string, this method will animate to the state
-If no arguments are specified, this method will cycle through all available states
+- If arguments contain 2 strings, this method will animate between the states.
+- If arguments contain 1 string, this method will animate to the state.
+- If no arguments are specified, this method will cycle through all available states.
+
+#### .stateSwitch(String)
+Instantly applies the specified state's properties.
