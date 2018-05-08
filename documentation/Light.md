@@ -45,7 +45,7 @@ new Light
   - Ambient Light
   - Spotlight
   - Rectangle Area Light
-- `angle` - Number - Maximum extent of the spotlight, in radians, from its direction. Should be no more than Math.PI/2. The default is Math.PI/3.
+- `angle` - Number - Maximum extent of the spotlight, in radians, from its direction. Should be no more than Math.PI/2. The default is `Math.PI/3`
   - Spotlight
 - `castShadow` - Bool - Specifies if the light should cast shadows or not. Default is `true`
   - Spotlight
