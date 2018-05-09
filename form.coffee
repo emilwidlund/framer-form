@@ -6,6 +6,7 @@ require './form/GA.coffee'
 {Model} = require './form/Model.coffee'
 {Mesh} = require './form/Mesh.coffee'
 {Light} = require './form/Light.coffee'
+{ParticleSystem} = require './form/ParticleSystem.coffee'
 
 module.exports =
     Scene: Scene
@@ -13,6 +14,7 @@ module.exports =
     Model: Model
     Mesh: Mesh
     Light: Light
+    ParticleSystem: ParticleSystem
 
     # MATERIALS
 

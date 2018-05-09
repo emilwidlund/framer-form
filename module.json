@@ -16,6 +16,7 @@
         "/form/Model.coffee", 
         "/form/Scene.coffee", 
         "/form/Studio.coffee",
+        "/form/ParticleSystem.coffee",
 
         "/form/loaders/Collada.coffee", 
         "/form/loaders/FBX.coffee", 
@@ -32,7 +33,11 @@
         "/form/lib/OBJLoader.js", 
         "/form/lib/TDSLoader.js",
         "/form/lib/OrbitControls.js", 
-        "/form/lib/three.min.js"
+        "/form/lib/GPUParticleSystem.js",
+        "/form/lib/three.min.js",
+
+        "/form/lib/textures/particle2.png",
+        "/form/lib/textures/perlin-512.png"
     ],
     "example": "example.coffee",
     "thumb": "/marketing/thumb.png"

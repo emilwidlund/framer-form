@@ -6,11 +6,24 @@
 	MeshPhongMaterial
 	MeshNormalMaterial
 	Light
+	ParticleSystem
 } = require '../form.coffee'
 
 scene = new Scene
 	width: Screen.width
 	height: Screen.height
+	camera:
+		orbitControls: true
+		enableRotate: true
+
+ps = new ParticleSystem
+	parent: scene
+	color: 0xff4444
+	particleNoiseTexture: './images/perlin-512.png'
+	particleSpriteTexture: './images/particle2.png'
+
+
+###
 
 new Model
 	path: './models/flamingo/flamingo.json'
@@ -46,3 +59,5 @@ new Model
 		
 		scene.onClick ->
 			scene.camera.stateCycle('first', 'second', 'third')
+
+###
