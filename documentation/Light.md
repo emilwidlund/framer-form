@@ -105,10 +105,9 @@ If the argument is a string instead of an object, Framer Form expects it to be a
   - `easeOutElastic`
   - `easeInOutElastic`
 
-#### .stateCycle(StateName: String, StateName: String)
-- If arguments contain 2 strings, this method will animate between the states
-- If arguments contain 1 string, this method will animate to the state
-- If no arguments are specified, this method will cycle through all available states
+#### .stateCycle(StateName: String)
+- Cycles between the specified states. The method takes unlimited amount of arguments.
+- If no arguments are specified, this method will cycle through all available states.
 
 #### .stateSwitch(StateName: String)
 Instantly applies the specified state's properties.
