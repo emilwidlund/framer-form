@@ -67,6 +67,11 @@ class exports.Model extends BaseClass
         if properties.material
             @applyMaterial properties.material
         
+        if properties.map
+            new THREE.TextureLoader().load properties.map, (map) =>
+                @mesh.material.map = map
+                @mesh.material.needsUpdate = true
+        
         @setupShadowSettings properties
         
         if properties.smoothShading
@@ -109,6 +114,7 @@ class exports.Model extends BaseClass
         @mesh.traverse (c) ->
             if c instanceof THREE.Mesh
                 c.material = material
+
 
     setupShadowSettings: (properties) ->
         @mesh.traverse (c) ->

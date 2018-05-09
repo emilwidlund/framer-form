@@ -12,7 +12,6 @@ scene = new Scene
 	width: Screen.width
 	height: Screen.height
 
-
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
