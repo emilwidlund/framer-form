@@ -24,6 +24,8 @@ class exports.Model extends BaseClass
             castShadow: true
             receiveShadow: true
             reposition: true
+        
+        @textureLoader = new THREE.TextureLoader()
 
         switch @getExtension properties.path
             when 'obj'
@@ -67,11 +69,6 @@ class exports.Model extends BaseClass
         if properties.material
             @applyMaterial properties.material
         
-        if properties.map
-            new THREE.TextureLoader().load properties.map, (map) =>
-                @mesh.material.map = map
-                @mesh.material.needsUpdate = true
-        
         @setupShadowSettings properties
         
         if properties.smoothShading
@@ -100,7 +97,15 @@ class exports.Model extends BaseClass
         @_states = new States @
 
         if properties.onLoad
-            properties.onLoad @
+            if properties.map
+                @textureLoader.load properties.map, (map) =>
+                    @mesh.material.map = map
+                    @mesh.material.needsUpdate = true
+                    properties.onLoad @
+            else
+                properties.onLoad @
+        else if properties.map
+            @applyTextureMap properties.map
 
     repositionMesh: () ->
         @boundingBox = new THREE.Box3().setFromObject @mesh
@@ -115,6 +120,10 @@ class exports.Model extends BaseClass
             if c instanceof THREE.Mesh
                 c.material = material
 
+    applyTextureMap: (path) ->
+        @textureLoader.load path, (map) =>
+            @mesh.material.map = map
+            @mesh.material.needsUpdate = true
 
     setupShadowSettings: (properties) ->
         @mesh.traverse (c) ->
@@ -350,3 +359,8 @@ class exports.Model extends BaseClass
                 @animationIndex = animation - 1
                 @action = @mesh.mixer.clipAction @mesh.animations[@animationIndex]
                 @action.play()
+    
+    @define 'map',
+        get: -> @mesh.material.map,
+        set: (path) ->
+            @applyTextureMap path

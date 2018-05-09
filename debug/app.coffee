@@ -12,13 +12,17 @@ scene = new Scene
 	width: Screen.width
 	height: Screen.height
 
+new Light
+	parent: scene
+	type: 'point'
+	y: 200
+	z: 100
+
 new Model
 	path: './models/flamingo/flamingo.json'
 	parent: scene
 	rotationY: -40
-	material: new MeshNormalMaterial
-		morphTargets: true
-		flatShading: true
+	map: './images/icon.png'
 	onLoad: (model) ->
 
 		model.states =
