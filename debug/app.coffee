@@ -21,28 +21,28 @@ new Model
 		flatShading: true
 	onLoad: (model) ->
 
-		model.states =
-			test: 
-				x: 50
-				rotationZ: 180
-				z: 0
-				rotationY: 0
-				options:
-					curve: 'easeInOutQuart'
-			testX:
-				x: 0
-				rotationZ: 0
+		scene.animationLoop = () ->
+			scene.camera.lookAt model.position
+
+		scene.camera.states =
+			first: 
+				x: 100
+				y: -100
 				z: 300
-				rotationY: 84
 				options:
 					curve: 'easeInOutQuart'
-			textS:
-				x: 62
-				rotationZ: 92
-				z: -100
-				rotationY: 230
+			second: 
+				x: 300
+				y: -50
+				z: -200
+				options:
+					curve: 'easeInOutQuart'
+			third:
+				x: -100
+				y: 200
+				z: -200
 				options:
 					curve: 'easeInOutQuart'
 		
 		scene.onClick ->
-			model.stateCycle('test', 'testX', 'textS')
+			scene.camera.stateCycle('first', 'second', 'third')
