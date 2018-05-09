@@ -28,11 +28,22 @@ new Model
 				rotationZ: 180
 				z: 0
 				rotationY: 0
+				options:
+					curve: 'easeInOutQuart'
 			testX:
 				x: 0
 				rotationZ: 0
 				z: 300
 				rotationY: 84
+				options:
+					curve: 'easeInOutQuart'
+			textS:
+				x: 62
+				rotationZ: 92
+				z: -100
+				rotationY: 230
+				options:
+					curve: 'easeInOutQuart'
 		
 		scene.onClick ->
-			model.stateCycle()
+			model.stateCycle('test', 'testX', 'textS')

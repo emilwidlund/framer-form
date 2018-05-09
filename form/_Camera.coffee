@@ -99,15 +99,21 @@ class exports.Camera extends BaseClass
                 Object.keys(@states.current).map (pk)  =>
                     @[pk] = @states.current[pk]
     
-    stateCycle: (stateA, stateB) ->
+    stateCycle: () ->
         if arguments.length
-            # Check if stateA or stateB already is the current state on model
-            if @states.current == @states[stateA] || @states.current == @states[stateB]
-                if @states.current == @states[stateA] then @animate stateB
-                else if @states.current == @states[stateB] then @animate stateA
-            else
-                # If neither are current, animate to stateA
-                @animate stateA
+
+            for s, i in arguments
+                if _.isEqual @states[s], @states.current
+                    if i == (arguments.length - 1)
+                        nextState = 0
+                    else
+                        nextState = i + 1
+            
+            if nextState == undefined
+                nextState = 0
+
+            @animate arguments[nextState]
+
         else
             states = Object.keys(@states)
             states.splice(1, 1)
