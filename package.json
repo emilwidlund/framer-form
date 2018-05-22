@@ -8,7 +8,7 @@
     "build": "webpack-cli"
   },
   "author": "Emil Widlund",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.2.2",
