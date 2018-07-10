@@ -34,5 +34,9 @@ Framer Form aims to deliver an easy and familiar syntax for all its components. 
 - Inflate.js
 - Underscore.js
 
+### Google Analytics
+This module has a GA-module built in that gives me some helpful information about Framer Form's users.
+The information consist of simple usage metrics such as users per month, etc. It helps this module to become even better.
+
 ### Contact
 For any questions, highfives or concerns, please contact <a href="https://twitter.com/emilwidlund" target="_blank">me on Twitter</a>. If you find a bug, feel free to add an Issue to this repository.
