@@ -1,5 +1,5 @@
 ## Scene
-The scene is responisble for rendering your 3D assets. It takes care of the animationLoop, camera, raycasting and much more.
+The scene is responsible for rendering your 3D assets. It takes care of the animationLoop, camera, raycasting and much more.
 Under the hood, the Scene is a regular Framer Layer.
 
 ```
